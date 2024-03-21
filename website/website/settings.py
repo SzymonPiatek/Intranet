@@ -1,6 +1,8 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+import ldap
+from django_auth_ldap.config import LDAPSearch
 
 
 load_dotenv()
@@ -88,3 +90,23 @@ STATICFILES_DIRS = [
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = (
+    # 'users.ldap.CustomLDAPBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+AUTH_LDAP_SERVER_URI = os.environ.get("AUTH_LDAP_SERVER_URI")
+AUTH_LDAP_BIND_DN = os.environ.get("AUTH_LDAP_BIND_DN")
+AUTH_LDAP_BIND_PASSWORD = os.environ.get("AUTH_LDAP_BIND_PASSWORD")
+AUTH_LDAP_USER_SEARCH = LDAPSearch(
+    os.environ.get("AUTH_LDAP_GROUPS"),
+    ldap.SCOPE_SUBTREE,
+    "mail=%(user)s",
+)
+
+AUTH_LDAP_GROUP_SEARCH = LDAPSearch(
+    os.environ.get("AUTH_LDAP_GROUPS"),
+    ldap.SCOPE_SUBTREE,
+    "(objectClass=*)",
+)
