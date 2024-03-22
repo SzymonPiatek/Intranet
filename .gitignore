@@ -8,3 +8,5 @@ website/users/__pycache__/
 website/users/migrations/__pycache__/
 website/applications/__pycache__/
 website/applications/migrations/__pycache__/
+website/reports/__pycache__/
+website/reports/migrations/__pycache__/
