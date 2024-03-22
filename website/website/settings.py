@@ -1,6 +1,8 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+import ldap
+from django_auth_ldap.config import LDAPSearch
 
 
 load_dotenv()
@@ -20,6 +22,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
+    'applications',
 ]
 
 MIDDLEWARE = [
@@ -87,4 +91,33 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static/')
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = "home_page"
+LOGIN_URL = "login_page"
+LOGOUT_REDIRECT_URL = "login_page"
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+AUTHENTICATION_BACKENDS = (
+    # 'users.ldap.CustomLDAPBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+AUTH_LDAP_SERVER_URI = os.environ.get("AUTH_LDAP_SERVER_URI")
+AUTH_LDAP_BIND_DN = os.environ.get("AUTH_LDAP_BIND_DN")
+AUTH_LDAP_BIND_PASSWORD = os.environ.get("AUTH_LDAP_BIND_PASSWORD")
+AUTH_LDAP_USER_SEARCH = LDAPSearch(
+    os.environ.get("AUTH_LDAP_GROUPS"),
+    ldap.SCOPE_SUBTREE,
+    "mail=%(user)s",
+)
+
+AUTH_LDAP_GROUP_SEARCH = LDAPSearch(
+    os.environ.get("AUTH_LDAP_GROUPS"),
+    ldap.SCOPE_SUBTREE,
+    "(objectClass=*)",
+)
