@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -90,6 +91,10 @@ STATICFILES_DIRS = [
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = "home_page"
+LOGIN_URL = "login_page"
+LOGOUT_REDIRECT_URL = "login_page"
 
 AUTHENTICATION_BACKENDS = (
     # 'users.ldap.CustomLDAPBackend',

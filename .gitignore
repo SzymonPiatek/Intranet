@@ -3,3 +3,5 @@
 node_modules
 .venv
 website/website/__pycache__/
+website/users/__pycache__/
+website/users/migrations/__pycache__/

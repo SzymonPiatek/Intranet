@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, Group
+from django.contrib.auth.models import AbstractUser, Group, Permission
 
 
 class CustomUser(AbstractUser):
@@ -13,6 +13,7 @@ class CustomUser(AbstractUser):
     title = models.CharField(max_length=100, blank=True, null=True)
 
     groups = models.ManyToManyField(Group, blank=True)
+    user_permissions = models.ManyToManyField(Permission, blank=True)
 
     class Meta:
         verbose_name = 'User'
