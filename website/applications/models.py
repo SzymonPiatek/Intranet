@@ -11,7 +11,7 @@ def upload_to(instance, filename):
 
 
 class Status(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, blank=False, null=False, unique=True)
 
     class Meta:
         verbose_name = "Status"
@@ -24,8 +24,8 @@ class Status(models.Model):
 class Application(models.Model):
     name = models.CharField(max_length=255, blank=False, null=False)
     file = models.FileField(upload_to=upload_to)
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    status = models.ForeignKey(Status, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=False, null=False)
+    status = models.ForeignKey(Status, on_delete=models.CASCADE, blank=False, null=False)
     created_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -37,10 +37,10 @@ class Application(models.Model):
 
 
 class ApplicationStatusHistory(models.Model):
-    application = models.ForeignKey(Application, on_delete=models.CASCADE)
-    status = models.ForeignKey(Status, on_delete=models.CASCADE)
+    application = models.ForeignKey(Application, on_delete=models.CASCADE, blank=False, null=False)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=False, null=False)
+    status = models.ForeignKey(Status, on_delete=models.CASCADE, blank=False, null=False)
     edit_date = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Application status history'
