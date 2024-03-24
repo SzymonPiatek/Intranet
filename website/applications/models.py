@@ -10,17 +10,6 @@ def upload_to(instance, filename):
     return os.path.join('applications/', filename)
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=255, blank=False, null=False, unique=True)
-
-    class Meta:
-        verbose_name = "Category"
-        verbose_name_plural = "Categories"
-
-    def __str__(self):
-        return self.name
-
-
 class Status(models.Model):
     name = models.CharField(max_length=100, blank=False, null=False, unique=True)
 
@@ -34,10 +23,10 @@ class Status(models.Model):
 
 class Application(models.Model):
     name = models.CharField(max_length=255, blank=False, null=False)
-    file = models.FileField(upload_to=upload_to)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=False, null=False)
     status = models.ForeignKey(Status, on_delete=models.CASCADE, blank=False, null=False)
     created_date = models.DateTimeField(auto_now_add=True)
+    file = models.FileField(upload_to=upload_to)
 
     class Meta:
         verbose_name = 'Application'

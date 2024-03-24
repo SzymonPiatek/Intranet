@@ -27,7 +27,6 @@ class ReportDataAdmin(admin.ModelAdmin):
         "report",
         "user",
         "task",
-        "task_category",
         "task_date",
         "status",
         "status",

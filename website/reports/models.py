@@ -45,7 +45,6 @@ class ReportData(models.Model):
     report = models.ForeignKey(Report, on_delete=models.CASCADE, blank=False, null=False)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=False, null=False)
     task = models.CharField(max_length=255, blank=False, null=False)
-    task_category = models.CharField(max_length=255, blank=False, null=False)
     task_date = models.DateField()
     status = models.CharField(max_length=50, choices=STATUS_LIST, blank=True)
     description = models.TextField()
