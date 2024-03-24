@@ -5,6 +5,8 @@ node_modules
 website/db.sqlite3
 website/website/__pycache__/
 website/users/__pycache__/
+website/users/management/__pycache__/
+website/users/management/commands/__pycache__/
 website/users/migrations/__pycache__/
 website/applications/__pycache__/
 website/applications/migrations/__pycache__/
