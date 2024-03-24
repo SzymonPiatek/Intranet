@@ -1,0 +1,24 @@
+@import 'colors';
+
+
+nav {
+  background: $navbar-color;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  .container {
+    width: 1300px;
+    height: 100%;
+    padding: 0 20px;
+    .content {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .side {
+        display: flex;
+        gap: 40px;
+      }
+    }
+  }
+}

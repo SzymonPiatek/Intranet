@@ -1,7 +1,28 @@
-{% if user.is_authenticated %}
-    {{ user }}
-    <form action="{% url 'logout_page' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Log out</button>
-    </form>
-{% endif %}
+<nav>
+    <div class="container">
+        <div class="content">
+            <div class="side">
+                EXAMPLE
+            </div>
+            {% if user.is_authenticated %}
+                <div class="side">
+                    <div class="item">
+                        Reports
+                    </div>
+                    <div class="item">
+                        Applications
+                    </div>
+                    <div class="item">
+                        {{ user }}
+                    </div>
+                    <div class="item">
+                        <form action="{% url 'logout_page' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Log out</button>
+                        </form>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,25 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .login {
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+        }
+      }
+    }
+  }
+}
+
