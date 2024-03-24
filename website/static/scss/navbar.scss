@@ -4,6 +4,7 @@
 nav {
   background: $navbar-color;
   height: 80px;
+  width: 100%;
   display: flex;
   justify-content: center;
   .container {
@@ -18,6 +19,13 @@ nav {
       .side {
         display: flex;
         gap: 40px;
+        .item, button {
+          display: flex;
+          gap: 10px;
+          .image, .text {
+            color: $text-color;
+          }
+        }
       }
     }
   }

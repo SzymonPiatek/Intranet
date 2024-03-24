@@ -2,23 +2,45 @@
     <div class="container">
         <div class="content">
             <div class="side">
-                EXAMPLE
+                <div class="item">
+                    <div class="text">
+                        EXAMPLE
+                    </div>
+                </div>
             </div>
             {% if user.is_authenticated %}
                 <div class="side">
+                    {% if user.is_superuser %}
+                        <div class="item">
+                            <div class="image">
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                            </div>
+                            <div class="text">
+                                Admin panel
+                            </div>
+                        </div>
+                    {% endif %}
                     <div class="item">
-                        Reports
+                        <div class="image">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div class="text">
+                            {{ user }}
+                        </div>
                     </div>
                     <div class="item">
-                        Applications
-                    </div>
-                    <div class="item">
-                        {{ user }}
+                        <div class="image">
+                            <i class="fa-solid fa-bell"></i>
+                        </div>
                     </div>
                     <div class="item">
                         <form action="{% url 'logout_page' %}" method="post">
                             {% csrf_token %}
-                            <button type="submit">Log out</button>
+                            <button type="submit">
+                                <div class="image">
+                                    <i class="fa-solid fa-right-from-bracket"></i>
+                                </div>
+                            </button>
                         </form>
                     </div>
                 </div>

@@ -9,11 +9,10 @@
     <title>{% block title %} {% endblock title %}</title>
 
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://kit.fontawesome.com/d55684f920.js" crossorigin="anonymous"></script>
 </head>
 <body>
     {% include 'elements/navbar.html' %}
-    <main>
-        {% block content %} {% endblock content %}
-    </main>
+    {% block content %} {% endblock content %}
 </body>
 </html>

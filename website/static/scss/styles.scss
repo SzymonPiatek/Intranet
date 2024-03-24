@@ -1,4 +1,5 @@
 @import 'navbar';
+@import 'home';
 @import 'login';
 
 
@@ -17,4 +18,10 @@ body {
 main {
   min-height: calc(100vh - 80px);
   width: 100vw;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }

@@ -1,0 +1,45 @@
+@import 'colors';
+
+
+.home {
+  min-height: calc(100vh - 80px);
+  width: 100%;
+  padding: 20px;
+  .container {
+    display: flex;
+    justify-content: center;
+    .content {
+      width: 1300px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .block {
+        background: $block-color;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px;
+        gap: 10px;
+        .item {
+          background: $block-item-color;
+          flex: 1;
+          min-width: 500px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .home {
+    .container {
+      .content {
+        .block {
+          .item {
+            min-width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,7 @@
 nav {
   background: #383849;
   height: 80px;
+  width: 100%;
   display: flex;
   justify-content: center;
 }
@@ -19,24 +20,63 @@ nav .container .content .side {
   display: flex;
   gap: 40px;
 }
+nav .container .content .side .item, nav .container .content .side button {
+  display: flex;
+  gap: 10px;
+}
+nav .container .content .side .item .image, nav .container .content .side .item .text, nav .container .content .side button .image, nav .container .content .side button .text {
+  color: #fff;
+}
 
-main {
+.home {
+  min-height: calc(100vh - 80px);
+  width: 100%;
+  padding: 20px;
+}
+.home .container {
+  display: flex;
+  justify-content: center;
+}
+.home .container .content {
+  width: 1300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.home .container .content .block {
+  background: #487266;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  gap: 10px;
+}
+.home .container .content .block .item {
+  background: #6b5252;
+  flex: 1;
+  min-width: 500px;
+}
+
+@media (max-width: 600px) {
+  .home .container .content .block .item {
+    min-width: 100%;
+  }
+}
+.login {
+  min-height: calc(100vh - 80px);
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
-main .login .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-main .login .container .content {
+.login .container .content {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 40px;
 }
-main .login .container .content form {
+.login .container .content form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,6 +98,12 @@ body {
 main {
   min-height: calc(100vh - 80px);
   width: 100vw;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=styles.css.map */
