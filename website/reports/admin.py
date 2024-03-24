@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Report
+from .models import Category, Report, ReportData
 
 
 @admin.register(Category)
@@ -15,7 +15,21 @@ class ReportAdmin(admin.ModelAdmin):
         "name",
         "user",
         "category",
+        "status",
         "description",
         "created_date",
-        "file",
+    )
+
+
+@admin.register(ReportData)
+class ReportDataAdmin(admin.ModelAdmin):
+    list_display = (
+        "report",
+        "user",
+        "task",
+        "task_date",
+        "status",
+        "status",
+        "description",
+        "created_date",
     )

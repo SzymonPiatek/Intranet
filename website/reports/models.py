@@ -1,13 +1,5 @@
 from django.db import models
 from users.models import CustomUser
-import uuid
-import os
-
-
-def upload_to(instance, filename):
-    ext = filename.split('.')[-1]
-    filename = f"{uuid.uuid4()}.{ext}"
-    return os.path.join('reports/', filename)
 
 
 class Category(models.Model):
@@ -22,12 +14,18 @@ class Category(models.Model):
 
 
 class Report(models.Model):
+    STATUS_LIST = [
+        ("open", "Open"),
+        ("closed", "Closed"),
+        ("deleted", "Deleted"),
+    ]
+
     name = models.CharField(max_length=255, blank=False, null=False)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=False, null=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    status = models.CharField(max_length=50, choices=STATUS_LIST, blank=True)
     description = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
-    file = models.FileField(upload_to='reports/')
 
     class Meta:
         verbose_name = "Report"
@@ -35,3 +33,26 @@ class Report(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ReportData(models.Model):
+    STATUS_LIST = [
+        ("in_progress", "In Progress"),
+        ("completed", "Completed"),
+        ("permanent", "Permanent")
+    ]
+
+    report = models.ForeignKey(Report, on_delete=models.CASCADE, blank=False, null=False)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=False, null=False)
+    task = models.CharField(max_length=255, blank=False, null=False)
+    task_date = models.DateField()
+    status = models.CharField(max_length=50, choices=STATUS_LIST, blank=True)
+    description = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Report data"
+        verbose_name_plural = "Reports data"
+
+    def __str__(self):
+        return self.task

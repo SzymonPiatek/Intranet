@@ -13,10 +13,10 @@ class StatusAdmin(admin.ModelAdmin):
 class ApplicationAdmin(admin.ModelAdmin):
     list_display = (
         "name",
-        "file",
         "user",
         "status",
         "created_date",
+        "file",
     )
 
     list_filter = (
