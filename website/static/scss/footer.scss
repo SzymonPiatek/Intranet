@@ -1,0 +1,38 @@
+@import 'colors';
+
+
+footer {
+  background: $footer-color;
+  width: 100%;
+  padding: 40px;
+  .container {
+    .content {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      gap: 40px;
+      .block {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        h2 {
+          color: $text-color;
+        }
+        .item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          * {
+            color: $text-color;
+          }
+          .text {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+          }
+        }
+      }
+    }
+  }
+}

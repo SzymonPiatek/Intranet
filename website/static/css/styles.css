@@ -23,9 +23,44 @@ nav .container .content .side {
 nav .container .content .side .item, nav .container .content .side button {
   display: flex;
   gap: 10px;
+  cursor: pointer;
 }
-nav .container .content .side .item .image, nav .container .content .side .item .text, nav .container .content .side button .image, nav .container .content .side button .text {
+nav .container .content .side .item *, nav .container .content .side button * {
   color: #fff;
+}
+
+footer {
+  background: #383849;
+  width: 100%;
+  padding: 40px;
+}
+footer .container .content {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+footer .container .content .block {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+footer .container .content .block h2 {
+  color: #fff;
+}
+footer .container .content .block .item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+footer .container .content .block .item * {
+  color: #fff;
+}
+footer .container .content .block .item .text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .home {
@@ -64,7 +99,7 @@ nav .container .content .side .item .image, nav .container .content .side .item 
 }
 .login {
   min-height: calc(100vh - 80px);
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

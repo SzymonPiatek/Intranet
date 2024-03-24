@@ -22,7 +22,8 @@ nav {
         .item, button {
           display: flex;
           gap: 10px;
-          .image, .text {
+          cursor: pointer;
+          * {
             color: $text-color;
           }
         }
