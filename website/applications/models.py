@@ -10,6 +10,17 @@ def upload_to(instance, filename):
     return os.path.join('applications/', filename)
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=255, blank=False, null=False, unique=True)
+
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
+
+    def __str__(self):
+        return self.name
+
+
 class Status(models.Model):
     name = models.CharField(max_length=100, blank=False, null=False, unique=True)
 
