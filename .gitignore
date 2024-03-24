@@ -8,6 +8,9 @@ website/media/applications/
 website/applications/__pycache__/
 website/applications/migrations/__pycache__/
 
+website/parkings/__pycache__/
+website/parkings/migrations/__pycache__/
+
 website/reports/__pycache__/
 website/reports/migrations/__pycache__/
 
