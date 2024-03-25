@@ -10,6 +10,9 @@
   padding: 0;
   text-decoration: none;
   list-style: none;
+  font-family: "Audiowide", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 body {
@@ -25,4 +28,9 @@ button {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.container {
+  width: 2100px;
+  max-width: 100%;
 }

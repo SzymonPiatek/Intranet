@@ -13,14 +13,14 @@
             {% if user.is_authenticated %}
                 <div class="side">
                     {% if user.is_superuser %}
-                        <div class="item">
+                        <a href="/admin" class="item">
                             <div class="image">
                                 <i class="fa-solid fa-screwdriver-wrench"></i>
                             </div>
                             <div class="text">
                                 Admin panel
                             </div>
-                        </div>
+                        </a>
                     {% endif %}
                     <div class="item">
                         <div class="image">

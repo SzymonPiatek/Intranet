@@ -8,7 +8,6 @@ nav {
   display: flex;
   justify-content: center;
   .container {
-    width: 1300px;
     height: 100%;
     padding: 0 20px;
     .content {
@@ -21,6 +20,7 @@ nav {
         gap: 40px;
         .item, button {
           display: flex;
+          align-items: center;
           gap: 10px;
           cursor: pointer;
           * {

@@ -7,24 +7,67 @@
     <div class="home">
         <div class="container">
             <div class="content">
+
                 <div class="block">
-                    <div class="item">
-                        Calendar
+                    <h3>Calendar</h3>
+                    <div class="items">
+                        <div class="item">
+                            Calendar
+                        </div>
                     </div>
                 </div>
+
                 <div class="block">
-                    <div class="item">
-                        Parking bookings
+                    <h3>Parking bookings</h3>
+                    <div class="items">
+                        {% if user_have_parking_spot %}
+                            <div class="item">
+                                Share parking
+                            </div>
+                            <div class="item">
+                                Show shared spots
+                            </div>
+                        {% else %}
+                            <div class="item">
+                                Reserve parking
+                            </div>
+                            <div class="item">
+                                Show my reservation
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
+
                 <div class="block">
-                    <div class="item">
-                        Applications
-                    </div>
-                    <div class="item">
-                        Reports
+                    <h3>Applications</h3>
+                    <div class="items">
+                        <div class="item">
+                            Create application
+                        </div>
+                        <div class="item">
+                            Show my applications
+                        </div>
+                        <div class="item">
+                            Show all applications
+                        </div>
                     </div>
                 </div>
+
+                <div class="block">
+                    <h3>Reports</h3>
+                    <div class="items">
+                        <div class="item">
+                            Create report
+                        </div>
+                        <div class="item">
+                            Show my reports
+                        </div>
+                        <div class="item">
+                            Show all reports
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
