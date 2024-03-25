@@ -75,40 +75,72 @@ footer .container .content .block .item .text {
 .home .container .content {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   row-gap: 40px;
   column-gap: 20px;
 }
-.home .container .content h3 {
+.home .container .content h2, .home .container .content h3 {
   color: #FFF;
 }
 .home .container .content .block {
-  min-width: 800px;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex: 1;
   gap: 20px;
 }
+.home .container .content .block.calendar {
+  min-width: fit-content;
+}
 .home .container .content .block .items {
+  min-width: 600px;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
 }
 .home .container .content .block .items .item {
   background: #3BBA9C;
-  min-width: 400px;
+  min-width: 500px;
   border-radius: 0 12px 0 12px;
   padding: 10px;
+  flex-grow: 1;
+}
+.home .container .content .block .items .item .calendar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.home .container .content .block .items .item .calendar .header {
+  display: flex;
+  justify-content: space-between;
+}
+.home .container .content .block .items .item .calendar .weekdays {
+  display: flex;
+  justify-content: space-between;
+}
+.home .container .content .block .items .item .calendar .weekdays .weekday {
   flex: 1;
+  text-align: center;
+}
+.home .container .content .block .items .item .calendar .days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+.home .container .content .block .items .item .calendar .days .day {
+  background: #707793;
+  text-align: center;
+  padding: 20px 10px;
+  border-radius: 4px;
+}
+.home .container .content .block .items .item .calendar .days .day.empty {
+  background: none;
 }
 
-@media (max-width: 600px) {
-  .home .container .content .block .items .item {
-    min-width: 100%;
-  }
-}
 @media (max-width: 900px) {
   .home .container .content .block {
+    min-width: 100%;
+  }
+  .home .container .content .block .items .item {
     min-width: 100%;
   }
 }

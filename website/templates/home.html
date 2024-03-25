@@ -8,17 +8,17 @@
         <div class="container">
             <div class="content">
 
-                <div class="block">
-                    <h3>Calendar</h3>
+                <div class="block calendar">
+                    <h2>Calendar</h2>
                     <div class="items">
                         <div class="item">
-                            Calendar
+                            {% include 'elements/calendar.html' %}
                         </div>
                     </div>
                 </div>
 
                 <div class="block">
-                    <h3>Parking bookings</h3>
+                    <h2>Parking bookings</h2>
                     <div class="items">
                         {% if user_have_parking_spot %}
                             <div class="item">
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="block">
-                    <h3>Applications</h3>
+                    <h2>Applications</h2>
                     <div class="items">
                         <div class="item">
                             Create application
@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="block">
-                    <h3>Reports</h3>
+                    <h2>Reports</h2>
                     <div class="items">
                         <div class="item">
                             Create report

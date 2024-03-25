@@ -11,43 +11,61 @@
     .content {
       display: flex;
       flex-wrap: wrap;
+      justify-content: space-between;
       row-gap: 40px;
       column-gap: 20px;
-      h3 {
+      h2, h3 {
         color: $text-color;
       }
       .block {
-        min-width: 800px;
         display: flex;
         flex-direction: column;
-        flex-grow: 1;
+        flex: 1;
         gap: 20px;
+        &.calendar {
+          min-width: fit-content;
+        }
         .items {
+          min-width: 600px;
           display: flex;
-          justify-content: space-between;
           flex-wrap: wrap;
           gap: 20px;
           .item {
-            background: $block-item-color;
-            min-width: 400px;
+            background: $block-item-background;
+            min-width: 500px;
             border-radius: 0 12px 0 12px;
             padding: 10px;
-            flex: 1;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 600px) {
-  .home {
-    .container {
-      .content {
-        .block {
-          .items {
-            .item {
-              min-width: 100%;
+            flex-grow: 1;
+            .calendar {
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+              .header {
+                display: flex;
+                justify-content: space-between;
+              }
+              .weekdays {
+                display: flex;
+                justify-content: space-between;
+                .weekday {
+                  flex: 1;
+                  text-align: center;
+                }
+              }
+              .days {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                gap: 5px;
+                .day {
+                  background: $calendar-day-background;
+                  text-align: center;
+                  padding: 20px 10px;
+                  border-radius: 4px;
+                  &.empty {
+                    background: none;
+                  }
+                }
+              }
             }
           }
         }
@@ -62,6 +80,11 @@
       .content {
         .block {
           min-width: 100%;
+          .items {
+            .item {
+              min-width: 100%;
+            }
+          }
         }
       }
     }
