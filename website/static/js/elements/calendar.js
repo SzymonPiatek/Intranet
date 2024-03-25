@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextMonthButton = document.getElementById('nextMonth');
     const currentMonthDisplay = document.getElementById('currentMonth');
     const daysContainer = document.querySelector('.calendar .days');
+    const parkingBookingContainer = document.querySelector('.events');
 
     let currentDate = new Date();
 
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let day = document.createElement('div');
             day.textContent = i;
             day.classList.add('day');
+            day.setAttribute('data-date', new Date(year, month, i+1).toISOString().split('T')[0]);
             if (year === new Date().getFullYear() && month === new Date().getMonth() && i === new Date().getDate()) {
                 day.classList.add('today');
             }
@@ -38,6 +40,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function showParkingBookings(date) {
+        parkingBookingContainer.textContent = date;
+    }
+
     prevMonthButton.addEventListener('click', function() {
         currentDate.setMonth(currentDate.getMonth() - 1);
         renderCalendar();
@@ -46,6 +52,14 @@ document.addEventListener('DOMContentLoaded', function() {
     nextMonthButton.addEventListener('click', function() {
         currentDate.setMonth(currentDate.getMonth() + 1);
         renderCalendar();
+    });
+
+    daysContainer.addEventListener('click', function(event) {
+        const clickedDay = event.target.closest('.day');
+        if (clickedDay && !clickedDay.classList.contains('empty')) {
+            const date = clickedDay.getAttribute('data-date');
+            showParkingBookings(date);
+        }
     });
 
     renderCalendar();
