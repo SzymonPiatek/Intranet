@@ -1,0 +1,49 @@
+@import 'colors';
+
+
+nav {
+  background: $navbar-background;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .container {
+    height: 100%;
+    padding: 0 20px;
+    .content {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .side {
+        display: flex;
+        gap: 40px;
+        .item, button {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+          * {
+            color: $text-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  nav {
+    .container {
+      .content {
+        .side {
+          .item, button {
+            .text {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
