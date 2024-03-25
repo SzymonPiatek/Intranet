@@ -41,7 +41,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function showParkingBookings(date) {
-        parkingBookingContainer.textContent = date;
+        const url = parkingBookingContainer.getAttribute('data-url') + '?date=' + date;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const bookings = data.parking_bookings;
+                const bookingsContainer = document.getElementById('parkingBookings');
+                bookingsContainer.innerHTML = '';
+
+                const dateElement = document.createElement('div');
+                dateElement.classList.add('date')
+                dateElement.textContent = date;
+                bookingsContainer.appendChild(dateElement);
+
+                bookings.forEach(booking => {
+                    const bookingElement = document.createElement('div');
+                    bookingElement.textContent = `Spot: ${booking.spot}`;
+                    bookingsContainer.appendChild(bookingElement);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     }
 
     prevMonthButton.addEventListener('click', function() {
