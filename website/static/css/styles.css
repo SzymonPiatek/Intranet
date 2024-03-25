@@ -29,6 +29,11 @@ nav .container .content .side .item *, nav .container .content .side button * {
   color: #FFF;
 }
 
+@media (max-width: 700px) {
+  nav .container .content .side .item .text, nav .container .content .side button .text {
+    display: none;
+  }
+}
 footer {
   background: #2E3047;
   width: 100%;
@@ -93,9 +98,14 @@ footer .container .content .block .item .text {
 }
 .home .container .content .block .items {
   min-width: 600px;
+  min-height: 200px;
   display: flex;
   flex-wrap: wrap;
+  flex: 1;
   gap: 20px;
+}
+.home .container .content .block .items a {
+  color: #000;
 }
 .home .container .content .block .items .item {
   background: #3BBA9C;
@@ -112,6 +122,9 @@ footer .container .content .block .item .text {
 .home .container .content .block .items .item .calendar .header {
   display: flex;
   justify-content: space-between;
+}
+.home .container .content .block .items .item .calendar .header h2 {
+  color: #000;
 }
 .home .container .content .block .items .item .calendar .weekdays {
   display: flex;

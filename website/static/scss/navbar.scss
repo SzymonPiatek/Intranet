@@ -31,3 +31,19 @@ nav {
     }
   }
 }
+
+@media (max-width: 700px) {
+  nav {
+    .container {
+      .content {
+        .side {
+          .item, button {
+            .text {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let year = currentDate.getFullYear();
         let month = currentDate.getMonth();
         let daysInMonth = new Date(year, month + 1, 0).getDate();
-        let firstDayOfMonth = new Date(year, month, 1).getDay();
+        let firstDayOfMonth = new Date(year, month, 0).getDay();
         currentMonthDisplay.textContent = new Date(year, month).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 
         // Clear previous days

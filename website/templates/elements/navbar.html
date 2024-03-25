@@ -3,11 +3,9 @@
         <div class="content">
             <div class="side">
                 <div class="item">
-                    <div class="text">
-                        <a href="{% url 'home_page' %}">
-                            EXAMPLE
-                        </a>
-                    </div>
+                    <a href="{% url 'home_page' %}">
+                        <h1>Example</h1>
+                    </a>
                 </div>
             </div>
             {% if user.is_authenticated %}

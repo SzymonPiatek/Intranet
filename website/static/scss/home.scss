@@ -27,9 +27,14 @@
         }
         .items {
           min-width: 600px;
+          min-height: 200px;
           display: flex;
           flex-wrap: wrap;
+          flex: 1;
           gap: 20px;
+          a {
+            color: $text-color-2;
+          }
           .item {
             background: $block-item-background;
             min-width: 500px;
@@ -43,6 +48,9 @@
               .header {
                 display: flex;
                 justify-content: space-between;
+                h2 {
+                  color: $text-color-2;
+                }
               }
               .weekdays {
                 display: flex;
