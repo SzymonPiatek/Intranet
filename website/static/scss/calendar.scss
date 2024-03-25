@@ -38,6 +38,9 @@
       &.past {
         background: $calendar-past-background;
       }
+      &.today {
+        background: $calendar-today-background;
+      }
     }
   }
 }

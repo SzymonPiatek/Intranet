@@ -184,6 +184,9 @@ footer .container .content .block .item .text {
 .calendar .days .day.past {
   background: #3C3F58;
 }
+.calendar .days .day.today {
+  background: #FFF;
+}
 
 * {
   box-sizing: border-box;

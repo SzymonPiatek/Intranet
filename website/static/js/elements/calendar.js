@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if ([6, 0].includes(new Date(year, month, i).getDay())) {
                 day.classList.add('weekend');
             }
-            if (new Date(year, month, i) < new Date()) {
+            if (new Date(year, month, i+1) < new Date()) {
                 day.classList.add('past');
             }
             daysContainer.appendChild(day);
