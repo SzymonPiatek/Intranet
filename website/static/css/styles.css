@@ -148,6 +148,9 @@ footer .container .content .block .item .text {
 .home .container .content .block .items .item .calendar .days .day.empty {
   background: none;
 }
+.home .container .content .block .items .item .calendar .days .day.weekend {
+  background: #5d5f77;
+}
 
 @media (max-width: 900px) {
   .home .container .content .block {

@@ -30,6 +30,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (year === new Date().getFullYear() && month === new Date().getMonth() && i === new Date().getDate()) {
                 day.classList.add('today');
             }
+            if ([6, 0].includes(new Date(year, month, i).getDay())) {
+                day.classList.add('weekend');
+            }
             daysContainer.appendChild(day);
         }
     }

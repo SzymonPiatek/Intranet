@@ -72,6 +72,9 @@
                   &.empty {
                     background: none;
                   }
+                  &.weekend {
+                    background: $calendar-weekend-background;
+                  }
                 }
               }
             }
