@@ -5,6 +5,7 @@ $color-4: #5d5f77;
 $color-5: #FFF;
 $color-6: #3BBA9C;
 $color-7: #000;
+$color-8: #848ba8;
 
 
 $body-background: $color-1;
@@ -18,3 +19,7 @@ $text-color-2: $color-7;
 
 $calendar-day-background: $color-3;
 $calendar-weekend-background: $color-4;
+$calendar-past-background: $color-1;
+
+$scrollbar-background: $color-4;
+$scrollbar-thumb-background: $color-8;

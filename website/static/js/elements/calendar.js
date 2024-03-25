@@ -13,10 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let firstDayOfMonth = new Date(year, month, 0).getDay();
         currentMonthDisplay.textContent = new Date(year, month).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 
-        // Clear previous days
         daysContainer.innerHTML = '';
 
-        // Fill in days
         for (let i = 0; i < firstDayOfMonth; i++) {
             let emptyDay = document.createElement('div');
             emptyDay.classList.add('day', 'empty');
@@ -32,6 +30,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             if ([6, 0].includes(new Date(year, month, i).getDay())) {
                 day.classList.add('weekend');
+            }
+            if (new Date(year, month, i) < new Date()) {
+                day.classList.add('past');
             }
             daysContainer.appendChild(day);
         }

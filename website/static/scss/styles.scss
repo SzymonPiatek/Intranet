@@ -2,6 +2,7 @@
 @import 'footer';
 @import 'home';
 @import 'login';
+@import 'calendar';
 
 
 * {
@@ -33,4 +34,13 @@ button {
 .container {
   width: 2100px;
   max-width: 100%;
+}
+
+::-webkit-scrollbar {
+  background: $scrollbar-background;
+  width: 10px;
+  &-thumb {
+    background: $scrollbar-thumb-background;
+    border-radius: 20px;
+  }
 }

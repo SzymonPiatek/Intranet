@@ -114,43 +114,6 @@ footer .container .content .block .item .text {
   padding: 10px;
   flex-grow: 1;
 }
-.home .container .content .block .items .item .calendar {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.home .container .content .block .items .item .calendar .header {
-  display: flex;
-  justify-content: space-between;
-}
-.home .container .content .block .items .item .calendar .header h2 {
-  color: #000;
-}
-.home .container .content .block .items .item .calendar .weekdays {
-  display: flex;
-  justify-content: space-between;
-}
-.home .container .content .block .items .item .calendar .weekdays .weekday {
-  flex: 1;
-  text-align: center;
-}
-.home .container .content .block .items .item .calendar .days {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
-}
-.home .container .content .block .items .item .calendar .days .day {
-  background: #707793;
-  text-align: center;
-  padding: 20px 10px;
-  border-radius: 4px;
-}
-.home .container .content .block .items .item .calendar .days .day.empty {
-  background: none;
-}
-.home .container .content .block .items .item .calendar .days .day.weekend {
-  background: #5d5f77;
-}
 
 @media (max-width: 900px) {
   .home .container .content .block {
@@ -179,6 +142,47 @@ footer .container .content .block .item .text {
   flex-direction: column;
   align-items: center;
   gap: 20px;
+}
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.calendar .header {
+  display: flex;
+  justify-content: space-between;
+}
+.calendar .header h2 {
+  color: #000;
+}
+.calendar .weekdays {
+  display: flex;
+  justify-content: space-between;
+}
+.calendar .weekdays .weekday {
+  flex: 1;
+  text-align: center;
+}
+.calendar .days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+.calendar .days .day {
+  background: #707793;
+  text-align: center;
+  padding: 20px 10px;
+  border-radius: 4px;
+}
+.calendar .days .day.empty {
+  background: none;
+}
+.calendar .days .day.weekend {
+  background: #5d5f77;
+}
+.calendar .days .day.past {
+  background: #3C3F58;
 }
 
 * {
@@ -210,6 +214,15 @@ button {
 .container {
   width: 2100px;
   max-width: 100%;
+}
+
+::-webkit-scrollbar {
+  background: #5d5f77;
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #848ba8;
+  border-radius: 20px;
 }
 
 /*# sourceMappingURL=styles.css.map */
