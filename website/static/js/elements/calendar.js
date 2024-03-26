@@ -17,15 +17,13 @@ document.addEventListener('DOMContentLoaded', function() {
         daysContainer.innerHTML = '';
 
         for (let i = 0; i < firstDayOfMonth; i++) {
-            let emptyDay = document.createElement('div');
-            emptyDay.classList.add('day', 'empty');
+            let emptyDay = Object.assign(document.createElement('div'), {className: 'day empty'});
             daysContainer.appendChild(emptyDay);
         }
 
         for (let i = 1; i <= daysInMonth; i++) {
-            let day = document.createElement('div');
+            let day = Object.assign(document.createElement('div'), {className: 'day'});
             day.textContent = i;
-            day.classList.add('day');
             day.setAttribute('data-date', new Date(year, month, i+1).toISOString().split('T')[0]);
             if (year === new Date().getFullYear() && month === new Date().getMonth() && i === new Date().getDate()) {
                 day.classList.add('today');
@@ -47,8 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 const eventsContainer = document.getElementById('eventsContainer');
                 eventsContainer.innerHTML = '';
-                const dateDiv = document.createElement('div');
-                dateDiv.classList.add('date');
+                const dateDiv = Object.assign(document.createElement('div'), {className: 'date'});
                 const dateText = document.createElement('h2');
                 dateText.textContent = date;
                 dateDiv.appendChild(dateText);
@@ -56,15 +53,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (data.hasOwnProperty('parking_booking')) {
                     const booking = data.parking_booking;
-                    const bookingDiv = document.createElement('div');
-                    bookingDiv.classList.add('booking');
+                    const bookingDiv = Object.assign(document.createElement('div'), {className: 'booking'});
                     bookingDiv.innerHTML = `<i class="fa-solid fa-car"></i>Spot ${booking.spot} - ${booking.type}`;
                     eventsContainer.appendChild(bookingDiv);
                 } else if (data.hasOwnProperty('info')) {
                     const info = data.info;
-                    const infoDiv = document.createElement('div');
+                    const infoDiv = Object.assign(document.createElement('div'), {className: 'info'});
                     const infoElement = document.createElement('h2');
-                    infoDiv.classList.add('info');
                     infoElement.innerHTML = (info);
                     infoDiv.appendChild(infoElement);
                     eventsContainer.appendChild(infoDiv);
