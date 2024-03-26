@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const booking = data.parking_booking;
                     const bookingDiv = document.createElement('div');
                     bookingDiv.classList.add('booking');
-                    bookingDiv.innerHTML = `<i class="fa-solid fa-car"></i>Spot ${booking.spot}`;
+                    bookingDiv.innerHTML = `<i class="fa-solid fa-car"></i>Spot ${booking.spot} - ${booking.type}`;
                     eventsContainer.appendChild(bookingDiv);
                 } else if (data.hasOwnProperty('info')) {
                     const info = data.info;
