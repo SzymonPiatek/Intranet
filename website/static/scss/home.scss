@@ -41,6 +41,34 @@
             border-radius: 0 12px 0 12px;
             padding: 10px;
             flex-grow: 1;
+            &.events {
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+              .date {
+                width: 100%;
+                text-align: center;
+              }
+              .bookings {
+                display: flex;
+                gap: 20px;
+                flex-wrap: wrap;
+                * {
+                  color: $text-color;
+                }
+                .booking {
+                  background: $booking-background;
+                  min-width: 200px;
+                  text-align: center;
+                  padding: 10px 20px;
+                  border-radius: 10px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  gap: 20px;
+                }
+              }
+            }
           }
         }
       }

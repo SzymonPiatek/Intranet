@@ -108,11 +108,39 @@ footer .container .content .block .item .text {
   color: #000;
 }
 .home .container .content .block .items .item {
-  background: #3BBA9C;
+  background: #5d5f77;
   min-width: 500px;
   border-radius: 0 12px 0 12px;
   padding: 10px;
   flex-grow: 1;
+}
+.home .container .content .block .items .item.events {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.home .container .content .block .items .item.events .date {
+  width: 100%;
+  text-align: center;
+}
+.home .container .content .block .items .item.events .bookings {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.home .container .content .block .items .item.events .bookings * {
+  color: #FFF;
+}
+.home .container .content .block .items .item.events .bookings .booking {
+  background: #3BBA9C;
+  min-width: 200px;
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 @media (max-width: 900px) {
@@ -153,9 +181,6 @@ footer .container .content .block .item .text {
   display: flex;
   justify-content: space-between;
 }
-.calendar .header h2 {
-  color: #000;
-}
 .calendar .weekdays {
   display: flex;
   justify-content: space-between;
@@ -170,7 +195,7 @@ footer .container .content .block .item .text {
   gap: 5px;
 }
 .calendar .days .day {
-  background: #707793;
+  background: #848ba8;
   text-align: center;
   padding: 20px 10px;
   border-radius: 4px;
@@ -179,13 +204,15 @@ footer .container .content .block .item .text {
   background: none;
 }
 .calendar .days .day.weekend {
-  background: #5d5f77;
+  background: #707793;
+  color: #962727;
 }
 .calendar .days .day.past {
   background: #3C3F58;
+  color: #1f1f1f;
 }
 .calendar .days .day.today {
-  background: #FFF;
+  background: #3BBA9C;
 }
 
 * {
@@ -197,6 +224,7 @@ footer .container .content .block .item .text {
   font-family: "Audiowide", sans-serif;
   font-weight: 400;
   font-style: normal;
+  color: #FFF;
 }
 
 body {
