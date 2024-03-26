@@ -32,9 +32,6 @@
           flex-wrap: wrap;
           flex: 1;
           gap: 20px;
-          a {
-            color: $text-color-2;
-          }
           .item {
             background: $block-item-background;
             min-width: 500px;
@@ -49,6 +46,19 @@
                 text-align: center;
               }
               .booking {
+                background: $booking-background;
+                text-align: center;
+                padding: 20px 20px;
+                border-radius: 10px;
+              }
+              .info {
+                text-align: center;
+              }
+            }
+          }
+          &.parkings {
+            .item {
+              .spot {
                 background: $booking-background;
                 text-align: center;
                 padding: 20px 20px;

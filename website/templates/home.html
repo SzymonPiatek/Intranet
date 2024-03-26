@@ -15,31 +15,16 @@
                             {% include 'elements/calendar.html' %}
                         </div>
                         <div class="item events" id="eventsContainer">
-                            <div id="parkingBooking" data-url="{% url 'get_parking_booking_from_date'%}" style="display: none"></div>
+                            <div id="eventParkingBooking" data-url="{% url 'get_parking_booking_from_date'%}" style="display: none"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="block">
-                    <h2>Parking bookings</h2>
-                    <div class="items">
-                        {% if user_have_parking_spot %}
-                            <div href="/" class="item">
-                                Share parking
-                            </div>
-                            <div href="/" class="item">
-                                Show shared spots
-                            </div>
-                        {% else %}
-                            <a href="/" class="item">
-                                Reserve parking
-                            </a>
-                            <a href="/" class="item">
-                                Show my reservation
-                            </a>
-                        {% endif %}
+                    <h2>Parking</h2>
+                    <div class="items parkings" id="parkingItems">
+                        <div id="parkingData" data-url="{% url 'get_user_parking_data'%}" style="display: none"></div>
                     </div>
-
                 </div>
 
                 <div class="block">

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextMonthButton = document.getElementById('nextMonth');
     const currentMonthDisplay = document.getElementById('currentMonth');
     const daysContainer = document.querySelector('.calendar .days');
-    const parkingBookingContainer = document.getElementById('parkingBooking');
+    const parkingBookingContainer = document.getElementById('eventParkingBooking');
 
     let currentDate = new Date();
 

@@ -27,3 +27,11 @@ def get_parking_booking_from_date(request):
             return JsonResponse({'parking_booking': booking_data})
         else:
             return JsonResponse({'info': info})
+
+
+def get_user_parking_data(request):
+    user_parking_spot = ParkingSpot.objects.filter(owner=request.user)
+    if user_parking_spot.exists():
+        user_parking_spot_json = {'spot': user_parking_spot.first().name}
+        return JsonResponse({'user_parking_spot': user_parking_spot_json})
+
