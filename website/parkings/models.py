@@ -42,6 +42,13 @@ class ParkingBooking(models.Model):
 
     def clean(self):
         bookings = ParkingBooking.objects.filter(spot=self.spot, date=self.date)
+        user_bookings = ParkingBooking.objects.filter(date=self.date, tenant=self.tenant)
+
+        if user_bookings.count() > 0:
+            if self.tenant is None:
+                raise ValidationError("There is already a reservation for this place for this day")
+            elif self.tenant is not None:
+                raise ValidationError("You have already booked a parking spot for this day")
 
         if self.pk:
             for booking in bookings:
