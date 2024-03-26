@@ -6,13 +6,8 @@ from .models import ParkingSpot, ParkingBooking
 class ParkingSpotAdmin(admin.ModelAdmin):
     list_display = (
         "name",
-        "display_owners",
+        "owner",
     )
-
-    def display_owners(self, obj):
-        return ", ".join([owner.username for owner in obj.owners.all()]) if obj.owners.exists() else "Empty"
-
-    display_owners.short_description = "owners"
 
 
 @admin.register(ParkingBooking)

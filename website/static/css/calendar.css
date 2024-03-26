@@ -1,0 +1,39 @@
+.calendar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.calendar .header {
+  display: flex;
+  justify-content: space-between;
+}
+.calendar .header h2 {
+  color: #000;
+}
+.calendar .weekdays {
+  display: flex;
+  justify-content: space-between;
+}
+.calendar .weekdays .weekday {
+  flex: 1;
+  text-align: center;
+}
+.calendar .days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+.calendar .days .day {
+  background: #707793;
+  text-align: center;
+  padding: 20px 10px;
+  border-radius: 4px;
+}
+.calendar .days .day.empty {
+  background: none;
+}
+.calendar .days .day.weekend {
+  background: #5d5f77;
+}
+
+/*# sourceMappingURL=calendar.css.map */

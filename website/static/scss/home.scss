@@ -41,41 +41,27 @@
             border-radius: 0 12px 0 12px;
             padding: 10px;
             flex-grow: 1;
-            .calendar {
+            &.events {
               display: flex;
               flex-direction: column;
               gap: 20px;
-              .header {
-                display: flex;
-                justify-content: space-between;
-                h2 {
-                  color: $text-color-2;
-                }
+              .date {
+                width: 100%;
+                text-align: center;
               }
-              .weekdays {
+              .booking {
+                background: $booking-background;
+                width: 100%;
+                text-align: center;
+                padding: 10px 20px;
+                border-radius: 10px;
                 display: flex;
-                justify-content: space-between;
-                .weekday {
-                  flex: 1;
-                  text-align: center;
-                }
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
               }
-              .days {
-                display: grid;
-                grid-template-columns: repeat(7, 1fr);
-                gap: 5px;
-                .day {
-                  background: $calendar-day-background;
-                  text-align: center;
-                  padding: 20px 10px;
-                  border-radius: 4px;
-                  &.empty {
-                    background: none;
-                  }
-                  &.weekend {
-                    background: $calendar-weekend-background;
-                  }
-                }
+              .info {
+                text-align: center;
               }
             }
           }

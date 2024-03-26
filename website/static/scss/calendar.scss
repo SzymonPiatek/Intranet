@@ -1,0 +1,45 @@
+@import 'colors';
+
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .weekdays {
+    display: flex;
+    justify-content: space-between;
+    .weekday {
+      flex: 1;
+      text-align: center;
+    }
+  }
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    .day {
+      background: $calendar-day-background;
+      text-align: center;
+      padding: 20px 10px;
+      border-radius: 4px;
+      &.empty {
+        background: none;
+      }
+      &.weekend {
+        background: $calendar-weekend-background;
+        color: $calendar-weekend-color;
+      }
+      &.past {
+        background: $calendar-past-background;
+        color: $calendar-past-color;
+      }
+      &.today {
+        background: $calendar-today-background;
+      }
+    }
+  }
+}

@@ -5,16 +5,28 @@ $color-4: #5d5f77;
 $color-5: #FFF;
 $color-6: #3BBA9C;
 $color-7: #000;
+$color-8: #848ba8;
+$color-9: #962727;
+$color-10: #1f1f1f;
 
 
 $body-background: $color-1;
 $navbar-background: $color-2;
 $footer-background: $color-2;
 
-$block-item-background: $color-6;
+$block-item-background: $color-4;
 
 $text-color: $color-5;
 $text-color-2: $color-7;
 
-$calendar-day-background: $color-3;
-$calendar-weekend-background: $color-4;
+$calendar-weekend-color: $color-9;
+$calendar-past-color: $color-10;
+$calendar-day-background: $color-8;
+$calendar-weekend-background: $color-3;
+$calendar-past-background: $color-1;
+$calendar-today-background: $color-6;
+
+$scrollbar-background: $color-4;
+$scrollbar-thumb-background: $color-8;
+
+$booking-background: $color-6;
