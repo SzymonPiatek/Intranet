@@ -84,4 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     renderCalendar();
+
+    const todayDate = currentDate.toISOString().split('T')[0];
+    showParkingBookings(todayDate);
 });
