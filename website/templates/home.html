@@ -15,11 +15,7 @@
                             {% include 'elements/calendar.html' %}
                         </div>
                         <div class="item events" id="eventsContainer">
-                            {% if user_have_parking_spot %}
-                                <div id="parkingBooking" data-url="{% url 'get_shared_parking_from_date'%}" style="display: none"></div>
-                            {% else %}
-                                <div id="parkingBooking" data-url="{% url 'get_parking_booking_from_date'%}" style="display: none"></div>
-                            {% endif %}
+                            <div id="parkingBooking" data-url="{% url 'get_parking_booking_from_date'%}" style="display: none"></div>
                         </div>
                     </div>
                 </div>
