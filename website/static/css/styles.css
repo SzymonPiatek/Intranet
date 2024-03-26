@@ -97,7 +97,7 @@ footer .container .content .block .item .text {
   min-width: fit-content;
 }
 .home .container .content .block .items {
-  min-width: 600px;
+  min-width: fit-content;
   min-height: 200px;
   display: flex;
   flex-wrap: wrap;
@@ -110,8 +110,8 @@ footer .container .content .block .item .text {
 .home .container .content .block .items .item {
   background: #5d5f77;
   min-width: 500px;
-  border-radius: 0 12px 0 12px;
-  padding: 10px;
+  border-radius: 0 20px 0 20px;
+  padding: 20px;
   flex-grow: 1;
 }
 .home .container .content .block .items .item.events {
@@ -120,26 +120,23 @@ footer .container .content .block .item .text {
   gap: 20px;
 }
 .home .container .content .block .items .item.events .date {
-  width: 100%;
   text-align: center;
 }
 .home .container .content .block .items .item.events .booking {
   background: #3BBA9C;
-  width: 100%;
   text-align: center;
-  padding: 10px 20px;
+  padding: 20px 20px;
   border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
 }
 .home .container .content .block .items .item.events .info {
   text-align: center;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
   .home .container .content .block {
+    min-width: 100%;
+  }
+  .home .container .content .block .items {
     min-width: 100%;
   }
   .home .container .content .block .items .item {
@@ -245,6 +242,7 @@ button {
 ::-webkit-scrollbar {
   background: #5d5f77;
   width: 10px;
+  height: 10px;
 }
 ::-webkit-scrollbar-thumb {
   background: #848ba8;
