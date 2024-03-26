@@ -6,15 +6,14 @@ from users.models import CustomUser
 
 class ParkingSpot(models.Model):
     name = models.CharField(max_length=50, unique=True, blank=False, null=False)
-    owners = models.ManyToManyField(CustomUser, blank=True, null=True)
+    owner = models.OneToOneField(CustomUser, blank=True, null=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = "Parking spot"
         verbose_name_plural = "Parking spots"
 
     def __str__(self):
-        owners_list = ', '.join(str(owner) for owner in self.owners.all())
-        return f'Parking spot "{self.name}" - {owners_list if owners_list else "Empty"}'
+        return f'Parking spot "{self.name}" - {self.owner if self.owner else "Empty"}'
 
     def clean(self, *args, **kwargs):
         super().clean(*args, **kwargs)
