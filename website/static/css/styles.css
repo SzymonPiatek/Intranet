@@ -123,17 +123,9 @@ footer .container .content .block .item .text {
   width: 100%;
   text-align: center;
 }
-.home .container .content .block .items .item.events .bookings {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.home .container .content .block .items .item.events .bookings * {
-  color: #FFF;
-}
-.home .container .content .block .items .item.events .bookings .booking {
+.home .container .content .block .items .item.events .booking {
   background: #3BBA9C;
-  min-width: 200px;
+  width: 100%;
   text-align: center;
   padding: 10px 20px;
   border-radius: 10px;
@@ -141,6 +133,9 @@ footer .container .content .block .item .text {
   justify-content: center;
   align-items: center;
   gap: 20px;
+}
+.home .container .content .block .items .item.events .info {
+  text-align: center;
 }
 
 @media (max-width: 900px) {

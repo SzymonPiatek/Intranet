@@ -14,7 +14,10 @@
                         <div class="item">
                             {% include 'elements/calendar.html' %}
                         </div>
-                        <div class="item events" id="parkingBookings" data-url="{% url 'get_parking_bookings_from_date'%}"></div>
+                        <div class="item events" id="eventsContainer">
+                            <div id="parkingBooking" data-url="{% url 'get_parking_bookings_from_date'%}"
+                                 style="display: none"></div>
+                        </div>
                     </div>
                 </div>
 

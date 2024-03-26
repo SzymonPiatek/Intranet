@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextMonthButton = document.getElementById('nextMonth');
     const currentMonthDisplay = document.getElementById('currentMonth');
     const daysContainer = document.querySelector('.calendar .days');
-    const parkingBookingContainer = document.querySelector('.events');
+    const parkingBookingContainer = document.getElementById('parkingBooking');
 
     let currentDate = new Date();
 
@@ -45,38 +45,29 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                const bookingsContainer = document.getElementById('parkingBookings');
-                bookingsContainer.innerHTML = '';
-
+                const eventsContainer = document.getElementById('eventsContainer');
+                eventsContainer.innerHTML = '';
                 const dateDiv = document.createElement('div');
                 dateDiv.classList.add('date');
                 const dateText = document.createElement('h2');
                 dateText.textContent = date;
                 dateDiv.appendChild(dateText);
-                bookingsContainer.appendChild(dateDiv);
+                eventsContainer.appendChild(dateDiv);
 
-                if (data.hasOwnProperty('parking_bookings')) {
-                    const bookings = data.parking_bookings;
-                    const bookingsDiv = document.createElement('div');
-                    bookingsDiv.classList.add('bookings');
-                    bookingsContainer.appendChild(bookingsDiv)
-
-                    bookings.forEach(booking => {
-                        const bookingElement = document.createElement('div');
-                        bookingElement.classList.add('booking');
-                        bookingElement.innerHTML = `<i class="fa-solid fa-car"></i>Spot ${booking.spot}`;
-                        bookingsDiv.appendChild(bookingElement);
-                    });
-                } else {
-                    if (data.hasOwnProperty('info')) {
-                        const info = data.info;
-                        const infoDiv = document.createElement('div');
-                        const infoElement = document.createElement('h2');
-                        infoDiv.classList.add('info');
-                        infoElement.innerHTML = (info);
-                        infoDiv.appendChild(infoElement);
-                        bookingsContainer.appendChild(infoDiv)
-                    }
+                if (data.hasOwnProperty('parking_booking')) {
+                    const booking = data.parking_booking;
+                    const bookingDiv = document.createElement('div');
+                    bookingDiv.classList.add('booking');
+                    bookingDiv.innerHTML = `<i class="fa-solid fa-car"></i>Spot ${booking.spot}`;
+                    eventsContainer.appendChild(bookingDiv);
+                } else if (data.hasOwnProperty('info')) {
+                    const info = data.info;
+                    const infoDiv = document.createElement('div');
+                    const infoElement = document.createElement('h2');
+                    infoDiv.classList.add('info');
+                    infoElement.innerHTML = (info);
+                    infoDiv.appendChild(infoElement);
+                    eventsContainer.appendChild(infoDiv);
                 }
             })
             .catch(error => {

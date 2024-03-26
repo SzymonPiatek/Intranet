@@ -49,24 +49,19 @@
                 width: 100%;
                 text-align: center;
               }
-              .bookings {
+              .booking {
+                background: $booking-background;
+                width: 100%;
+                text-align: center;
+                padding: 10px 20px;
+                border-radius: 10px;
                 display: flex;
+                justify-content: center;
+                align-items: center;
                 gap: 20px;
-                flex-wrap: wrap;
-                * {
-                  color: $text-color;
-                }
-                .booking {
-                  background: $booking-background;
-                  min-width: 200px;
-                  text-align: center;
-                  padding: 10px 20px;
-                  border-radius: 10px;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  gap: 20px;
-                }
+              }
+              .info {
+                text-align: center;
               }
             }
           }
