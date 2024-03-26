@@ -191,9 +191,11 @@ footer .container .content .block .item .text {
   text-align: center;
   padding: 20px 10px;
   border-radius: 4px;
+  cursor: pointer;
 }
 .calendar .days .day.empty {
   background: none;
+  cursor: default;
 }
 .calendar .days .day.weekend {
   background: #707793;
@@ -205,6 +207,10 @@ footer .container .content .block .item .text {
 }
 .calendar .days .day.today {
   background: #3BBA9C;
+}
+.calendar .days .day.selected {
+  background: #962727;
+  color: #FFF;
 }
 
 * {

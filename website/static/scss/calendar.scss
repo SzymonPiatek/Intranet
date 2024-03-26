@@ -26,8 +26,10 @@
       text-align: center;
       padding: 20px 10px;
       border-radius: 4px;
+      cursor: pointer;
       &.empty {
         background: none;
+        cursor: default;
       }
       &.weekend {
         background: $calendar-weekend-background;
@@ -39,6 +41,10 @@
       }
       &.today {
         background: $calendar-today-background;
+      }
+      &.selected {
+        background: $calendar-selected-background;
+        color: $text-color;
       }
     }
   }

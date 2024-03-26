@@ -83,6 +83,10 @@ document.addEventListener('DOMContentLoaded', function() {
     daysContainer.addEventListener('click', function(event) {
         const clickedDay = event.target.closest('.day');
         if (clickedDay && !clickedDay.classList.contains('empty')) {
+            const allDays = daysContainer.querySelectorAll('.day');
+            allDays.forEach(day => day.classList.remove('selected'));
+
+            clickedDay.classList.add('selected')
             const date = clickedDay.getAttribute('data-date');
             showParkingBookings(date);
         }
