@@ -101,7 +101,7 @@ footer .container .content .block .item .text {
   min-height: 200px;
   display: flex;
   flex-wrap: wrap;
-  flex: 1;
+  flex-grow: 1;
   gap: 20px;
 }
 .home .container .content .block .items .item {
@@ -120,7 +120,7 @@ footer .container .content .block .item .text {
   text-align: center;
 }
 .home .container .content .block .items .item.events .booking {
-  background: #3BBA9C;
+  background: #ba5f3b;
   text-align: center;
   padding: 20px 20px;
   border-radius: 10px;
@@ -130,14 +130,17 @@ footer .container .content .block .item .text {
 }
 .home .container .content .block .items.parkings .item {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   gap: 20px;
 }
 .home .container .content .block .items.parkings .item .spot {
-  background: #3BBA9C;
+  background: #ba5f3b;
   text-align: center;
   padding: 20px 20px;
   border-radius: 10px;
+  width: 100%;
 }
 .home .container .content .block .items.parkings .item .info {
   height: 100%;
@@ -221,7 +224,7 @@ footer .container .content .block .item .text {
   color: #1f1f1f;
 }
 .calendar .days .day.today {
-  background: #3BBA9C;
+  background: #ba5f3b;
 }
 .calendar .days .day.selected {
   background: #962727;

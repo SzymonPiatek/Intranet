@@ -30,7 +30,7 @@
           min-height: 200px;
           display: flex;
           flex-wrap: wrap;
-          flex: 1;
+          flex-grow: 1;
           gap: 20px;
           .item {
             background: $block-item-background;
@@ -59,6 +59,8 @@
           &.parkings {
             .item {
               display: flex;
+              justify-content: center;
+              align-items: center;
               flex-direction: column;
               gap: 20px;
               .spot {
@@ -66,6 +68,7 @@
                 text-align: center;
                 padding: 20px 20px;
                 border-radius: 10px;
+                width: 100%;
               }
               .info {
                 height: 100%;
