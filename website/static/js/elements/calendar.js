@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextMonthButton = document.getElementById('nextMonth');
     const currentMonthDisplay = document.getElementById('currentMonth');
     const daysContainer = document.querySelector('.calendar .days');
-    const parkingBookingContainer = document.getElementById('parkingBooking');
+    const parkingBookingContainer = document.getElementById('eventParkingBooking');
 
     let currentDate = new Date();
 
@@ -83,6 +83,10 @@ document.addEventListener('DOMContentLoaded', function() {
     daysContainer.addEventListener('click', function(event) {
         const clickedDay = event.target.closest('.day');
         if (clickedDay && !clickedDay.classList.contains('empty')) {
+            const allDays = daysContainer.querySelectorAll('.day');
+            allDays.forEach(day => day.classList.remove('selected'));
+
+            clickedDay.classList.add('selected')
             const date = clickedDay.getAttribute('data-date');
             showParkingBookings(date);
         }

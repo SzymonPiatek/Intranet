@@ -26,42 +26,55 @@
           min-width: fit-content;
         }
         .items {
-          min-width: 600px;
+          min-width: fit-content;
           min-height: 200px;
           display: flex;
           flex-wrap: wrap;
-          flex: 1;
+          flex-grow: 1;
           gap: 20px;
-          a {
-            color: $text-color-2;
-          }
           .item {
             background: $block-item-background;
             min-width: 500px;
-            border-radius: 0 12px 0 12px;
-            padding: 10px;
+            border-radius: 0 20px 0 20px;
+            padding: 20px;
             flex-grow: 1;
             &.events {
               display: flex;
               flex-direction: column;
               gap: 20px;
               .date {
-                width: 100%;
                 text-align: center;
               }
               .booking {
                 background: $booking-background;
-                width: 100%;
                 text-align: center;
-                padding: 10px 20px;
+                padding: 20px 20px;
                 border-radius: 10px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 20px;
               }
               .info {
                 text-align: center;
+              }
+            }
+          }
+          &.parkings {
+            .item {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+              gap: 20px;
+              .spot {
+                background: $booking-background;
+                text-align: center;
+                padding: 20px 20px;
+                border-radius: 10px;
+                width: 100%;
+              }
+              .info {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
               }
             }
           }
@@ -71,13 +84,15 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .home {
     .container {
       .content {
         .block {
           min-width: 100%;
           .items {
+            min-height: fit-content;
+            min-width: 100%;
             .item {
               min-width: 100%;
             }

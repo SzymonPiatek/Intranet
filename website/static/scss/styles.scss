@@ -40,6 +40,7 @@ button {
 ::-webkit-scrollbar {
   background: $scrollbar-background;
   width: 10px;
+  height: 10px;
   &-thumb {
     background: $scrollbar-thumb-background;
     border-radius: 20px;

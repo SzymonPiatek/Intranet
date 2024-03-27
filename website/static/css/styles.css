@@ -97,21 +97,18 @@ footer .container .content .block .item .text {
   min-width: fit-content;
 }
 .home .container .content .block .items {
-  min-width: 600px;
+  min-width: fit-content;
   min-height: 200px;
   display: flex;
   flex-wrap: wrap;
-  flex: 1;
+  flex-grow: 1;
   gap: 20px;
-}
-.home .container .content .block .items a {
-  color: #000;
 }
 .home .container .content .block .items .item {
   background: #5d5f77;
   min-width: 500px;
-  border-radius: 0 12px 0 12px;
-  padding: 10px;
+  border-radius: 0 20px 0 20px;
+  padding: 20px;
   flex-grow: 1;
 }
 .home .container .content .block .items .item.events {
@@ -120,26 +117,44 @@ footer .container .content .block .item .text {
   gap: 20px;
 }
 .home .container .content .block .items .item.events .date {
-  width: 100%;
   text-align: center;
 }
 .home .container .content .block .items .item.events .booking {
-  background: #3BBA9C;
-  width: 100%;
+  background: #ba5f3b;
   text-align: center;
-  padding: 10px 20px;
+  padding: 20px 20px;
   border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
 }
 .home .container .content .block .items .item.events .info {
   text-align: center;
 }
+.home .container .content .block .items.parkings .item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.home .container .content .block .items.parkings .item .spot {
+  background: #ba5f3b;
+  text-align: center;
+  padding: 20px 20px;
+  border-radius: 10px;
+  width: 100%;
+}
+.home .container .content .block .items.parkings .item .info {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .home .container .content .block {
+    min-width: 100%;
+  }
+  .home .container .content .block .items {
+    min-height: fit-content;
     min-width: 100%;
   }
   .home .container .content .block .items .item {
@@ -194,9 +209,11 @@ footer .container .content .block .item .text {
   text-align: center;
   padding: 20px 10px;
   border-radius: 4px;
+  cursor: pointer;
 }
 .calendar .days .day.empty {
   background: none;
+  cursor: default;
 }
 .calendar .days .day.weekend {
   background: #707793;
@@ -207,7 +224,11 @@ footer .container .content .block .item .text {
   color: #1f1f1f;
 }
 .calendar .days .day.today {
-  background: #3BBA9C;
+  background: #ba5f3b;
+}
+.calendar .days .day.selected {
+  background: #962727;
+  color: #FFF;
 }
 
 * {
@@ -245,6 +266,7 @@ button {
 ::-webkit-scrollbar {
   background: #5d5f77;
   width: 10px;
+  height: 10px;
 }
 ::-webkit-scrollbar-thumb {
   background: #848ba8;
