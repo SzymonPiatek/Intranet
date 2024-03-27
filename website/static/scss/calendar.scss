@@ -22,6 +22,7 @@
     grid-template-columns: repeat(7, 1fr);
     gap: 5px;
     .day {
+      @extend .shadow;
       background: $calendar-day-background;
       text-align: center;
       padding: 20px 10px;
@@ -30,6 +31,7 @@
       &.empty {
         background: none;
         cursor: default;
+        box-shadow: none;
       }
       &.weekend {
         background: $calendar-weekend-background;

@@ -98,6 +98,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 dateDiv.appendChild(dateText);
                 eventsContainer.appendChild(dateDiv);
 
+                const labelDiv = Object.assign(document.createElement('div'), {className: 'label'});
+                labelDiv.innerHTML = "Parking";
+                eventsContainer.appendChild(labelDiv);
+
                 if (data.hasOwnProperty('parking_booking')) {
                     const booking = data.parking_booking;
                     const bookingDiv = Object.assign(document.createElement('div'), {className: 'booking'});

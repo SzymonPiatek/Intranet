@@ -33,6 +33,7 @@
           flex-grow: 1;
           gap: 20px;
           .item {
+            @extend .shadow;
             background: $block-item-background;
             min-width: 500px;
             border-radius: 0 20px 0 20px;
@@ -46,6 +47,7 @@
                 text-align: center;
               }
               .booking {
+                @extend .shadow;
                 background: $booking-background;
                 text-align: center;
                 padding: 20px 20px;
@@ -64,6 +66,7 @@
               flex-direction: column;
               gap: 20px;
               .spot {
+                @extend .shadow;
                 background: $booking-background;
                 text-align: center;
                 padding: 20px 20px;

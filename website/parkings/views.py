@@ -60,9 +60,6 @@ def get_user_parking_data(request):
         user_parking_spot = ParkingBooking.objects.filter(tenant=request.user).order_by('date')
         free_parking_spot = ParkingBooking.objects.filter(tenant=None).order_by('date')
 
-        print(f"User: {user_parking_spot.count()}")
-        print(f"Free: {free_parking_spot.count()}")
-
         if user_parking_spot.count() >= 2 and free_parking_spot.count() >= 2:
             user_parking_spot = user_parking_spot[:2]
             free_parking_spot = free_parking_spot[:2]
