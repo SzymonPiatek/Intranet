@@ -58,6 +58,9 @@
           }
           &.parkings {
             .item {
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
               .spot {
                 background: $booking-background;
                 text-align: center;
@@ -65,7 +68,10 @@
                 border-radius: 10px;
               }
               .info {
-                text-align: center;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
               }
             }
           }
@@ -75,13 +81,14 @@
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1100px) {
   .home {
     .container {
       .content {
         .block {
           min-width: 100%;
           .items {
+            min-height: fit-content;
             min-width: 100%;
             .item {
               min-width: 100%;
