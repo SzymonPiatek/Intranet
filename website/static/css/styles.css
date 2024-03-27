@@ -219,6 +219,12 @@ footer .container .content .block .item .text {
   background: #707793;
   color: #962727;
 }
+.calendar .days .day.relaxed {
+  background: #cba080;
+}
+.calendar .days .day.holiday {
+  background: #b54d4d;
+}
 .calendar .days .day.past {
   background: #3C3F58;
   color: #1f1f1f;

@@ -35,6 +35,12 @@
         background: $calendar-weekend-background;
         color: $calendar-weekend-color;
       }
+      &.relaxed {
+        background: $calendar-relaxed-background;
+      }
+      &.holiday {
+        background: $calendar-holiday-background;
+      }
       &.past {
         background: $calendar-past-background;
         color: $calendar-past-color;
