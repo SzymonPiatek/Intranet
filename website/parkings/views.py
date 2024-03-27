@@ -15,7 +15,7 @@ def get_parking_booking_from_date(request):
                     booking_type = "Free spot"
             else:
                 booking_type = None
-                info = "No shared parking spots"
+                info = "No shared parking spot"
         else:
             parking_bookings = ParkingBooking.objects.filter(date=date, tenant=request.user)
             if parking_bookings.exists():
@@ -57,8 +57,19 @@ def get_user_parking_data(request):
             return JsonResponse({'user_parking_spots': user_parking_spot_json,
                                  'second_info': "You have not shared any parking spot"})
     else:
-        user_parking_spot = ParkingBooking.objects.filter(tenant=request.user).order_by('date')[:2]
-        free_parking_spot = ParkingBooking.objects.filter(tenant=None).order_by('date')[:2]
+        user_parking_spot = ParkingBooking.objects.filter(tenant=request.user).order_by('date')
+        free_parking_spot = ParkingBooking.objects.filter(tenant=None).order_by('date')
+
+        print(f"User: {user_parking_spot.count()}")
+        print(f"Free: {free_parking_spot.count()}")
+
+        if user_parking_spot.count() >= 2 and free_parking_spot.count() >= 2:
+            user_parking_spot = user_parking_spot[:2]
+            free_parking_spot = free_parking_spot[:2]
+        elif user_parking_spot.count() < 2:
+            free_parking_spot = free_parking_spot[:(4 - user_parking_spot.count())]
+        elif free_parking_spot.count() < 2:
+            user_parking_spot = user_parking_spot[:(4 - free_parking_spot.count())]
 
         if user_parking_spot.exists():
             user_parking_spot_json = []
