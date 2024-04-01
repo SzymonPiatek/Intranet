@@ -110,7 +110,7 @@ footer .container .content .block .item .text {
   background: #5d5f77;
   min-width: 500px;
   border-radius: 0 20px 0 20px;
-  padding: 20px;
+  padding: 20px 20px;
   flex-grow: 1;
 }
 .home .container .content .block .items .item.events {
@@ -118,31 +118,37 @@ footer .container .content .block .item .text {
   flex-direction: column;
   gap: 20px;
 }
-.home .container .content .block .items .item.events .date {
+.home .container .content .block .items .item .date {
   text-align: center;
 }
-.home .container .content .block .items .item.events .booking {
+.home .container .content .block .items .item .booking {
   background: #ba5f3b;
   text-align: center;
   padding: 20px 20px;
   border-radius: 10px;
 }
-.home .container .content .block .items .item.events .info {
+.home .container .content .block .items .item .info {
   text-align: center;
 }
-.home .container .content .block .items.parkings .item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
-}
-.home .container .content .block .items.parkings .item .spot {
+.home .container .content .block .items .item .spot {
   background: #ba5f3b;
   text-align: center;
   padding: 20px 20px;
   border-radius: 10px;
   width: 100%;
+}
+.home .container .content .block .items .item .spot i {
+  margin-right: 10px;
+}
+.home .container .content .block .items.parkings .item {
+  max-height: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  flex-grow: 1;
 }
 .home .container .content .block .items.parkings .item .info {
   height: 100%;
@@ -187,7 +193,7 @@ footer .container .content .block .item .text {
 .calendar {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
 }
 .calendar .header {
   display: flex;
@@ -274,7 +280,7 @@ button {
   max-width: 100%;
 }
 
-.shadow, nav, .home .container .content .block .items .item, .home .container .content .block .items .item.events .booking, .home .container .content .block .items.parkings .item .spot, .calendar .days .day {
+.shadow, nav, .home .container .content .block .items .item, .home .container .content .block .items .item .booking, .home .container .content .block .items .item .spot, .calendar .days .day {
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 

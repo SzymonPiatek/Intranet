@@ -40,7 +40,7 @@ def get_user_parking_data(request):
                                   "date": "Permanently",
                                   "info": "Share your parking spot"}
 
-        user_shared_spots = ParkingBooking.objects.filter(spot__owner=request.user).order_by('date')[:3]
+        user_shared_spots = ParkingBooking.objects.filter(spot__owner=request.user).order_by('date')[:4]
         if user_shared_spots.exists():
             free_parking_spot_json = []
             for spot in user_shared_spots:
@@ -60,13 +60,13 @@ def get_user_parking_data(request):
         user_parking_spot = ParkingBooking.objects.filter(tenant=request.user).order_by('date')
         free_parking_spot = ParkingBooking.objects.filter(tenant=None).order_by('date')
 
-        if user_parking_spot.count() >= 2 and free_parking_spot.count() >= 2:
-            user_parking_spot = user_parking_spot[:2]
+        if user_parking_spot.count() >= 3 and free_parking_spot.count() >= 3:
+            user_parking_spot = user_parking_spot[:3]
             free_parking_spot = free_parking_spot[:2]
-        elif user_parking_spot.count() < 2:
-            free_parking_spot = free_parking_spot[:(4 - user_parking_spot.count())]
-        elif free_parking_spot.count() < 2:
-            user_parking_spot = user_parking_spot[:(4 - free_parking_spot.count())]
+        elif user_parking_spot.count() < 3:
+            free_parking_spot = free_parking_spot[:(5 - user_parking_spot.count())]
+        elif free_parking_spot.count() < 3:
+            user_parking_spot = user_parking_spot[:(5 - free_parking_spot.count())]
 
         if user_parking_spot.exists():
             user_parking_spot_json = []
