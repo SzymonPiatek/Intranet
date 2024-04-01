@@ -23,7 +23,9 @@ body {
 
 main {
   min-height: calc(100vh - 80px);
-  width: 100vw;
+  width: 100%;
+  position: absolute;
+  top: 80px;
 }
 
 button {
@@ -35,6 +37,10 @@ button {
 .container {
   width: 2100px;
   max-width: 100%;
+}
+
+.shadow {
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 ::-webkit-scrollbar {

@@ -27,18 +27,22 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 if (data.user_parking_spots) {
                     const parkingData = Array.isArray(data.user_parking_spots) ? data.user_parking_spots : [data.user_parking_spots];
+                    const parkingContainer = Object.assign(document.createElement('div'), {className: 'item'});
                     parkingData.forEach(spot => {
-                        parkingItemsContainer.appendChild(createItemElement(createSpotElement(spot)));
+                        parkingContainer.appendChild(createSpotElement(spot));
                     });
+                    parkingItemsContainer.appendChild(parkingContainer);
                 } else if (data.first_info) {
                     parkingItemsContainer.appendChild(createItemElement(createInfoElement(data.first_info)));
                 }
 
                 if (data.free_parking_spots) {
                     const parkingData = Array.isArray(data.free_parking_spots) ? data.free_parking_spots : [data.free_parking_spots];
+                    const parkingContainer = Object.assign(document.createElement('div'), {className: 'item'});
                     parkingData.forEach(spot => {
-                        parkingItemsContainer.appendChild(createItemElement(createSpotElement(spot)));
+                        parkingContainer.appendChild(createSpotElement(spot));
                     });
+                    parkingItemsContainer.appendChild(parkingContainer);
                 } else if (data.second_info) {
                     parkingItemsContainer.appendChild(createItemElement(createInfoElement(data.second_info)));
                 }

@@ -2,11 +2,14 @@
 
 
 nav {
+  @extend .shadow;
   background: $navbar-background;
   height: 80px;
   width: 100%;
+  position: fixed;
   display: flex;
   justify-content: center;
+  z-index: 999;
   .container {
     height: 100%;
     padding: 0 20px;

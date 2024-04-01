@@ -4,7 +4,7 @@
 .calendar {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
   .header {
     display: flex;
     justify-content: space-between;
@@ -22,6 +22,7 @@
     grid-template-columns: repeat(7, 1fr);
     gap: 5px;
     .day {
+      @extend .shadow;
       background: $calendar-day-background;
       text-align: center;
       padding: 20px 10px;
@@ -30,10 +31,17 @@
       &.empty {
         background: none;
         cursor: default;
+        box-shadow: none;
       }
       &.weekend {
         background: $calendar-weekend-background;
         color: $calendar-weekend-color;
+      }
+      &.relaxed {
+        background: $calendar-relaxed-background;
+      }
+      &.holiday {
+        background: $calendar-holiday-background;
       }
       &.past {
         background: $calendar-past-background;

@@ -33,43 +33,52 @@
           flex-grow: 1;
           gap: 20px;
           .item {
+            @extend .shadow;
             background: $block-item-background;
             min-width: 500px;
             border-radius: 0 20px 0 20px;
-            padding: 20px;
+            padding: 20px 20px;
             flex-grow: 1;
             &.events {
               display: flex;
               flex-direction: column;
               gap: 20px;
-              .date {
-                text-align: center;
-              }
-              .booking {
-                background: $booking-background;
-                text-align: center;
-                padding: 20px 20px;
-                border-radius: 10px;
-              }
-              .info {
-                text-align: center;
+            }
+            .date {
+              text-align: center;
+            }
+            .booking {
+              @extend .shadow;
+              background: $booking-background;
+              text-align: center;
+              padding: 20px 20px;
+              border-radius: 10px;
+            }
+            .info {
+              text-align: center;
+            }
+            .spot {
+              @extend .shadow;
+              background: $booking-background;
+              text-align: center;
+              padding: 20px 20px;
+              border-radius: 10px;
+              width: 100%;
+              i {
+                margin-right: 10px;
               }
             }
           }
           &.parkings {
             .item {
+              max-height: 380px;
               display: flex;
               justify-content: center;
               align-items: center;
               flex-direction: column;
               gap: 20px;
-              .spot {
-                background: $booking-background;
-                text-align: center;
-                padding: 20px 20px;
-                border-radius: 10px;
-                width: 100%;
-              }
+              overflow-y: auto;
+              flex-grow: 1;
               .info {
                 height: 100%;
                 display: flex;

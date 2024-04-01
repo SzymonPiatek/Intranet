@@ -2,8 +2,10 @@ nav {
   background: #2E3047;
   height: 80px;
   width: 100%;
+  position: fixed;
   display: flex;
   justify-content: center;
+  z-index: 999;
 }
 nav .container {
   height: 100%;
@@ -108,7 +110,7 @@ footer .container .content .block .item .text {
   background: #5d5f77;
   min-width: 500px;
   border-radius: 0 20px 0 20px;
-  padding: 20px;
+  padding: 20px 20px;
   flex-grow: 1;
 }
 .home .container .content .block .items .item.events {
@@ -116,31 +118,37 @@ footer .container .content .block .item .text {
   flex-direction: column;
   gap: 20px;
 }
-.home .container .content .block .items .item.events .date {
+.home .container .content .block .items .item .date {
   text-align: center;
 }
-.home .container .content .block .items .item.events .booking {
+.home .container .content .block .items .item .booking {
   background: #ba5f3b;
   text-align: center;
   padding: 20px 20px;
   border-radius: 10px;
 }
-.home .container .content .block .items .item.events .info {
+.home .container .content .block .items .item .info {
   text-align: center;
 }
-.home .container .content .block .items.parkings .item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
-}
-.home .container .content .block .items.parkings .item .spot {
+.home .container .content .block .items .item .spot {
   background: #ba5f3b;
   text-align: center;
   padding: 20px 20px;
   border-radius: 10px;
   width: 100%;
+}
+.home .container .content .block .items .item .spot i {
+  margin-right: 10px;
+}
+.home .container .content .block .items.parkings .item {
+  max-height: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  flex-grow: 1;
 }
 .home .container .content .block .items.parkings .item .info {
   height: 100%;
@@ -185,7 +193,7 @@ footer .container .content .block .item .text {
 .calendar {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
 }
 .calendar .header {
   display: flex;
@@ -214,10 +222,17 @@ footer .container .content .block .item .text {
 .calendar .days .day.empty {
   background: none;
   cursor: default;
+  box-shadow: none;
 }
 .calendar .days .day.weekend {
   background: #707793;
   color: #962727;
+}
+.calendar .days .day.relaxed {
+  background: #cba080;
+}
+.calendar .days .day.holiday {
+  background: #b54d4d;
 }
 .calendar .days .day.past {
   background: #3C3F58;
@@ -249,7 +264,9 @@ body {
 
 main {
   min-height: calc(100vh - 80px);
-  width: 100vw;
+  width: 100%;
+  position: absolute;
+  top: 80px;
 }
 
 button {
@@ -261,6 +278,10 @@ button {
 .container {
   width: 2100px;
   max-width: 100%;
+}
+
+.shadow, nav, .home .container .content .block .items .item, .home .container .content .block .items .item .booking, .home .container .content .block .items .item .spot, .calendar .days .day {
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 ::-webkit-scrollbar {

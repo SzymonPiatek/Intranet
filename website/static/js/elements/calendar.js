@@ -7,6 +7,51 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let currentDate = new Date();
 
+    const holidays = [
+        "01-01", // New Year
+        "01-06", // Epiphany
+        "11-11", // National Independence Day
+        "12-24", // Christmas Eve
+        "12-25", // 1st Christmas Day
+        "12-26", // 2st Christmas Day
+        "12-31", // New Year's Eye
+    ]
+
+    const relaxedHolidays = [
+        "02-14", // Valentine's Day
+        "02-16", // Fat Thursday
+        "03-08", // Women's Day
+        "05-01", // Working Day
+        "05-26", // Mother's Day
+        "06-01", // Children's Day
+        "06-23", // Father's Day
+        "12-06", // Saint Nicholas' Day
+    ]
+
+    function addHolidaysToCalendar(year) {
+        holidays.forEach(holiday => {
+            const [month, day] = holiday.split('-');
+            const holidayDate = new Date(year, month - 1, day);
+            const holidayDateString = holidayDate.toISOString().split('T')[0];
+            const holidayDiv = daysContainer.querySelector(`.day[data-date="${holidayDateString}"]`);
+            if (holidayDiv) {
+                holidayDiv.classList.add('holiday');
+            }
+        });
+    }
+
+    function addRelaxedHolidaysToCalendar(year) {
+        relaxedHolidays.forEach(holiday => {
+            const [month, day] = holiday.split('-');
+            const holidayDate = new Date(year, month - 1, day);
+            const holidayDateString = holidayDate.toISOString().split('T')[0];
+            const holidayDiv = daysContainer.querySelector(`.day[data-date="${holidayDateString}"]`);
+            if (holidayDiv) {
+                holidayDiv.classList.add('relaxed');
+            }
+        });
+    }
+
     function renderCalendar() {
         let year = currentDate.getFullYear();
         let month = currentDate.getMonth();
@@ -24,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let i = 1; i <= daysInMonth; i++) {
             let day = Object.assign(document.createElement('div'), {className: 'day'});
             day.textContent = i;
-            day.setAttribute('data-date', new Date(year, month, i+1).toISOString().split('T')[0]);
+            day.setAttribute('data-date', new Date(year, month, i).toISOString().split('T')[0]);
             if (year === new Date().getFullYear() && month === new Date().getMonth() && i === new Date().getDate()) {
                 day.classList.add('today');
             }
@@ -36,6 +81,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             daysContainer.appendChild(day);
         }
+        addHolidaysToCalendar(year);
+        addRelaxedHolidaysToCalendar(year);
     }
 
     function showParkingBookings(date) {
@@ -51,9 +98,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 dateDiv.appendChild(dateText);
                 eventsContainer.appendChild(dateDiv);
 
+                const labelDiv = Object.assign(document.createElement('div'), {className: 'label'});
+                labelDiv.innerHTML = "Parking";
+                eventsContainer.appendChild(labelDiv);
+
                 if (data.hasOwnProperty('parking_booking')) {
                     const booking = data.parking_booking;
-                    const bookingDiv = Object.assign(document.createElement('div'), {className: 'booking'});
+                    const bookingDiv = Object.assign(document.createElement('div'), {className: 'spot'});
                     bookingDiv.innerHTML = `<i class="fa-solid fa-car"></i>Spot ${booking.spot} - ${booking.type}`;
                     eventsContainer.appendChild(bookingDiv);
                 } else if (data.hasOwnProperty('info')) {
@@ -87,9 +138,11 @@ document.addEventListener('DOMContentLoaded', function() {
             allDays.forEach(day => day.classList.remove('selected'));
 
             clickedDay.classList.add('selected')
-            const date = clickedDay.getAttribute('data-date');
-            showParkingBookings(date);
-        }
+            let date = new Date(clickedDay.getAttribute('data-date'));
+            date.setDate(date.getDate() + 1);
+            const formattedDate = date.toISOString().split('T')[0];
+            showParkingBookings(formattedDate);
+    }
     });
 
     renderCalendar();
