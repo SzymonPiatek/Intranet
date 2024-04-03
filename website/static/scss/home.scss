@@ -27,17 +27,42 @@
           min-width: fit-content;
         }
         &.parkings {
-          .item {
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            gap: 20px;
-            flex-grow: 1;
-            .info {
-              height: 100%;
+          .items {
+            .item {
               display: flex;
               justify-content: center;
-              align-items: center;
+              flex-direction: column;
+              gap: 20px;
+              flex-grow: 1;
+              .info {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+            }
+          }
+        }
+        &.applications, &.reports {
+          .items {
+            .item {
+              display: flex;
+              gap: 20px;
+              .spot {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-overflow: ellipsis;
+              }
+              &.grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                .spot {
+                  &:first-child {
+                    grid-column: 1 / span 2;
+                  }
+                }
+              }
             }
           }
         }
@@ -103,6 +128,24 @@
             min-width: 100%;
             .item {
               min-width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1590px) {
+  .home {
+    .container {
+      .content {
+        .block {
+          &.applications, &.reports {
+            .items {
+              .item {
+
+              }
             }
           }
         }

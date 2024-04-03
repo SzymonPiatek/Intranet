@@ -99,18 +99,35 @@ footer .container .content .block .item .text {
 .home .container .content .block.calendar {
   min-width: fit-content;
 }
-.home .container .content .block.parkings .item {
+.home .container .content .block.parkings .items .item {
   display: flex;
   justify-content: center;
   flex-direction: column;
   gap: 20px;
   flex-grow: 1;
 }
-.home .container .content .block.parkings .item .info {
+.home .container .content .block.parkings .items .item .info {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.home .container .content .block.applications .items .item, .home .container .content .block.reports .items .item {
+  display: flex;
+  gap: 20px;
+}
+.home .container .content .block.applications .items .item .spot, .home .container .content .block.reports .items .item .spot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-overflow: ellipsis;
+}
+.home .container .content .block.applications .items .item.grid, .home .container .content .block.reports .items .item.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.home .container .content .block.applications .items .item.grid .spot:first-child, .home .container .content .block.reports .items .item.grid .spot:first-child {
+  grid-column: 1/span 2;
 }
 .home .container .content .block .items {
   min-width: fit-content;
