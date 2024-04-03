@@ -18,12 +18,53 @@
         color: $text-color;
       }
       .block {
+        max-height: 620px;
         display: flex;
         flex-direction: column;
         flex: 1;
         gap: 20px;
         &.calendar {
           min-width: fit-content;
+        }
+        &.parkings {
+          .items {
+            .item {
+              display: flex;
+              justify-content: center;
+              flex-direction: column;
+              gap: 20px;
+              flex-grow: 1;
+              .info {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+            }
+          }
+        }
+        &.applications, &.reports {
+          .items {
+            .item {
+              display: flex;
+              gap: 20px;
+              .spot {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-overflow: ellipsis;
+              }
+              &.grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                .spot {
+                  &:first-child {
+                    grid-column: 1 / span 2;
+                  }
+                }
+              }
+            }
+          }
         }
         .items {
           min-width: fit-content;
@@ -69,24 +110,6 @@
               }
             }
           }
-          &.parkings {
-            .item {
-              max-height: 380px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              flex-direction: column;
-              gap: 20px;
-              overflow-y: auto;
-              flex-grow: 1;
-              .info {
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-              }
-            }
-          }
         }
       }
     }
@@ -99,11 +122,30 @@
       .content {
         .block {
           min-width: 100%;
+          max-height: none;
           .items {
             min-height: fit-content;
             min-width: 100%;
             .item {
               min-width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1590px) {
+  .home {
+    .container {
+      .content {
+        .block {
+          &.applications, &.reports {
+            .items {
+              .item {
+
+              }
             }
           }
         }

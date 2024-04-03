@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.utils import timezone
+import datetime
 from users.models import CustomUser
 
 
@@ -40,28 +41,32 @@ class ParkingBooking(models.Model):
         return f'Parking booking for parking spot "{self.spot.name} - {self.tenant}'
 
     def clean(self):
-        bookings = ParkingBooking.objects.filter(spot=self.spot, date=self.date)
-        user_bookings = ParkingBooking.objects.filter(date=self.date, tenant=self.tenant)
-
-        if user_bookings.count() > 0:
-            if self.tenant is None:
-                raise ValidationError("There is already a reservation for this place for this day")
-            elif self.tenant is not None:
-                raise ValidationError("You have already booked a parking spot for this day")
-
-        if self.pk:
-            for booking in bookings:
-                if booking.tenant is not None:
-                    if self.tenant is None:
-                        return
-                    else:
-                        raise ValidationError("This place is already booked for this day")
-                elif booking.tenant is None:
-                    return
+        weekday = self.date.weekday()
+        if weekday == 5 or weekday == 6:
+            raise ValidationError("Parking space can only be reserved on working days")
         else:
-            if bookings.exists():
-                raise ValidationError("There is already a reservation for this place for this day")
-            if ParkingBooking.objects.filter(spot=self.spot, date=self.date, tenant__isnull=False).exists():
-                raise ValidationError("This place is already booked for this day")
-            if self.date <= timezone.now().date():
-                raise ValidationError("The reservation can be made for the next day at the earliest")
+            bookings = ParkingBooking.objects.filter(spot=self.spot, date=self.date)
+            user_bookings = ParkingBooking.objects.filter(date=self.date, tenant=self.tenant)
+
+            if user_bookings.count() > 0:
+                if self.tenant is None:
+                    raise ValidationError("There is already a reservation for this place for this day")
+                elif self.tenant is not None:
+                    raise ValidationError("You have already booked a parking spot for this day")
+
+            if self.pk:
+                for booking in bookings:
+                    if booking.tenant is not None:
+                        if self.tenant is None:
+                            return
+                        else:
+                            raise ValidationError("This place is already booked for this day")
+                    elif booking.tenant is None:
+                        return
+            else:
+                if bookings.exists():
+                    raise ValidationError("There is already a reservation for this place for this day")
+                if ParkingBooking.objects.filter(spot=self.spot, date=self.date, tenant__isnull=False).exists():
+                    raise ValidationError("This place is already booked for this day")
+                if self.date <= timezone.now().date():
+                    raise ValidationError("The reservation can be made for the next day at the earliest")

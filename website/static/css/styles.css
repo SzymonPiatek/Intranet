@@ -90,6 +90,7 @@ footer .container .content .block .item .text {
   color: #FFF;
 }
 .home .container .content .block {
+  max-height: 620px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -97,6 +98,36 @@ footer .container .content .block .item .text {
 }
 .home .container .content .block.calendar {
   min-width: fit-content;
+}
+.home .container .content .block.parkings .items .item {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  flex-grow: 1;
+}
+.home .container .content .block.parkings .items .item .info {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home .container .content .block.applications .items .item, .home .container .content .block.reports .items .item {
+  display: flex;
+  gap: 20px;
+}
+.home .container .content .block.applications .items .item .spot, .home .container .content .block.reports .items .item .spot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-overflow: ellipsis;
+}
+.home .container .content .block.applications .items .item.grid, .home .container .content .block.reports .items .item.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.home .container .content .block.applications .items .item.grid .spot:first-child, .home .container .content .block.reports .items .item.grid .spot:first-child {
+  grid-column: 1/span 2;
 }
 .home .container .content .block .items {
   min-width: fit-content;
@@ -140,26 +171,11 @@ footer .container .content .block .item .text {
 .home .container .content .block .items .item .spot i {
   margin-right: 10px;
 }
-.home .container .content .block .items.parkings .item {
-  max-height: 380px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
-  overflow-y: auto;
-  flex-grow: 1;
-}
-.home .container .content .block .items.parkings .item .info {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 @media (max-width: 1100px) {
   .home .container .content .block {
     min-width: 100%;
+    max-height: none;
   }
   .home .container .content .block .items {
     min-height: fit-content;
@@ -188,6 +204,29 @@ footer .container .content .block .item .text {
   flex-direction: column;
   align-items: center;
   gap: 20px;
+}
+.login .container .content form .item {
+  min-width: 300px;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+.login .container .content form .item small {
+  width: 100%;
+  margin-bottom: 4px;
+}
+.login .container .content form .item input {
+  border: none;
+  font-size: 2rem;
+  color: #000;
+  border-radius: 12px;
+  text-indent: 8px;
+}
+.login .container .content form button {
+  background: #ba5f3b;
+  padding: 12px 40px;
+  border-radius: 12px;
 }
 
 .calendar {
@@ -280,7 +319,7 @@ button {
   max-width: 100%;
 }
 
-.shadow, nav, .home .container .content .block .items .item, .home .container .content .block .items .item .booking, .home .container .content .block .items .item .spot, .calendar .days .day {
+.shadow, nav, .home .container .content .block .items .item, .home .container .content .block .items .item .booking, .home .container .content .block .items .item .spot, .login .container .content form .item input, .login .container .content form button, .calendar .days .day {
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
