@@ -189,6 +189,29 @@ footer .container .content .block .item .text {
   align-items: center;
   gap: 20px;
 }
+.login .container .content form .item {
+  min-width: 300px;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+.login .container .content form .item small {
+  width: 100%;
+  margin-bottom: 4px;
+}
+.login .container .content form .item input {
+  border: none;
+  font-size: 2rem;
+  color: #000;
+  border-radius: 12px;
+  text-indent: 8px;
+}
+.login .container .content form button {
+  background: #ba5f3b;
+  padding: 12px 40px;
+  border-radius: 12px;
+}
 
 .calendar {
   display: flex;
@@ -280,7 +303,7 @@ button {
   max-width: 100%;
 }
 
-.shadow, nav, .home .container .content .block .items .item, .home .container .content .block .items .item .booking, .home .container .content .block .items .item .spot, .calendar .days .day {
+.shadow, nav, .home .container .content .block .items .item, .home .container .content .block .items .item .booking, .home .container .content .block .items .item .spot, .login .container .content form .item input, .login .container .content form button, .calendar .days .day {
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 

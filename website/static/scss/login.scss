@@ -16,6 +16,31 @@
         flex-direction: column;
         align-items: center;
         gap: 20px;
+        .item {
+          min-width: 300px;
+          width: 100%;
+          max-width: 600px;
+          display: flex;
+          flex-direction: column;
+          small {
+            width: 100%;
+            margin-bottom: 4px;
+          }
+          input {
+            @extend .shadow;
+            border: none;
+            font-size: 2rem;
+            color: $text-color-2;
+            border-radius: 12px;
+            text-indent: 8px;
+          }
+        }
+        button {
+          @extend .shadow;
+          background: $button-background;
+          padding: 12px 40px;
+          border-radius: 12px;
+        }
       }
     }
   }

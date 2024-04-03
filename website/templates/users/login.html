@@ -6,11 +6,20 @@
     <div class="login">
         <div class="container">
             <div class="content">
-                <h2>Log in</h2>
+                <h1>Log in</h1>
                 <form method="post">
                     {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">Log in</button>
+                    <div class="item">
+                        <small>{{ form.username.label_tag }}</small>
+                        {{ form.username }}
+                    </div>
+                    <div class="item">
+                        <small>{{ form.password.label_tag }}</small>
+                        {{ form.password }}
+                    </div>
+                    <button type="submit">
+                        <h2>Log in</h2>
+                    </button>
                 </form>
             </div>
         </div>
