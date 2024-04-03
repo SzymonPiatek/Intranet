@@ -12,7 +12,7 @@ def get_parking_booking_from_date(request):
                 if parking_booking.tenant:
                     booking_type = f"Shared for {parking_booking.tenant}"
                 else:
-                    booking_type = "Free spot"
+                    booking_type = "Shared"
             else:
                 booking_type = None
                 info = "No shared parking spot"
@@ -47,7 +47,7 @@ def get_user_parking_data(request):
                 if spot.tenant:
                     info = f"Shared for {spot.tenant}"
                 else:
-                    info = "Free spot"
+                    info = "Shared"
                 free_parking_spot_json.append({"spot": spot.spot.name,
                                                "date": spot.date,
                                                "info": info})
