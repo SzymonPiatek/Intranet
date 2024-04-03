@@ -26,6 +26,21 @@
         &.calendar {
           min-width: fit-content;
         }
+        &.parkings {
+          .item {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+            flex-grow: 1;
+            .info {
+              height: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+        }
         .items {
           min-width: fit-content;
           min-height: 200px;
@@ -33,21 +48,6 @@
           flex-wrap: wrap;
           flex-grow: 1;
           gap: 20px;
-          &.parkings {
-            .item {
-              display: flex;
-              justify-content: center;
-              flex-direction: column;
-              gap: 20px;
-              flex-grow: 1;
-              .info {
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-              }
-            }
-          }
           .item {
             @extend .shadow;
             background: $block-item-background;
@@ -97,6 +97,7 @@
       .content {
         .block {
           min-width: 100%;
+          max-height: none;
           .items {
             min-height: fit-content;
             min-width: 100%;
