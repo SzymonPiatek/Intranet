@@ -28,6 +28,8 @@
         }
         &.parkings {
           .items {
+            display: flex;
+            flex-direction: column;
             .item {
               display: flex;
               justify-content: center;

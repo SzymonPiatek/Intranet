@@ -60,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-
     function renderCalendar() {
         let year = currentDate.getFullYear();
         let month = currentDate.getMonth();
@@ -151,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
             date.setDate(date.getDate() + 1);
             const formattedDate = date.toISOString().split('T')[0];
             showParkingBookings(formattedDate);
-    }
+        }
     });
 
     renderCalendar();

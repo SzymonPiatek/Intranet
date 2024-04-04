@@ -99,6 +99,10 @@ footer .container .content .block .item .text {
 .home .container .content .block.calendar {
   min-width: fit-content;
 }
+.home .container .content .block.parkings .items {
+  display: flex;
+  flex-direction: column;
+}
 .home .container .content .block.parkings .items .item {
   display: flex;
   justify-content: center;
