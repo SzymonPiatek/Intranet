@@ -8,46 +8,54 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentDate = new Date();
 
     const holidays = [
-        "01-01", // New Year
-        "01-06", // Epiphany
-        "11-11", // National Independence Day
-        "12-24", // Christmas Eve
-        "12-25", // 1st Christmas Day
-        "12-26", // 2st Christmas Day
-        "12-31", // New Year's Eye
-    ]
+        { date: "01-01", name: "New Year" },
+        { date: "01-06", name: "Epiphany" },
+        { date: "11-11", name: "National Independence Day" },
+        { date: "12-24", name: "Christmas Eve" },
+        { date: "12-25", name: "1st Christmas Day" },
+        { date: "12-26", name: "2nd Christmas Day" },
+        { date: "12-31", name: "New Year's Eve" },
+    ];
 
     const relaxedHolidays = [
-        "02-14", // Valentine's Day
-        "02-16", // Fat Thursday
-        "03-08", // Women's Day
-        "05-01", // Working Day
-        "05-26", // Mother's Day
-        "06-01", // Children's Day
-        "06-23", // Father's Day
-        "12-06", // Saint Nicholas' Day
-    ]
+        { date: "02-14", name: "Valentine's Day" },
+        { date: "02-16", name: "Fat Thursday" },
+        { date: "03-08", name: "Women's Day" },
+        { date: "05-01", name: "Working Day" },
+        { date: "05-26", name: "Mother's Day" },
+        { date: "06-01", name: "Children's Day" },
+        { date: "06-23", name: "Father's Day" },
+        { date: "12-06", name: "Saint Nicholas' Day" },
+    ];
 
     function addHolidaysToCalendar(year) {
         holidays.forEach(holiday => {
-            const [month, day] = holiday.split('-');
+            const [month, day] = holiday.date.split('-');
             const holidayDate = new Date(year, month - 1, day);
             const holidayDateString = holidayDate.toISOString().split('T')[0];
             const holidayDiv = daysContainer.querySelector(`.day[data-date="${holidayDateString}"]`);
             if (holidayDiv) {
                 holidayDiv.classList.add('holiday');
+                const holidayNameDiv = document.createElement('div');
+                holidayNameDiv.classList.add('holiday-name');
+                holidayNameDiv.textContent = holiday.name;
+                holidayDiv.appendChild(holidayNameDiv);
             }
         });
     }
 
     function addRelaxedHolidaysToCalendar(year) {
         relaxedHolidays.forEach(holiday => {
-            const [month, day] = holiday.split('-');
+            const [month, day] = holiday.date.split('-');
             const holidayDate = new Date(year, month - 1, day);
             const holidayDateString = holidayDate.toISOString().split('T')[0];
             const holidayDiv = daysContainer.querySelector(`.day[data-date="${holidayDateString}"]`);
             if (holidayDiv) {
                 holidayDiv.classList.add('relaxed');
+                const holidayNameDiv = document.createElement('div');
+                holidayNameDiv.classList.add('holiday-name');
+                holidayNameDiv.textContent = holiday.name;
+                holidayDiv.appendChild(holidayNameDiv);
             }
         });
     }
@@ -142,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
             date.setDate(date.getDate() + 1);
             const formattedDate = date.toISOString().split('T')[0];
             showParkingBookings(formattedDate);
-    }
+        }
     });
 
     renderCalendar();

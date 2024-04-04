@@ -99,6 +99,10 @@ footer .container .content .block .item .text {
 .home .container .content .block.calendar {
   min-width: fit-content;
 }
+.home .container .content .block.parkings .items {
+  display: flex;
+  flex-direction: column;
+}
 .home .container .content .block.parkings .items .item {
   display: flex;
   justify-content: center;
@@ -120,11 +124,13 @@ footer .container .content .block .item .text {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-overflow: ellipsis;
 }
 .home .container .content .block.applications .items .item.grid, .home .container .content .block.reports .items .item.grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+.home .container .content .block.applications .items .item.grid .spot, .home .container .content .block.reports .items .item.grid .spot {
+  min-height: 120px;
 }
 .home .container .content .block.applications .items .item.grid .spot:first-child, .home .container .content .block.reports .items .item.grid .spot:first-child {
   grid-column: 1/span 2;
@@ -142,12 +148,16 @@ footer .container .content .block .item .text {
   min-width: 500px;
   border-radius: 0 20px 0 20px;
   padding: 20px 20px;
-  flex-grow: 1;
+  flex: 1;
 }
 .home .container .content .block .items .item.events {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+.home .container .content .block .items .item.events .label {
+  padding: 4px 0;
+  border-bottom: 2px solid #3C3F58;
 }
 .home .container .content .block .items .item .date {
   text-align: center;
@@ -159,6 +169,7 @@ footer .container .content .block .item .text {
   border-radius: 10px;
 }
 .home .container .content .block .items .item .info {
+  width: 100%;
   text-align: center;
 }
 .home .container .content .block .items .item .spot {

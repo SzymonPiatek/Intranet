@@ -12,34 +12,34 @@
                 <div class="side">
                     {% if user.is_superuser %}
                         <a href="/admin" class="item">
-                            <div class="image">
+                            <h3 class="image">
                                 <i class="fa-solid fa-screwdriver-wrench"></i>
-                            </div>
-                            <div class="text">
+                            </h3>
+                            <h3 class="text">
                                 Admin panel
-                            </div>
+                            </h3>
                         </a>
                     {% endif %}
                     <div class="item">
-                        <div class="image">
+                        <h3 class="image">
                             <i class="fa-solid fa-user"></i>
-                        </div>
-                        <div class="text">
+                        </h3>
+                        <h3 class="text">
                             {{ user }}
-                        </div>
+                        </h3>
                     </div>
                     <div class="item">
-                        <div class="image">
+                        <h3 class="image">
                             <i class="fa-solid fa-bell"></i>
-                        </div>
+                        </h3>
                     </div>
                     <div class="item">
                         <form action="{% url 'logout_page' %}" method="post">
                             {% csrf_token %}
                             <button type="submit">
-                                <div class="image">
+                                <h3 class="image">
                                     <i class="fa-solid fa-right-from-bracket"></i>
-                                </div>
+                                </h3>
                             </button>
                         </form>
                     </div>

@@ -28,6 +28,8 @@
         }
         &.parkings {
           .items {
+            display: flex;
+            flex-direction: column;
             .item {
               display: flex;
               justify-content: center;
@@ -52,12 +54,12 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                text-overflow: ellipsis;
               }
               &.grid {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 .spot {
+                  min-height: 120px;
                   &:first-child {
                     grid-column: 1 / span 2;
                   }
@@ -79,11 +81,15 @@
             min-width: 500px;
             border-radius: 0 20px 0 20px;
             padding: 20px 20px;
-            flex-grow: 1;
+            flex: 1;
             &.events {
               display: flex;
               flex-direction: column;
               gap: 20px;
+              .label {
+                padding: 4px 0;
+                border-bottom: 2px solid $line-color;
+              }
             }
             .date {
               text-align: center;
@@ -96,6 +102,7 @@
               border-radius: 10px;
             }
             .info {
+              width: 100%;
               text-align: center;
             }
             .spot {
@@ -128,24 +135,6 @@
             min-width: 100%;
             .item {
               min-width: 100%;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 1590px) {
-  .home {
-    .container {
-      .content {
-        .block {
-          &.applications, &.reports {
-            .items {
-              .item {
-
-              }
             }
           }
         }
