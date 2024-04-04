@@ -151,6 +151,10 @@ footer .container .content .block .item .text {
   flex-direction: column;
   gap: 20px;
 }
+.home .container .content .block .items .item.events .label {
+  padding: 4px 0;
+  border-bottom: 2px solid #3C3F58;
+}
 .home .container .content .block .items .item .date {
   text-align: center;
 }
