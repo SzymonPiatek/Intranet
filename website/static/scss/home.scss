@@ -52,12 +52,12 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                text-overflow: ellipsis;
               }
               &.grid {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 .spot {
+                  min-height: 120px;
                   &:first-child {
                     grid-column: 1 / span 2;
                   }
@@ -128,24 +128,6 @@
             min-width: 100%;
             .item {
               min-width: 100%;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 1590px) {
-  .home {
-    .container {
-      .content {
-        .block {
-          &.applications, &.reports {
-            .items {
-              .item {
-
-              }
             }
           }
         }

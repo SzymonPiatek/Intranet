@@ -120,11 +120,13 @@ footer .container .content .block .item .text {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-overflow: ellipsis;
 }
 .home .container .content .block.applications .items .item.grid, .home .container .content .block.reports .items .item.grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+.home .container .content .block.applications .items .item.grid .spot, .home .container .content .block.reports .items .item.grid .spot {
+  min-height: 120px;
 }
 .home .container .content .block.applications .items .item.grid .spot:first-child, .home .container .content .block.reports .items .item.grid .spot:first-child {
   grid-column: 1/span 2;
