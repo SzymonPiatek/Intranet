@@ -79,7 +79,7 @@
             min-width: 500px;
             border-radius: 0 20px 0 20px;
             padding: 20px 20px;
-            flex-grow: 1;
+            flex: 1;
             &.events {
               display: flex;
               flex-direction: column;
@@ -96,6 +96,7 @@
               border-radius: 10px;
             }
             .info {
+              width: 100%;
               text-align: center;
             }
             .spot {
