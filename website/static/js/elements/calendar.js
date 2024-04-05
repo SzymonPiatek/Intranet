@@ -31,25 +31,18 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     function addHolidaysToCalendar(year) {
-        holidays.forEach(holiday => {
+        const allHolidays = holidays.concat(relaxedHolidays);
+        allHolidays.forEach(holiday => {
             const [month, day] = holiday.date.split('-');
             const holidayDate = new Date(year, month - 1, day);
             const holidayDateString = holidayDate.toISOString().split('T')[0];
             const holidayDiv = daysContainer.querySelector(`.day[data-date="${holidayDateString}"]`);
             if (holidayDiv) {
-                holidayDiv.classList.add('holiday');
-            }
-        });
-    }
-
-    function addRelaxedHolidaysToCalendar(year) {
-        relaxedHolidays.forEach(holiday => {
-            const [month, day] = holiday.date.split('-');
-            const holidayDate = new Date(year, month - 1, day);
-            const holidayDateString = holidayDate.toISOString().split('T')[0];
-            const holidayDiv = daysContainer.querySelector(`.day[data-date="${holidayDateString}"]`);
-            if (holidayDiv) {
-                holidayDiv.classList.add('relaxed');
+                if (holidays.includes(holiday)) {
+                    holidayDiv.classList.add('holiday');
+                } else if (relaxedHolidays.includes(holiday)) {
+                    holidayDiv.classList.add('relaxed');
+                }
             }
         });
     }
@@ -71,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const holidayInfoDiv = document.createElement('div');
             holidayInfoDiv.classList.add("info");
-            holidayInfoH2 = document.createElement("h2");
+            const holidayInfoH2 = document.createElement("h2");
             holidayInfoH2.textContent = holidayName;
             holidayInfoDiv.appendChild(holidayInfoH2);
             eventsContainer.appendChild(holidayInfoDiv);
@@ -108,7 +101,6 @@ document.addEventListener('DOMContentLoaded', function() {
             daysContainer.appendChild(day);
         }
         addHolidaysToCalendar(year);
-        addRelaxedHolidaysToCalendar(year);
     }
 
     function showDateEvent(date, eventsContainer) {
