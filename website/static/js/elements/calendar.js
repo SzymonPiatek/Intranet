@@ -120,39 +120,48 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function showEvents(date) {
-        eventsContainer.innerHTML = '';
+    eventsContainer.innerHTML = '';
 
-        showDateEvent(date, eventsContainer);
-        addHolidayInfo(new Date(date), eventsContainer);
-        showParkingBookings(date, eventsContainer);
-    }
+    showDateEvent(date, eventsContainer);
+    showParkingBookings(date, eventsContainer)
+        .then(() => {
+            addHolidayInfo(new Date(date), eventsContainer);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
 
     function showParkingBookings(date, eventsContainer) {
-        const url = parkingBookingContainer.getAttribute('data-url') + '?date=' + date;
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                const labelDiv = Object.assign(document.createElement('div'), {className: 'label'});
-                labelDiv.innerHTML = "Parking";
-                eventsContainer.appendChild(labelDiv);
+        return new Promise((resolve, reject) => {
+            const url = parkingBookingContainer.getAttribute('data-url') + '?date=' + date;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Parking data fetched");
+                    const labelDiv = Object.assign(document.createElement('div'), {className: 'label'});
+                    labelDiv.innerHTML = "Parking";
+                    eventsContainer.appendChild(labelDiv);
 
-                if (data.hasOwnProperty('parking_booking')) {
-                    const booking = data.parking_booking;
-                    const bookingDiv = Object.assign(document.createElement('div'), {className: 'spot'});
-                    bookingDiv.innerHTML = `<i class="fa-solid fa-car"></i>Spot ${booking.spot} - ${booking.type}`;
-                    eventsContainer.appendChild(bookingDiv);
-                } else if (data.hasOwnProperty('info')) {
-                    const info = data.info;
-                    const infoDiv = Object.assign(document.createElement('div'), {className: 'info'});
-                    const infoElement = document.createElement('h2');
-                    infoElement.innerHTML = (info);
-                    infoDiv.appendChild(infoElement);
-                    eventsContainer.appendChild(infoDiv);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+                    if (data.hasOwnProperty('parking_booking')) {
+                        const booking = data.parking_booking;
+                        const bookingDiv = Object.assign(document.createElement('div'), {className: 'spot'});
+                        bookingDiv.innerHTML = `<i class="fa-solid fa-car"></i>Spot ${booking.spot} - ${booking.type}`;
+                        eventsContainer.appendChild(bookingDiv);
+                    } else if (data.hasOwnProperty('info')) {
+                        const info = data.info;
+                        const infoDiv = Object.assign(document.createElement('div'), {className: 'info'});
+                        const infoElement = document.createElement('h2');
+                        infoElement.innerHTML = (info);
+                        infoDiv.appendChild(infoElement);
+                        eventsContainer.appendChild(infoDiv);
+                    }
+                    resolve();
+                })
+                .catch(error => {
+                    reject(error);
+                });
+        });
     }
 
     prevMonthButton.addEventListener('click', function() {

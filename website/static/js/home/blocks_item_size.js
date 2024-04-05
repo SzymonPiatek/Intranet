@@ -12,15 +12,12 @@ $(document).ready(function() {
 
     function handleResize(elementId, minWidth) {
         let block = document.getElementById(elementId);
-        console.log("Szerokość początkowa bloku:", block.offsetWidth);
 
         window.addEventListener('resize', function() {
             updateGrid(block, minWidth);
         });
 
         updateGrid(block, minWidth);
-
-        return updateGrid;
     }
 
     handleResize('applicationsBlock', 760);
