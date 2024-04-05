@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentMonthDisplay = document.getElementById('currentMonth');
     const daysContainer = document.querySelector('.calendar .days');
     const parkingBookingContainer = document.getElementById('eventParkingBooking');
+    const eventsContainer = document.getElementById('eventsContainer');
+
 
     let currentDate = new Date();
 
@@ -29,35 +31,44 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     function addHolidaysToCalendar(year) {
-        holidays.forEach(holiday => {
+        const allHolidays = holidays.concat(relaxedHolidays);
+        allHolidays.forEach(holiday => {
             const [month, day] = holiday.date.split('-');
             const holidayDate = new Date(year, month - 1, day);
             const holidayDateString = holidayDate.toISOString().split('T')[0];
             const holidayDiv = daysContainer.querySelector(`.day[data-date="${holidayDateString}"]`);
             if (holidayDiv) {
-                holidayDiv.classList.add('holiday');
-                const holidayNameDiv = document.createElement('div');
-                holidayNameDiv.classList.add('holiday-name');
-                holidayNameDiv.textContent = holiday.name;
-                holidayDiv.appendChild(holidayNameDiv);
+                if (holidays.includes(holiday)) {
+                    holidayDiv.classList.add('holiday');
+                } else if (relaxedHolidays.includes(holiday)) {
+                    holidayDiv.classList.add('relaxed');
+                }
             }
         });
     }
 
-    function addRelaxedHolidaysToCalendar(year) {
-        relaxedHolidays.forEach(holiday => {
-            const [month, day] = holiday.date.split('-');
-            const holidayDate = new Date(year, month - 1, day);
-            const holidayDateString = holidayDate.toISOString().split('T')[0];
-            const holidayDiv = daysContainer.querySelector(`.day[data-date="${holidayDateString}"]`);
-            if (holidayDiv) {
-                holidayDiv.classList.add('relaxed');
-                const holidayNameDiv = document.createElement('div');
-                holidayNameDiv.classList.add('holiday-name');
-                holidayNameDiv.textContent = holiday.name;
-                holidayDiv.appendChild(holidayNameDiv);
-            }
-        });
+    function getHolidayName(date) {
+        const formattedDate = date.toISOString().split('T')[0].substring(5); // Formatted as MM-DD
+        const allHolidays = holidays.concat(relaxedHolidays);
+        const holiday = allHolidays.find(holiday => holiday.date === formattedDate);
+        return holiday ? holiday.name : null;
+    }
+
+    function addHolidayInfo(date, eventsContainer) {
+        const holidayName = getHolidayName(date);
+        if (holidayName) {
+            const holidayLabelDiv = document.createElement('div');
+            holidayLabelDiv.classList.add("label");
+            holidayLabelDiv.textContent = `Holiday`;
+            eventsContainer.appendChild(holidayLabelDiv);
+
+            const holidayInfoDiv = document.createElement('div');
+            holidayInfoDiv.classList.add("info");
+            const holidayInfoH2 = document.createElement("h2");
+            holidayInfoH2.textContent = holidayName;
+            holidayInfoDiv.appendChild(holidayInfoH2);
+            eventsContainer.appendChild(holidayInfoDiv);
+        }
     }
 
     function renderCalendar() {
@@ -90,43 +101,59 @@ document.addEventListener('DOMContentLoaded', function() {
             daysContainer.appendChild(day);
         }
         addHolidaysToCalendar(year);
-        addRelaxedHolidaysToCalendar(year);
     }
 
-    function showParkingBookings(date) {
-        const url = parkingBookingContainer.getAttribute('data-url') + '?date=' + date;
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                const eventsContainer = document.getElementById('eventsContainer');
-                eventsContainer.innerHTML = '';
-                const dateDiv = Object.assign(document.createElement('div'), {className: 'date'});
-                const dateText = document.createElement('h2');
-                dateText.textContent = date;
-                dateDiv.appendChild(dateText);
-                eventsContainer.appendChild(dateDiv);
+    function showDateEvent(date, eventsContainer) {
+        const dateDiv = Object.assign(document.createElement('div'), {className: 'date'});
+        const dateText = document.createElement('h2');
+        dateText.textContent = date;
+        dateDiv.appendChild(dateText);
+        eventsContainer.appendChild(dateDiv);
+    }
 
-                const labelDiv = Object.assign(document.createElement('div'), {className: 'label'});
-                labelDiv.innerHTML = "Parking";
-                eventsContainer.appendChild(labelDiv);
+    function showEvents(date) {
+    eventsContainer.innerHTML = '';
 
-                if (data.hasOwnProperty('parking_booking')) {
-                    const booking = data.parking_booking;
-                    const bookingDiv = Object.assign(document.createElement('div'), {className: 'spot'});
-                    bookingDiv.innerHTML = `<i class="fa-solid fa-car"></i>Spot ${booking.spot} - ${booking.type}`;
-                    eventsContainer.appendChild(bookingDiv);
-                } else if (data.hasOwnProperty('info')) {
-                    const info = data.info;
-                    const infoDiv = Object.assign(document.createElement('div'), {className: 'info'});
-                    const infoElement = document.createElement('h2');
-                    infoElement.innerHTML = (info);
-                    infoDiv.appendChild(infoElement);
-                    eventsContainer.appendChild(infoDiv);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+    showDateEvent(date, eventsContainer);
+    showParkingBookings(date, eventsContainer)
+        .then(() => {
+            addHolidayInfo(new Date(date), eventsContainer);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+    function showParkingBookings(date, eventsContainer) {
+        return new Promise((resolve, reject) => {
+            const url = parkingBookingContainer.getAttribute('data-url') + '?date=' + date;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Parking data fetched");
+                    const labelDiv = Object.assign(document.createElement('div'), {className: 'label'});
+                    labelDiv.innerHTML = "Parking";
+                    eventsContainer.appendChild(labelDiv);
+
+                    if (data.hasOwnProperty('parking_booking')) {
+                        const booking = data.parking_booking;
+                        const bookingDiv = Object.assign(document.createElement('div'), {className: 'spot'});
+                        bookingDiv.innerHTML = `<i class="fa-solid fa-car"></i>Spot ${booking.spot} - ${booking.type}`;
+                        eventsContainer.appendChild(bookingDiv);
+                    } else if (data.hasOwnProperty('info')) {
+                        const info = data.info;
+                        const infoDiv = Object.assign(document.createElement('div'), {className: 'info'});
+                        const infoElement = document.createElement('h2');
+                        infoElement.innerHTML = (info);
+                        infoDiv.appendChild(infoElement);
+                        eventsContainer.appendChild(infoDiv);
+                    }
+                    resolve();
+                })
+                .catch(error => {
+                    reject(error);
+                });
+        });
     }
 
     prevMonthButton.addEventListener('click', function() {
@@ -145,16 +172,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const allDays = daysContainer.querySelectorAll('.day');
             allDays.forEach(day => day.classList.remove('selected'));
 
-            clickedDay.classList.add('selected')
+            clickedDay.classList.add('selected');
             let date = new Date(clickedDay.getAttribute('data-date'));
             date.setDate(date.getDate() + 1);
             const formattedDate = date.toISOString().split('T')[0];
-            showParkingBookings(formattedDate);
+            showEvents(formattedDate);
         }
     });
 
     renderCalendar();
 
     const todayDate = currentDate.toISOString().split('T')[0];
-    showParkingBookings(todayDate);
+    showEvents(todayDate);
 });
