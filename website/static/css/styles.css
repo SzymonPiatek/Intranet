@@ -153,7 +153,7 @@ footer .container .content .block .item .text {
 .home .container .content .block .items .item.events {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
 }
 .home .container .content .block .items .item.events .label {
   padding: 4px 0;

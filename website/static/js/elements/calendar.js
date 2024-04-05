@@ -36,10 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const holidayDiv = daysContainer.querySelector(`.day[data-date="${holidayDateString}"]`);
             if (holidayDiv) {
                 holidayDiv.classList.add('holiday');
-                const holidayNameDiv = document.createElement('div');
-                holidayNameDiv.classList.add('holiday-name');
-                holidayNameDiv.textContent = holiday.name;
-                holidayDiv.appendChild(holidayNameDiv);
             }
         });
     }
@@ -52,12 +48,32 @@ document.addEventListener('DOMContentLoaded', function() {
             const holidayDiv = daysContainer.querySelector(`.day[data-date="${holidayDateString}"]`);
             if (holidayDiv) {
                 holidayDiv.classList.add('relaxed');
-                const holidayNameDiv = document.createElement('div');
-                holidayNameDiv.classList.add('holiday-name');
-                holidayNameDiv.textContent = holiday.name;
-                holidayDiv.appendChild(holidayNameDiv);
             }
         });
+    }
+
+    function getHolidayName(date) {
+        const formattedDate = date.toISOString().split('T')[0].substring(5); // Formatted as MM-DD
+        const allHolidays = holidays.concat(relaxedHolidays);
+        const holiday = allHolidays.find(holiday => holiday.date === formattedDate);
+        return holiday ? holiday.name : null;
+    }
+
+    function addHolidayInfo(date, eventsContainer) {
+        const holidayName = getHolidayName(date);
+        if (holidayName) {
+            const holidayLabelDiv = document.createElement('div');
+            holidayLabelDiv.classList.add("label");
+            holidayLabelDiv.textContent = `Holiday`;
+            eventsContainer.appendChild(holidayLabelDiv);
+
+            const holidayInfoDiv = document.createElement('div');
+            holidayInfoDiv.classList.add("info");
+            holidayInfoH2 = document.createElement("h2");
+            holidayInfoH2.textContent = holidayName;
+            holidayInfoDiv.appendChild(holidayInfoH2);
+            eventsContainer.appendChild(holidayInfoDiv);
+        }
     }
 
     function renderCalendar() {
@@ -123,6 +139,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     infoDiv.appendChild(infoElement);
                     eventsContainer.appendChild(infoDiv);
                 }
+
+                addHolidayInfo(new Date(date), eventsContainer);
+
             })
             .catch(error => {
                 console.error('Error:', error);
