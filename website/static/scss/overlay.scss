@@ -48,7 +48,33 @@
         }
         .label {
           padding: 4px 0;
+          margin-bottom: 20px;
           border-bottom: 2px solid $line-color;
+        }
+        .elements {
+          form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            .item {
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              gap: 8px;
+              label {
+                font-size: 1rem;
+              }
+              input, select {
+                font-size: 1.8rem;
+                option {
+                  background: $overlay-option-background;
+                  &:hover {
+                    background: $overlay-hover-background;
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

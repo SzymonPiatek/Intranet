@@ -231,11 +231,7 @@ footer .container .content .block .item .text {
   margin-bottom: 4px;
 }
 .login .container .content form .item input {
-  border: none;
   font-size: 2rem;
-  color: #000;
-  border-radius: 12px;
-  text-indent: 8px;
 }
 .login .container .content form button {
   background: #ba5f3b;
@@ -370,7 +366,31 @@ footer .container .content .block .item .text {
 }
 #overlay .container .content .block .label {
   padding: 4px 0;
+  margin-bottom: 20px;
   border-bottom: 2px solid #3C3F58;
+}
+#overlay .container .content .block .elements form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#overlay .container .content .block .elements form .item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#overlay .container .content .block .elements form .item label {
+  font-size: 1rem;
+}
+#overlay .container .content .block .elements form .item input, #overlay .container .content .block .elements form .item select {
+  font-size: 1.8rem;
+}
+#overlay .container .content .block .elements form .item input option, #overlay .container .content .block .elements form .item select option {
+  background: #707793;
+}
+#overlay .container .content .block .elements form .item input option:hover, #overlay .container .content .block .elements form .item select option:hover {
+  background: #ba5f3b;
 }
 
 @keyframes fadeIn {
@@ -410,12 +430,19 @@ button {
   cursor: pointer;
 }
 
+input, select {
+  border: none;
+  color: #000;
+  border-radius: 12px;
+  text-indent: 8px;
+}
+
 .container {
   width: 2100px;
   max-width: 100%;
 }
 
-.shadow, nav, .home .container .content .block .items .item, .home .container .content .block .items .item .booking, .home .container .content .block .items .item .spot, .login .container .content form .item input, .login .container .content form button, .calendar .days .day, #overlay .container .content .block {
+.shadow, nav, .home .container .content .block .items .item, .home .container .content .block .items .item .booking, .home .container .content .block .items .item .spot, .login .container .content form button, .calendar .days .day, #overlay .container .content .block, input, select {
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 

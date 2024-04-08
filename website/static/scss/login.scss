@@ -27,12 +27,7 @@
             margin-bottom: 4px;
           }
           input {
-            @extend .shadow;
-            border: none;
             font-size: 2rem;
-            color: $text-color-2;
-            border-radius: 12px;
-            text-indent: 8px;
           }
         }
         button {

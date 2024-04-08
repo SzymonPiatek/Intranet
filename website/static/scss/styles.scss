@@ -35,6 +35,14 @@ button {
   cursor: pointer;
 }
 
+input, select {
+  @extend .shadow;
+  border: none;
+  color: $text-color-2;
+  border-radius: 12px;
+  text-indent: 8px;
+}
+
 .container {
   width: 2100px;
   max-width: 100%;
