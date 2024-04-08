@@ -375,6 +375,7 @@ footer .container .content .block .item .text {
 }
 #overlay .container .content .block .elements {
   height: 100%;
+  position: relative;
 }
 #overlay .container .content .block .elements form {
   height: 100%;
@@ -397,15 +398,8 @@ footer .container .content .block .item .text {
 #overlay .container .content .block .elements form .items .item label {
   font-size: 1rem;
 }
-#overlay .container .content .block .elements form .items .item input, #overlay .container .content .block .elements form .items .item select {
+#overlay .container .content .block .elements form .items .item input, #overlay .container .content .block .elements form .items .item .options {
   font-size: 1.8rem;
-}
-#overlay .container .content .block .elements form .items .item input option, #overlay .container .content .block .elements form .items .item select option {
-  font-size: 1.2rem;
-  background: #707793;
-}
-#overlay .container .content .block .elements form .items .item input option:hover, #overlay .container .content .block .elements form .items .item select option:hover {
-  background: #ba5f3b;
 }
 #overlay .container .content .block .elements form .items .item .drop_box {
   display: flex;
@@ -419,6 +413,30 @@ footer .container .content .block .item .text {
 }
 #overlay .container .content .block .elements form .items .item .drop_box p {
   color: #a3a3a3;
+}
+#overlay .container .content .block .elements form .items .item .options {
+  cursor: pointer;
+  width: 100%;
+  max-height: 260px;
+  border-radius: 12px;
+  background: #707793;
+}
+#overlay .container .content .block .elements form .items .item .options.opened {
+  position: absolute;
+  overflow-y: scroll;
+}
+#overlay .container .content .block .elements form .items .item .options .option {
+  width: 100%;
+  font-size: 1.8rem;
+  padding: 2px;
+  text-indent: 8px;
+  border-radius: 12px;
+}
+#overlay .container .content .block .elements form .items .item .options .option:nth-child(1) {
+  background: #5d5f77;
+}
+#overlay .container .content .block .elements form .items .item .options .option:hover {
+  background: #5d5f77;
 }
 #overlay .container .content .block .elements form button {
   background: #ba5f3b;

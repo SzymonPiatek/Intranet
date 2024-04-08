@@ -55,6 +55,7 @@
         }
         .elements {
           height: 100%;
+          position: relative;
           form {
             height: 100%;
             display: flex;
@@ -73,15 +74,8 @@
                 label {
                   font-size: 1rem;
                 }
-                input, select {
+                input, .options {
                   font-size: 1.8rem;
-                  option {
-                    font-size: 1.2rem;
-                    background: $overlay-option-background;
-                    &:hover {
-                      background: $overlay-hover-background;
-                    }
-                  }
                 }
                 .drop_box {
                   display: flex;
@@ -94,6 +88,30 @@
                   gap: 30px;
                   p {
                     color: $text-color-3;
+                  }
+                }
+                .options {
+                  cursor: pointer;
+                  width: 100%;
+                  max-height: 260px;
+                  border-radius: 12px;
+                  background: $overlay-option-background;
+                  &.opened {
+                    position: absolute;
+                    overflow-y: scroll;
+                  }
+                  .option {
+                    width: 100%;
+                    font-size: 1.8rem;
+                    padding: 2px;
+                    text-indent: 8px;
+                    border-radius: 12px;
+                    &:nth-child(1) {
+                      background: $overlay-hover-option-background;
+                    }
+                    &:hover {
+                      background: $overlay-hover-option-background;
+                    }
                   }
                 }
               }
