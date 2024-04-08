@@ -1,0 +1,30 @@
+@import "colors";
+
+
+#overlay {
+  height: 100dvh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  display: none;
+  justify-content: center;
+  .container {
+    display: flex;
+    align-items: center;
+    .content {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      #createApplication {
+        height: 1000px;
+        max-height: 100dvh;
+        width: 1000px;
+        max-width: 100%;
+        background: blue;
+      }
+    }
+  }
+}

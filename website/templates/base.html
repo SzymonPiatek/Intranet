@@ -27,14 +27,15 @@
     <script src="{% static 'js/parkings/parking_data.js' %}"></script>
 <!-- Block's item size (grid) -->
     <script src="{% static 'js/home/blocks_item_size.js' %}"></script>
-
+<!-- Applications -->
+    <script src="{% static 'js/applications/create_application.js' %}"></script>
 </head>
 <body>
     {% include 'elements/navbar.html' %}
     <main>
     {% block content %} {% endblock content %}
+    {% include 'elements/overlay.html' %}
     {% include 'elements/footer.html' %}
-
     </main>
 </body>
 </html>
