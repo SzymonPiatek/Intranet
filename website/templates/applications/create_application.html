@@ -5,28 +5,30 @@
 </div>
 
 <div class="label">
-    <h2>
-        Create application
-    </h2>
+    <h1>Create application</h1>
 </div>
 <div class="elements">
-    <form action="">
-        <div class="item">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
+    <form>
+        <div class="items">
+            <div class="item">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="item">
+                <label for="status">Status</label>
+                <select name="status" id="status">
+                    {% for status in application_statuses %}
+                        <option value="{{ status }}">{{ status }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="item">
+                <label for="file">File</label>
+                <input type="file" id="file" name="file" required>
+            </div>
         </div>
-        <div class="item">
-            <label for="status">Status</label>
-            <select name="status" id="status">
-                {% for status in application_statuses %}
-                    <option value="{{ status }}">{{ status }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="item">
-            <label for="file">File</label>
-            <input type="file" id="file" name="file" required>
-        </div>
-        <button type="submit">Send</button>
+        <button type="submit">
+            <h1>Submit</h1>
+        </button>
     </form>
 </div>

@@ -27,6 +27,9 @@ nav .container .content .side .item, nav .container .content .side button {
   gap: 10px;
   cursor: pointer;
 }
+nav .container .content .side .item.logo *, nav .container .content .side button.logo * {
+  font-family: "Audiowide", sans-serif;
+}
 nav .container .content .side .item *, nav .container .content .side button * {
   color: #FFF;
 }
@@ -353,6 +356,7 @@ footer .container .content .block .item .text {
   position: relative;
   display: flex;
   flex-direction: column;
+  border: 1px solid #000;
 }
 #overlay .container .content .block .close {
   position: absolute;
@@ -366,31 +370,49 @@ footer .container .content .block .item .text {
 }
 #overlay .container .content .block .label {
   padding: 4px 0;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   border-bottom: 2px solid #3C3F58;
 }
+#overlay .container .content .block .elements {
+  height: 100%;
+}
 #overlay .container .content .block .elements form {
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 20px;
 }
-#overlay .container .content .block .elements form .item {
+#overlay .container .content .block .elements form .items {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+#overlay .container .content .block .elements form .items .item {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-#overlay .container .content .block .elements form .item label {
+#overlay .container .content .block .elements form .items .item label {
   font-size: 1rem;
 }
-#overlay .container .content .block .elements form .item input, #overlay .container .content .block .elements form .item select {
+#overlay .container .content .block .elements form .items .item input, #overlay .container .content .block .elements form .items .item select {
   font-size: 1.8rem;
 }
-#overlay .container .content .block .elements form .item input option, #overlay .container .content .block .elements form .item select option {
+#overlay .container .content .block .elements form .items .item input option, #overlay .container .content .block .elements form .items .item select option {
   background: #707793;
 }
-#overlay .container .content .block .elements form .item input option:hover, #overlay .container .content .block .elements form .item select option:hover {
+#overlay .container .content .block .elements form .items .item input option:hover, #overlay .container .content .block .elements form .items .item select option:hover {
   background: #ba5f3b;
+}
+#overlay .container .content .block .elements form button {
+  background: #ba5f3b;
+  padding: 12px 40px;
+  border-radius: 12px;
+}
+#overlay .container .content .block .elements form button:hover {
+  background: #a75535;
 }
 
 @keyframes fadeIn {
@@ -407,7 +429,7 @@ footer .container .content .block .item .text {
   padding: 0;
   text-decoration: none;
   list-style: none;
-  font-family: "Audiowide", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #FFF;
@@ -442,7 +464,7 @@ input, select {
   max-width: 100%;
 }
 
-.shadow, nav, .home .container .content .block .items .item, .home .container .content .block .items .item .booking, .home .container .content .block .items .item .spot, .login .container .content form button, .calendar .days .day, #overlay .container .content .block, input, select {
+.shadow, nav, .home .container .content .block .items .item, .home .container .content .block .items .item .booking, .home .container .content .block .items .item .spot, .login .container .content form button, .calendar .days .day, #overlay .container .content .block, #overlay .container .content .block .close, #overlay .container .content .block .elements form button, input, select {
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
