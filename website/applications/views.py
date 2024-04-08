@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from .models import Status
 
-# Create your views here.
+
+def get_all_statuses_view(request):
+    all_statuses = Status.objects.all()
+    app_statuses = []
+    for status in all_statuses:
+        app_statuses.append(status.name)
+    return JsonResponse({'app_statuses': app_statuses})

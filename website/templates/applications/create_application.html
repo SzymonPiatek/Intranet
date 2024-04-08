@@ -16,6 +16,7 @@
             </div>
             <div class="item">
                 <h2>Status</h2>
+                <div id="appStatusUrl" style="display: none" data-url="{% url 'get_all_statuses_page' %}"></div>
                 <div class="select">
                     <div class="options" id="options">
                         <div class="hide-option option" id="hide-option">
@@ -42,7 +43,19 @@
 
 <script>
 let options = document.getElementById("options");
-let optionList = ["San Francisco", "Los Angeles", "New York", "Las Vegas", "Miami", "Houston", "Seattle"];
+let optionList = [];
+
+const appStatusUrl = document.getElementById('appStatusUrl');
+const url = appStatusUrl.getAttribute('data-url');
+fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        optionList = data.app_statuses;
+        console.log(optionList);
+    })
+    .catch(error => {
+        console.error('Error', error);
+    });
 
 let isOpen = false;
 
