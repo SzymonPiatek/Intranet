@@ -6,41 +6,38 @@ document.addEventListener('DOMContentLoaded', function() {
     const parkingBookingContainer = document.getElementById('eventParkingBooking');
     const eventsContainer = document.getElementById('eventsContainer');
 
-
     let currentDate = new Date();
 
-    const holidays = [
-        { date: "01-01", name: "New Year" },
-        { date: "01-06", name: "Epiphany" },
-        { date: "11-11", name: "National Independence Day" },
-        { date: "12-24", name: "Christmas Eve" },
-        { date: "12-25", name: "1st Christmas Day" },
-        { date: "12-26", name: "2nd Christmas Day" },
-        { date: "12-31", name: "New Year's Eve" },
-    ];
 
-    const relaxedHolidays = [
-        { date: "02-14", name: "Valentine's Day" },
-        { date: "02-16", name: "Fat Thursday" },
-        { date: "03-08", name: "Women's Day" },
-        { date: "05-01", name: "Working Day" },
-        { date: "05-26", name: "Mother's Day" },
-        { date: "06-01", name: "Children's Day" },
-        { date: "06-23", name: "Father's Day" },
-        { date: "12-06", name: "Saint Nicholas' Day" },
+    const holidays = [
+        { date: "01-01", name: "New Year", value: "important" },
+        { date: "01-06", name: "Epiphany", value: "important" },
+        { date: "02-14", name: "Valentine's Day", value: "not-important" },
+        { date: "02-16", name: "Fat Thursday", value: "not-important" },
+        { date: "03-08", name: "Women's Day", value: "not-important" },
+        { date: "05-01", name: "Working Day", value: "not-important" },
+        { date: "05-26", name: "Mother's Day", value: "not-important" },
+        { date: "06-01", name: "Children's Day", value: "not-important" },
+        { date: "06-23", name: "Father's Day", value: "not-important" },
+        { date: "11-11", name: "National Independence Day", value: "important" },
+        { date: "12-06", name: "Saint Nicholas' Day", value: "not-important" },
+        { date: "12-24", name: "Christmas Eve", value: "important" },
+        { date: "12-25", name: "1st Christmas Day", value: "important" },
+        { date: "12-26", name: "2nd Christmas Day", value: "important" },
+        { date: "12-31", name: "New Year's Eve", value: "important" },
     ];
 
     function addHolidaysToCalendar(year) {
-        const allHolidays = holidays.concat(relaxedHolidays);
-        allHolidays.forEach(holiday => {
+        holidays.forEach(holiday => {
             const [month, day] = holiday.date.split('-');
             const holidayDate = new Date(year, month - 1, day);
             const holidayDateString = holidayDate.toISOString().split('T')[0];
             const holidayDiv = daysContainer.querySelector(`.day[data-date="${holidayDateString}"]`);
+
             if (holidayDiv) {
-                if (holidays.includes(holiday)) {
+                if (holiday.value === 'important') {
                     holidayDiv.classList.add('holiday');
-                } else if (relaxedHolidays.includes(holiday)) {
+                } else if (holiday.value === 'not-important') {
                     holidayDiv.classList.add('relaxed');
                 }
             }
@@ -49,23 +46,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function getHolidayName(date) {
         const formattedDate = date.toISOString().split('T')[0].substring(5);
-        const allHolidays = holidays.concat(relaxedHolidays);
-        const holiday = allHolidays.find(holiday => holiday.date === formattedDate);
+        const holiday = holidays.find(holiday => holiday.date === formattedDate);
         return holiday ? holiday.name : null;
     }
 
     function addHolidayInfo(date, eventsContainer) {
         const holidayName = getHolidayName(date);
         if (holidayName) {
-            const holidayLabelDiv = document.createElement('div');
-            holidayLabelDiv.classList.add("label");
-            holidayLabelDiv.textContent = `Holiday`;
+            const holidayLabelDiv = Object.assign(document.createElement('div'),
+                {className: "label", textContent: "Holiday"});
             eventsContainer.appendChild(holidayLabelDiv);
 
-            const holidayInfoDiv = document.createElement('div');
-            holidayInfoDiv.classList.add("info");
-            const holidayInfoH2 = document.createElement("h2");
-            holidayInfoH2.textContent = holidayName;
+            const holidayInfoDiv = Object.assign(document.createElement('div'),
+                {className: "info"});
+            const holidayInfoH2 = Object.assign(document.createElement('h2'),
+                {textContent: holidayName});
             holidayInfoDiv.appendChild(holidayInfoH2);
             eventsContainer.appendChild(holidayInfoDiv);
         }
@@ -76,27 +71,30 @@ document.addEventListener('DOMContentLoaded', function() {
         let month = currentDate.getMonth();
         let daysInMonth = new Date(year, month + 1, 0).getDate();
         let firstDayOfMonth = new Date(year, month, 0).getDay();
-        currentMonthDisplay.textContent = new Date(year, month).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+        currentMonthDisplay.textContent = new Date(year, month).toLocaleDateString('en-US',
+            { month: 'long', year: 'numeric' });
 
         daysContainer.innerHTML = '';
 
         for (let i = 0; i < firstDayOfMonth; i++) {
-            let emptyDay = Object.assign(document.createElement('div'), {className: 'day empty'});
+            let emptyDay = Object.assign(document.createElement('div'),
+                {className: 'day empty'});
             daysContainer.appendChild(emptyDay);
         }
 
         for (let i = 1; i <= daysInMonth; i++) {
-            let day = Object.assign(document.createElement('div'), {className: 'day'});
-            day.textContent = i;
+            let day = Object.assign(document.createElement('div'),
+                {className: 'day', textContent: i});
             day.setAttribute('data-date', new Date(year, month, i).toISOString().split('T')[0]);
-            if (year === new Date().getFullYear() && month === new Date().getMonth() && i === new Date().getDate()) {
-                day.classList.add('today');
-            }
+
             if ([6, 0].includes(new Date(year, month, i).getDay())) {
                 day.classList.add('weekend');
             }
             if (new Date(year, month, i+1) < new Date()) {
                 day.classList.add('past');
+            }
+            if (year === new Date().getFullYear() && month === new Date().getMonth() && i === new Date().getDate()) {
+                day.classList.add('today');
             }
             daysContainer.appendChild(day);
         }
@@ -104,9 +102,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function showDateEvent(date, eventsContainer) {
-        const dateDiv = Object.assign(document.createElement('div'), {className: 'date'});
-        const dateText = document.createElement('h2');
-        dateText.textContent = date;
+        const dateDiv = Object.assign(document.createElement('div'),
+            {className: 'date'});
+        const dateText = Object.assign(document.createElement('h2'),
+            {textContent: date});
         dateDiv.appendChild(dateText);
         eventsContainer.appendChild(dateDiv);
     }
@@ -131,20 +130,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(response => response.json())
                 .then(data => {
                     console.log("Parking data fetched");
-                    const labelDiv = Object.assign(document.createElement('div'), {className: 'label'});
-                    labelDiv.innerHTML = "Parking";
+                    const labelDiv = Object.assign(document.createElement('div'),
+                        {className: 'label', textContent: "Parking"});
                     eventsContainer.appendChild(labelDiv);
 
                     if (data.hasOwnProperty('parking_booking')) {
                         const booking = data.parking_booking;
-                        const bookingDiv = Object.assign(document.createElement('div'), {className: 'spot'});
-                        bookingDiv.innerHTML = `<i class="fa-solid fa-car"></i>Spot ${booking.spot} - ${booking.type}`;
+                        const bookingDiv = Object.assign(document.createElement('div'),
+                            {className: 'spot',
+                                innerHTML: `<i class="fa-solid fa-car"></i>Spot ${booking.spot} - ${booking.type}`});
                         eventsContainer.appendChild(bookingDiv);
                     } else if (data.hasOwnProperty('info')) {
                         const info = data.info;
-                        const infoDiv = Object.assign(document.createElement('div'), {className: 'info'});
-                        const infoElement = document.createElement('h2');
-                        infoElement.innerHTML = (info);
+                        const infoDiv = Object.assign(document.createElement('div'),
+                            {className: 'info'});
+                        const infoElement = Object.assign(document.createElement('h2'),
+                            {textContent: info});
                         infoDiv.appendChild(infoElement);
                         eventsContainer.appendChild(infoDiv);
                     }

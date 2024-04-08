@@ -28,6 +28,9 @@
       padding: 20px 10px;
       border-radius: 4px;
       cursor: pointer;
+      &:hover {
+         background: darken($calendar-day-background, 5);
+      }
       &.empty {
         background: none;
         cursor: default;
@@ -36,26 +39,41 @@
       &.weekend {
         background: $calendar-weekend-background;
         color: $calendar-weekend-color;
+        &:hover {
+          background: darken($calendar-weekend-background, 5);
+        }
       }
       &.relaxed {
         background: $calendar-relaxed-background;
+        &:hover {
+          background: darken($calendar-relaxed-background, 5);
+        }
       }
       &.holiday {
         background: $calendar-holiday-background;
+        &:hover {
+          background: darken($calendar-holiday-background, 5);
+        }
       }
       &.past {
         background: $calendar-past-background;
         color: $calendar-past-color;
+        &:hover {
+          background: darken($calendar-past-background, 5);
+        }
       }
       &.today {
         background: $calendar-today-background;
+        &:hover {
+          background: darken($calendar-today-background, 5);
+        }
       }
       &.selected {
         background: $calendar-selected-background;
         color: $text-color;
-      }
-      &:hover {
-        background: darken($booking-background, 5);
+        &:hover {
+          background: darken($calendar-selected-background, 5);
+        }
       }
     }
   }

@@ -272,6 +272,9 @@ footer .container .content .block .item .text {
   border-radius: 4px;
   cursor: pointer;
 }
+.calendar .days .day:hover {
+  background: #757d9d;
+}
 .calendar .days .day.empty {
   background: none;
   cursor: default;
@@ -281,25 +284,40 @@ footer .container .content .block .item .text {
   background: #707793;
   color: #962727;
 }
+.calendar .days .day.weekend:hover {
+  background: #646b85;
+}
 .calendar .days .day.relaxed {
   background: #cba080;
 }
+.calendar .days .day.relaxed:hover {
+  background: #c4926e;
+}
 .calendar .days .day.holiday {
   background: #b54d4d;
+}
+.calendar .days .day.holiday:hover {
+  background: #a44444;
 }
 .calendar .days .day.past {
   background: #3C3F58;
   color: #1f1f1f;
 }
+.calendar .days .day.past:hover {
+  background: #323449;
+}
 .calendar .days .day.today {
   background: #ba5f3b;
+}
+.calendar .days .day.today:hover {
+  background: #a75535;
 }
 .calendar .days .day.selected {
   background: #962727;
   color: #FFF;
 }
-.calendar .days .day:hover {
-  background: #a75535;
+.calendar .days .day.selected:hover {
+  background: #822222;
 }
 
 * {
