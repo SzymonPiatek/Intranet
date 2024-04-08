@@ -179,6 +179,9 @@ footer .container .content .block .item .text {
   border-radius: 10px;
   width: 100%;
 }
+.home .container .content .block .items .item .spot:hover {
+  background: #a75535;
+}
 .home .container .content .block .items .item .spot i {
   margin-right: 10px;
 }
@@ -295,6 +298,9 @@ footer .container .content .block .item .text {
   background: #962727;
   color: #FFF;
 }
+.calendar .days .day:hover {
+  background: #a75535;
+}
 
 * {
   box-sizing: border-box;
@@ -342,6 +348,9 @@ button {
 ::-webkit-scrollbar-thumb {
   background: #848ba8;
   border-radius: 20px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b6b6b6;
 }
 
 /*# sourceMappingURL=styles.css.map */

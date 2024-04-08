@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function getHolidayName(date) {
-        const formattedDate = date.toISOString().split('T')[0].substring(5); // Formatted as MM-DD
+        const formattedDate = date.toISOString().split('T')[0].substring(5);
         const allHolidays = holidays.concat(relaxedHolidays);
         const holiday = allHolidays.find(holiday => holiday.date === formattedDate);
         return holiday ? holiday.name : null;

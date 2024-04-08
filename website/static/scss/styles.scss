@@ -50,5 +50,8 @@ button {
   &-thumb {
     background: $scrollbar-thumb-background;
     border-radius: 20px;
+    &:hover {
+      background: #b6b6b6;
+    }
   }
 }
