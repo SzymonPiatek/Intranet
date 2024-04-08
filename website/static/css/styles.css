@@ -346,12 +346,12 @@ footer .container .content .block .item .text {
 }
 #overlay .container .content .block {
   height: 1000px;
-  max-height: 100dvh;
+  max-height: 80dvh;
   width: 1000px;
   max-width: 100%;
   background: #2E3047;
   border-radius: 12px;
-  margin: 20px;
+  margin: 40px;
   padding: 20px;
   position: relative;
   display: flex;
@@ -363,7 +363,7 @@ footer .container .content .block .item .text {
   top: 0;
   right: 0;
   margin: 20px;
-  padding: 0 6px;
+  padding: 0 8px;
   cursor: pointer;
   background: #d11717;
   border-radius: 50%;
@@ -401,10 +401,24 @@ footer .container .content .block .item .text {
   font-size: 1.8rem;
 }
 #overlay .container .content .block .elements form .items .item input option, #overlay .container .content .block .elements form .items .item select option {
+  font-size: 1.2rem;
   background: #707793;
 }
 #overlay .container .content .block .elements form .items .item input option:hover, #overlay .container .content .block .elements form .items .item select option:hover {
   background: #ba5f3b;
+}
+#overlay .container .content .block .elements form .items .item .drop_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 12px;
+  border: 3px dotted #a3a3a3;
+  padding: 40px;
+  gap: 30px;
+}
+#overlay .container .content .block .elements form .items .item .drop_box p {
+  color: #a3a3a3;
 }
 #overlay .container .content .block .elements form button {
   background: #ba5f3b;
@@ -429,7 +443,7 @@ footer .container .content .block .item .text {
   padding: 0;
   text-decoration: none;
   list-style: none;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #FFF;
@@ -457,6 +471,7 @@ input, select {
   color: #000;
   border-radius: 12px;
   text-indent: 8px;
+  padding: 2px;
 }
 
 .container {

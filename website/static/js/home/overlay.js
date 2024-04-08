@@ -24,10 +24,4 @@ document.addEventListener('DOMContentLoaded', function() {
     closeOverlayButton.addEventListener('click', function() {
         removeOverlayDisplay()
     })
-
-     document.addEventListener('click', function(event) {
-        if (!event.target.closest('#createApplication')) {
-            removeOverlayDisplay()
-        }
-    });
 });

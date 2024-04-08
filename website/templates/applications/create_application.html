@@ -11,20 +11,25 @@
     <form>
         <div class="items">
             <div class="item">
-                <label for="name">Name</label>
+                <h2>Name</h2>
                 <input type="text" id="name" name="name" required>
             </div>
             <div class="item">
-                <label for="status">Status</label>
-                <select name="status" id="status">
+                <h2>Status</h2>
+                <select name="status" id="status" required>
                     {% for status in application_statuses %}
                         <option value="{{ status }}">{{ status }}</option>
                     {% endfor %}
                 </select>
             </div>
             <div class="item">
-                <label for="file">File</label>
-                <input type="file" id="file" name="file" required>
+                <h2>File</h2>
+                <div class="drop_box" id="dropBox">
+                    <h2 class="file_name">Select File</h2>
+                    <p>Supported: PDF, DOC, DOCX</p>
+                    <input type="file" id="file" name="file" style="display: none"
+                           hidden accept=".pdf,.doc,.docx" required>
+                </div>
             </div>
         </div>
         <button type="submit">
