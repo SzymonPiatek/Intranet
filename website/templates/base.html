@@ -14,7 +14,10 @@
 <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
 
 <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -27,14 +30,15 @@
     <script src="{% static 'js/parkings/parking_data.js' %}"></script>
 <!-- Block's item size (grid) -->
     <script src="{% static 'js/home/blocks_item_size.js' %}"></script>
-
+<!-- Applications -->
+    <script src="{% static 'js/applications/create_application.js' %}"></script>
 </head>
 <body>
     {% include 'elements/navbar.html' %}
     <main>
     {% block content %} {% endblock content %}
+    {% include 'elements/overlay.html' %}
     {% include 'elements/footer.html' %}
-
     </main>
 </body>
 </html>

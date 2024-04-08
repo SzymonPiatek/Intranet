@@ -27,6 +27,9 @@ nav .container .content .side .item, nav .container .content .side button {
   gap: 10px;
   cursor: pointer;
 }
+nav .container .content .side .item.logo *, nav .container .content .side button.logo * {
+  font-family: "Audiowide", sans-serif;
+}
 nav .container .content .side .item *, nav .container .content .side button * {
   color: #FFF;
 }
@@ -179,6 +182,9 @@ footer .container .content .block .item .text {
   border-radius: 10px;
   width: 100%;
 }
+.home .container .content .block .items .item .spot:hover {
+  background: #a75535;
+}
 .home .container .content .block .items .item .spot i {
   margin-right: 10px;
 }
@@ -228,11 +234,7 @@ footer .container .content .block .item .text {
   margin-bottom: 4px;
 }
 .login .container .content form .item input {
-  border: none;
   font-size: 2rem;
-  color: #000;
-  border-radius: 12px;
-  text-indent: 8px;
 }
 .login .container .content form button {
   background: #ba5f3b;
@@ -269,6 +271,9 @@ footer .container .content .block .item .text {
   border-radius: 4px;
   cursor: pointer;
 }
+.calendar .days .day:hover {
+  background: #757d9d;
+}
 .calendar .days .day.empty {
   background: none;
   cursor: default;
@@ -278,31 +283,153 @@ footer .container .content .block .item .text {
   background: #707793;
   color: #962727;
 }
+.calendar .days .day.weekend:hover {
+  background: #646b85;
+}
 .calendar .days .day.relaxed {
   background: #cba080;
 }
+.calendar .days .day.relaxed:hover {
+  background: #c4926e;
+}
 .calendar .days .day.holiday {
   background: #b54d4d;
+}
+.calendar .days .day.holiday:hover {
+  background: #a44444;
 }
 .calendar .days .day.past {
   background: #3C3F58;
   color: #1f1f1f;
 }
+.calendar .days .day.past:hover {
+  background: #323449;
+}
 .calendar .days .day.today {
   background: #ba5f3b;
+}
+.calendar .days .day.today:hover {
+  background: #a75535;
 }
 .calendar .days .day.selected {
   background: #962727;
   color: #FFF;
 }
+.calendar .days .day.selected:hover {
+  background: #822222;
+}
 
+#overlay {
+  height: 100dvh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  justify-content: center;
+  backdrop-filter: blur(0px);
+}
+#overlay.show {
+  display: flex;
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.5s ease forwards;
+}
+#overlay .container {
+  display: flex;
+  align-items: center;
+}
+#overlay .container .content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#overlay .container .content .block {
+  height: 1000px;
+  max-height: 100dvh;
+  width: 1000px;
+  max-width: 100%;
+  background: #2E3047;
+  border-radius: 12px;
+  margin: 20px;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+}
+#overlay .container .content .block .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px;
+  padding: 0 6px;
+  cursor: pointer;
+  background: #d11717;
+  border-radius: 50%;
+}
+#overlay .container .content .block .label {
+  padding: 4px 0;
+  margin-bottom: 40px;
+  border-bottom: 2px solid #3C3F58;
+}
+#overlay .container .content .block .elements {
+  height: 100%;
+}
+#overlay .container .content .block .elements form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+#overlay .container .content .block .elements form .items {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+#overlay .container .content .block .elements form .items .item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#overlay .container .content .block .elements form .items .item label {
+  font-size: 1rem;
+}
+#overlay .container .content .block .elements form .items .item input, #overlay .container .content .block .elements form .items .item select {
+  font-size: 1.8rem;
+}
+#overlay .container .content .block .elements form .items .item input option, #overlay .container .content .block .elements form .items .item select option {
+  background: #707793;
+}
+#overlay .container .content .block .elements form .items .item input option:hover, #overlay .container .content .block .elements form .items .item select option:hover {
+  background: #ba5f3b;
+}
+#overlay .container .content .block .elements form button {
+  background: #ba5f3b;
+  padding: 12px 40px;
+  border-radius: 12px;
+}
+#overlay .container .content .block .elements form button:hover {
+  background: #a75535;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   text-decoration: none;
   list-style: none;
-  font-family: "Audiowide", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #FFF;
@@ -325,12 +452,19 @@ button {
   cursor: pointer;
 }
 
+input, select {
+  border: none;
+  color: #000;
+  border-radius: 12px;
+  text-indent: 8px;
+}
+
 .container {
   width: 2100px;
   max-width: 100%;
 }
 
-.shadow, nav, .home .container .content .block .items .item, .home .container .content .block .items .item .booking, .home .container .content .block .items .item .spot, .login .container .content form .item input, .login .container .content form button, .calendar .days .day {
+.shadow, nav, .home .container .content .block .items .item, .home .container .content .block .items .item .booking, .home .container .content .block .items .item .spot, .login .container .content form button, .calendar .days .day, #overlay .container .content .block, #overlay .container .content .block .close, #overlay .container .content .block .elements form button, input, select {
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -342,6 +476,9 @@ button {
 ::-webkit-scrollbar-thumb {
   background: #848ba8;
   border-radius: 20px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b6b6b6;
 }
 
 /*# sourceMappingURL=styles.css.map */

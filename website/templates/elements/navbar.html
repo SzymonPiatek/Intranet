@@ -2,7 +2,7 @@
     <div class="container">
         <div class="content">
             <div class="side">
-                <div class="item">
+                <div class="item logo">
                     <a href="{% url 'home_page' %}">
                         <h1>Example</h1>
                     </a>
@@ -37,9 +37,9 @@
                         <form action="{% url 'logout_page' %}" method="post">
                             {% csrf_token %}
                             <button type="submit">
-                                <h3 class="image">
+                                <h2 class="image">
                                     <i class="fa-solid fa-right-from-bracket"></i>
-                                </h3>
+                                </h2>
                             </button>
                         </form>
                     </div>

@@ -3,6 +3,7 @@
 @import 'home';
 @import 'login';
 @import 'calendar';
+@import 'overlay';
 
 
 * {
@@ -11,7 +12,7 @@
   padding: 0;
   text-decoration: none;
   list-style: none;
-  font-family: "Audiowide", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: $text-color;
@@ -34,6 +35,14 @@ button {
   cursor: pointer;
 }
 
+input, select {
+  @extend .shadow;
+  border: none;
+  color: $text-color-2;
+  border-radius: 12px;
+  text-indent: 8px;
+}
+
 .container {
   width: 2100px;
   max-width: 100%;
@@ -50,5 +59,8 @@ button {
   &-thumb {
     background: $scrollbar-thumb-background;
     border-radius: 20px;
+    &:hover {
+      background: #b6b6b6;
+    }
   }
 }

@@ -26,6 +26,11 @@ nav {
           align-items: center;
           gap: 10px;
           cursor: pointer;
+          &.logo {
+            * {
+              font-family: "Audiowide", sans-serif;
+            }
+          }
           * {
             color: $text-color;
           }
