@@ -11,6 +11,7 @@ $color-10: #1f1f1f;
 $color-11: #cba080;
 $color-12: #b54d4d;
 $color-13: #d11717;
+$color-14: #a3a3a3;
 
 
 $body-background: $color-1;
@@ -21,8 +22,10 @@ $block-item-background: $color-4;
 
 $text-color: $color-5;
 $text-color-2: $color-7;
+$text-color-3: $color-14;
 
 $line-color: $color-1;
+$line-color-2: $color-14;
 $button-background: $color-6;
 
 $calendar-weekend-color: $color-9;
@@ -43,4 +46,7 @@ $booking-background: $color-6;
 $overlay-background: $color-2;
 $overlay-close-background: $color-13;
 $overlay-option-background: $color-3;
+$overlay-hover-option-background: $color-4;
 $overlay-hover-background: $color-6;
+
+$dotted-line: $color-14;
