@@ -129,7 +129,6 @@ document.addEventListener('DOMContentLoaded', function() {
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    console.log("Parking data fetched");
                     const labelDiv = Object.assign(document.createElement('div'),
                         {className: 'label', textContent: "Parking"});
                     eventsContainer.appendChild(labelDiv);
