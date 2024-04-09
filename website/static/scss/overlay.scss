@@ -25,16 +25,16 @@
       justify-content: center;
       .block {
         @extend .shadow;
-        height: 1000px;
+        height: fit-content;
         max-height: 80dvh;
         width: 1000px;
         max-width: 100%;
+        overflow-y: auto;
         background: $overlay-background;
         border-radius: 12px;
         margin: 40px;
         padding: 20px;
         position: relative;
-        display: flex;
         flex-direction: column;
         border: 1px solid #000;
         .close {
@@ -61,7 +61,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            gap: 20px;
+            gap: 40px;
             .items {
               display: flex;
               flex-direction: column;
@@ -71,6 +71,7 @@
                 display: flex;
                 flex-direction: column;
                 gap: 8px;
+                position: relative;
                 label {
                   font-size: 1rem;
                 }
@@ -86,34 +87,13 @@
                   border: 3px dotted $dotted-line;
                   padding: 40px;
                   gap: 30px;
+                  background: lighten($overlay-background, 5);
+                  &:hover {
+                    background: lighten($overlay-background, 10);
+                    transition: 0.3s ease;
+                  }
                   p {
                     color: $text-color-3;
-                  }
-                }
-                .select {
-                  .options {
-                    cursor: pointer;
-                    width: 100%;
-                    max-height: 260px;
-                    border-radius: 12px;
-                    background: $overlay-option-background;
-                    &.opened {
-                      position: absolute;
-                      overflow-y: scroll;
-                    }
-                    .option {
-                      width: 100%;
-                      font-size: 1.8rem;
-                      padding: 2px;
-                      text-indent: 8px;
-                      border-radius: 12px;
-                      &:nth-child(1) {
-                        background: $overlay-hover-option-background;
-                      }
-                      &:hover {
-                        background: $overlay-hover-option-background;
-                      }
-                    }
                   }
                 }
               }

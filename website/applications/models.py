@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from users.models import CustomUser
 import uuid
 import os
@@ -35,10 +36,23 @@ class Application(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        previous_status = None
+
+        if self.pk:
+            previous_status = Application.objects.get(pk=self.pk).status
+
+        super().save(*args, **kwargs)
+
+        if self.status != previous_status:
+            ApplicationStatusHistory.objects.create(
+                application=self,
+                status=self.status,
+                edit_date=timezone.now())
+
 
 class ApplicationStatusHistory(models.Model):
     application = models.ForeignKey(Application, on_delete=models.CASCADE, blank=False, null=False)
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=False, null=False)
     status = models.ForeignKey(Status, on_delete=models.CASCADE, blank=False, null=False)
     edit_date = models.DateTimeField(auto_now_add=True)
 
@@ -47,4 +61,4 @@ class ApplicationStatusHistory(models.Model):
         verbose_name_plural = 'Application status histories'
 
     def __str__(self):
-        return f"{self.application} - {self.status} - {self.edit_date} - {self.user}"
+        return f"{self.application} - {self.status} - {self.edit_date} "
