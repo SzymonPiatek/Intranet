@@ -8,7 +8,8 @@
     <h1>Create application</h1>
 </div>
 <div class="elements">
-    <form>
+    <form id="applicationForm">
+        {% csrf_token %}
         <div class="items">
             <div class="item">
                 <h2>Name</h2>
@@ -29,3 +30,25 @@
         </button>
     </form>
 </div>
+
+<script>
+    document.getElementById("applicationForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        var formData = new FormData(this);
+
+        fetch("{% url 'create_application_page' %}", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            alert(data.message);
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("An error occurred. Please try again.");
+        });
+    });
+</script>
