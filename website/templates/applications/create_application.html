@@ -43,8 +43,10 @@
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             alert(data.message);
+            document.getElementById("applicationForm").reset();
+            const dropBox = document.getElementById('dropBox');
+            dropBox.querySelector('.file_name').textContent = 'Select File';
         })
         .catch(error => {
             console.error("Error:", error);

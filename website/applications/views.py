@@ -14,6 +14,7 @@ def find_status(name):
     except Status.DoesNotExist:
         return None
 
+
 @csrf_exempt
 def create_application_view(request):
     if request.method == 'POST':
