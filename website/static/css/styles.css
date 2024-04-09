@@ -411,6 +411,11 @@ footer .container .content .block .item .text {
   border: 3px dotted #a3a3a3;
   padding: 40px;
   gap: 30px;
+  background: #383a56;
+}
+#overlay .container .content .block .elements form .items .item .drop_box:hover {
+  background: #424566;
+  transition: 0.3s ease;
 }
 #overlay .container .content .block .elements form .items .item .drop_box p {
   color: #a3a3a3;

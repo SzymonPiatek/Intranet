@@ -28,7 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function handleFile(file) {
-        const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+        const allowedTypes = ['application/pdf', 'application/msword',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
 
         if (!allowedTypes.includes(file.type)) {
             alert('Only PDF, DOC, and DOCX files are allowed.');
@@ -36,8 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         }
 
-        const fileName = file.name;
-        const dropBox = document.getElementById('dropBox');
-        dropBox.querySelector('.file_name').textContent = fileName;
+        dropBox.querySelector('.file_name').textContent = file.name;
     }
 });

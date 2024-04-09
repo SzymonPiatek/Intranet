@@ -87,6 +87,11 @@
                   border: 3px dotted $dotted-line;
                   padding: 40px;
                   gap: 30px;
+                  background: lighten($overlay-background, 5);
+                  &:hover {
+                    background: lighten($overlay-background, 10);
+                    transition: 0.3s ease;
+                  }
                   p {
                     color: $text-color-3;
                   }
