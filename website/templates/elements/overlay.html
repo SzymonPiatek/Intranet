@@ -1,6 +1,7 @@
  <div class="overlay" id="overlay">
     <div class="container">
         <div class="content">
+            <!-- Applications -->
             <div class="block" id="createApplication" style="display: none">
                 {% include 'applications/create_application.html' %}
             </div>
@@ -9,6 +10,11 @@
             </div>
             <div class="block" id="showAllApplications" style="display: none">
                 {% include 'applications/show_all_applications.html' %}
+            </div>
+
+            <!-- Parkings -->
+            <div class="block" id="showParkingSpots" style="display: none">
+                {% include 'parkings/show_parking_spots.html' %}
             </div>
         </div>
     </div>

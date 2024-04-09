@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const showAllApplications = document.getElementById('showAllApplications');
     const showAllApplicationsButton = document.getElementById('showAllApplicationsButton');
     // Parkings
-    const
+    const showParkingSpots = document.getElementById('showParkingSpots');
+    const showParkingSpotsButton = document.getElementById('showParkingSpotsButton');
 
 
     function changeBlockDisplay(block) {
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.stopPropagation();
     }
 
-
+    // Applications
     createApplicationButton.addEventListener('click', function() {
         changeBlockDisplay(createApplication);
         addOverlayDisplay();
@@ -59,6 +60,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         fetchDataAndPopulateApplications(url, "allApplications");
         changeBlockDisplay(showAllApplications);
+        addOverlayDisplay(event);
+    });
+
+    // Parkings
+    showParkingSpotsButton.addEventListener('click', function(event) {
+        const linkDiv = document.getElementById('showParkingSpotsUrl');
+        const url = linkDiv.getAttribute('data-url');
+
+        changeBlockDisplay(showParkingSpots);
         addOverlayDisplay(event);
     });
 
