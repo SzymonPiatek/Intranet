@@ -21,14 +21,39 @@
                     </div>
                 </div>
 
-                <div class="block parkings">
+                <div class="block better" id="parkingsBlock">
                     <h2>Parking</h2>
                     <div class="items parkings" id="parkingItems">
-                        <div id="parkingData" data-url="{% url 'get_user_parking_data'%}" style="display: none"></div>
+                        <div class="item">
+                            {% if user.is_superuser %}
+                                <div class="spot" id="showParkingSpotsButton">
+                                    Show all
+                                    <br>
+                                    parking spots
+                                </div>
+                                <div class="spot" id="showAllReservationsForParkingSpotButton">
+                                    Show all
+                                    <br>
+                                    parking spots
+                                    <br>
+                                    reservations
+                                </div>
+                            {% endif %}
+                            <div class="spot" id="shareParkingSpotButton">
+                                Share my
+                                <br>
+                                parking spot
+                            </div>
+                            <div class="spot" id="showSharedParkingSpotButton">
+                                Show shared
+                                <br>
+                                parking spot
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="block applications" id="applicationsBlock">
+                <div class="block better" id="applicationsBlock">
                     <h2>Applications</h2>
                     <div class="items">
                         <div class="item">
@@ -51,7 +76,7 @@
                     </div>
                 </div>
 
-                <div class="block reports" id="reportsBlock">
+                <div class="block better" id="reportsBlock">
                     <h2>Reports</h2>
                     <div class="items">
                         <div class="item">
