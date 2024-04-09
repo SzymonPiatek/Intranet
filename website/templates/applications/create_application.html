@@ -1,56 +1,54 @@
-<div class="close" id="closeOverlay">
-    <h2>
-        <i class="fa-solid fa-xmark"></i>
-    </h2>
-</div>
+{% extends 'applications/overlay_template.html' %}
 
-<div class="label">
-    <h1>Create application</h1>
-</div>
-<div class="elements">
-    <form id="applicationForm">
-        {% csrf_token %}
-        <div class="items">
-            <div class="item">
-                <h2>Name</h2>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="item">
-                <h2>File</h2>
-                <div class="drop_box" id="dropBox">
-                    <h2 class="file_name">Select File</h2>
-                    <p>Supported: PDF, DOC, DOCX</p>
-                    <input type="file" id="file" name="file" style="display: none"
-                           hidden accept=".pdf,.doc,.docx" required>
+{% block label %}
+    <div class="label">
+        <h1>Create application</h1>
+    </div>
+    <div class="elements">
+        <form id="applicationForm">
+            {% csrf_token %}
+            <div class="items">
+                <div class="item">
+                    <h2>Name</h2>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="item">
+                    <h2>File</h2>
+                    <div class="drop_box" id="dropBox">
+                        <h2 class="file_name">Select File</h2>
+                        <p>Supported: PDF, DOC, DOCX</p>
+                        <input type="file" id="file" name="file" style="display: none"
+                               hidden accept=".pdf,.doc,.docx" required>
+                    </div>
                 </div>
             </div>
-        </div>
-        <button type="submit">
-            <h1>Submit</h1>
-        </button>
-    </form>
-</div>
+            <button type="submit">
+                <h1>Submit</h1>
+            </button>
+        </form>
+    </div>
 
-<script>
-    document.getElementById("applicationForm").addEventListener("submit", function(event) {
-        event.preventDefault();
+    <script>
+        document.getElementById("applicationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
 
-        var formData = new FormData(this);
+            var formData = new FormData(this);
 
-        fetch("{% url 'create_application_page' %}", {
-            method: "POST",
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);
-            document.getElementById("applicationForm").reset();
-            const dropBox = document.getElementById('dropBox');
-            dropBox.querySelector('.file_name').textContent = 'Select File';
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("An error occurred. Please try again.");
+            fetch("{% url 'create_application_page' %}", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                document.getElementById("applicationForm").reset();
+                const dropBox = document.getElementById('dropBox');
+                dropBox.querySelector('.file_name').textContent = 'Select File';
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("An error occurred. Please try again.");
+            });
         });
-    });
-</script>
+    </script>
+{% endblock label %}
