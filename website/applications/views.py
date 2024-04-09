@@ -16,6 +16,24 @@ def find_status(name):
         return None
 
 
+def prepare_json_data(data):
+    my_applications_data = []
+    for application in data:
+        application_data = model_to_dict(application)
+
+        user_name = application.user.username if application.user else "Unknown"
+        status_name = application.status.name if application.status else "Unknown"
+
+        application_data['user'] = user_name
+        application_data['status'] = status_name
+
+        if 'file' in application_data:
+            del application_data['file']
+
+        my_applications_data.append(application_data)
+    return my_applications_data
+
+
 @csrf_exempt
 def create_application_view(request):
     if request.method == 'POST':
@@ -51,15 +69,12 @@ def create_application_view(request):
 
 
 def show_my_applications_view(request):
-    my_applications = Application.objects.filter(user=request.user)
+    applications = Application.objects.filter(user=request.user)
+    data = prepare_json_data(applications)
+    return JsonResponse(data, safe=False)
 
-    my_applications_data = []
-    for application in my_applications:
-        application_data = model_to_dict(application)
-        if 'file' in application_data:
-            file_url = request.build_absolute_uri(application.file.url)
-            application_data['file'] = file_url
-        my_applications_data.append(application_data)
 
-    return JsonResponse(my_applications_data, safe=False)
-
+def show_all_applications_view(request):
+    applications = Application.objects.all()
+    data = prepare_json_data(applications)
+    return JsonResponse(data, safe=False)

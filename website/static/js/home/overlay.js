@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const createApplicationButton = document.getElementById('createApplicationButton');
     const showMyApplications = document.getElementById('showMyApplications');
     const showMyApplicationsButton = document.getElementById('showMyApplicationsButton');
+    const showAllApplications = document.getElementById('showAllApplications');
+    const showAllApplicationsButton = document.getElementById('showAllApplicationsButton');
 
 
     function changeBlockDisplay(block) {
@@ -33,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.stopPropagation();
     }
 
+
     createApplicationButton.addEventListener('click', function() {
         changeBlockDisplay(createApplication);
         addOverlayDisplay();
@@ -41,34 +44,18 @@ document.addEventListener('DOMContentLoaded', function() {
     showMyApplicationsButton.addEventListener('click', function(event) {
         const linkDiv = document.getElementById('showMyApplicationsUrl');
         const url = linkDiv.getAttribute('data-url');
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                return response.json();
-            })
-            .then(data => {
-                const applicationsDiv = document.getElementById('myApplications');
-                applicationsDiv.innerHTML = '';
 
-                data.forEach(application => {
-                    const applicationDiv = Object.assign(document.createElement('div'),
-                        {className: "application",
-                            innerHTML:
-                                `<p>ID: ${application.id}</p>
-                                <p>Name: ${application.name}</p>
-                                <p>User: ${application.user}</p>
-                                <p>Status: ${application.status}</p>
-                                <p>File: <a href="${application.file}">${application.file}</a></p>`});
-                    applicationsDiv.appendChild(applicationDiv);
-                });
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-
+        fetchDataAndPopulateApplications(url, "myApplications");
         changeBlockDisplay(showMyApplications);
+        addOverlayDisplay(event);
+    });
+
+    showAllApplicationsButton.addEventListener('click', function(event) {
+        const linkDiv = document.getElementById('showAllApplicationsUrl');
+        const url = linkDiv.getAttribute('data-url');
+
+        fetchDataAndPopulateApplications(url, "allApplications");
+        changeBlockDisplay(showAllApplications);
         addOverlayDisplay(event);
     });
 
@@ -76,5 +63,13 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             removeOverlayDisplay();
         });
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            if (overlay.style.display !== 'none') {
+                removeOverlayDisplay();
+            }
+        }
     });
 });

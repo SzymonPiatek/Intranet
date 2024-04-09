@@ -47,6 +47,9 @@
           cursor: pointer;
           background: $overlay-close-background;
           border-radius: 50%;
+          &:hover {
+            background: darken($overlay-close-background, 5);
+          }
         }
         .label {
           padding: 4px 0;
@@ -107,6 +110,31 @@
                 background: darken($button-background, 5);
               }
             }
+          }
+          .applications {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            .application {
+              background: $application-background;
+              padding: 20px;
+              border-radius: 12px;
+              display: flex;
+              flex-direction: column;
+              .top {
+                display: flex;
+                gap: 20px;
+              .title {
+                text-transform: uppercase;
+              }
+              .id {
+                color: $text-color-3;
+              }
+            }
+            &:hover {
+              background: darken($application-background, 5);
+            }
+          }
           }
         }
       }

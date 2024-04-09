@@ -368,6 +368,9 @@ footer .container .content .block .item .text {
   background: #d11717;
   border-radius: 50%;
 }
+#overlay .container .content .block .close:hover {
+  background: #ba1414;
+}
 #overlay .container .content .block .label {
   padding: 4px 0;
   margin-bottom: 40px;
@@ -408,7 +411,7 @@ footer .container .content .block .item .text {
   align-items: center;
   justify-content: space-between;
   border-radius: 12px;
-  border: 3px dotted #a3a3a3;
+  border: 3px dotted #b2b2b2;
   padding: 40px;
   gap: 30px;
   background: #383a56;
@@ -418,7 +421,7 @@ footer .container .content .block .item .text {
   transition: 0.3s ease;
 }
 #overlay .container .content .block .elements form .items .item .drop_box p {
-  color: #a3a3a3;
+  color: #b2b2b2;
 }
 #overlay .container .content .block .elements form button {
   background: #ba5f3b;
@@ -426,6 +429,31 @@ footer .container .content .block .item .text {
   border-radius: 12px;
 }
 #overlay .container .content .block .elements form button:hover {
+  background: #a75535;
+}
+#overlay .container .content .block .elements .applications {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#overlay .container .content .block .elements .applications .application {
+  background: #ba5f3b;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+#overlay .container .content .block .elements .applications .application .top {
+  display: flex;
+  gap: 20px;
+}
+#overlay .container .content .block .elements .applications .application .top .title {
+  text-transform: uppercase;
+}
+#overlay .container .content .block .elements .applications .application .top .id {
+  color: #b2b2b2;
+}
+#overlay .container .content .block .elements .applications .application:hover {
   background: #a75535;
 }
 
