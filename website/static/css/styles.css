@@ -345,10 +345,11 @@ footer .container .content .block .item .text {
   justify-content: center;
 }
 #overlay .container .content .block {
-  height: 1000px;
+  height: fit-content;
   max-height: 80dvh;
   width: 1000px;
   max-width: 100%;
+  overflow-y: auto;
   background: #2E3047;
   border-radius: 12px;
   margin: 40px;
