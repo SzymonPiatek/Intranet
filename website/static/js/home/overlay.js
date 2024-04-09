@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.stopPropagation();
     }
 
+
     createApplicationButton.addEventListener('click', function() {
         changeBlockDisplay(createApplication);
         addOverlayDisplay();
@@ -55,12 +56,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 data.forEach(application => {
                     const applicationDiv = Object.assign(document.createElement('div'),
                         {className: "application",
-                            innerHTML:
-                                `<p>ID: ${application.id}</p>
-                                <p>Name: ${application.name}</p>
-                                <p>User: ${application.user}</p>
-                                <p>Status: ${application.status}</p>
-                                <p>File: <a href="${application.file}">${application.file}</a></p>`});
+                            innerHTML:`
+                                      <div class="top">
+                                          <h2 class="title">${application.name}</h2>
+                                          <h2 class="id">ID: ${application.id}</h2>
+                                      </div>
+                                      <div class="info">
+                                          <h4>Created by ${application.user}</h4>
+                                          <h4>Status: ${application.status}</h4> 
+                                      </div>
+                                      `});
                     applicationsDiv.appendChild(applicationDiv);
                 });
             })
@@ -76,5 +81,13 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             removeOverlayDisplay();
         });
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            if (overlay.style.display !== 'none') {
+                removeOverlayDisplay();
+            }
+        }
     });
 });

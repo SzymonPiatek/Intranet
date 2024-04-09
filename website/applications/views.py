@@ -59,6 +59,13 @@ def show_my_applications_view(request):
         if 'file' in application_data:
             file_url = request.build_absolute_uri(application.file.url)
             application_data['file'] = file_url
+
+        user_name = application.user.username if application.user else "Unknown"
+        status_name = application.status.name if application.status else "Unknown"
+
+        application_data['user'] = user_name
+        application_data['status'] = status_name
+
         my_applications_data.append(application_data)
 
     return JsonResponse(my_applications_data, safe=False)
