@@ -31,24 +31,35 @@
                                     <br>
                                     parking spots
                                 </div>
-                                <div class="spot" id="showAllReservationsForParkingSpotButton">
+                                <div class="spot" id="showAllReservationsParkingSpotButton">
                                     Show all
-                                    <br>
-                                    parking spots
                                     <br>
                                     reservations
                                 </div>
                             {% endif %}
-                            <div class="spot" id="shareParkingSpotButton">
-                                Share my
-                                <br>
-                                parking spot
-                            </div>
-                            <div class="spot" id="showSharedParkingSpotButton">
-                                Show shared
-                                <br>
-                                parking spot
-                            </div>
+                            {% if user_have_parking_spot %}
+                                <div class="spot" id="shareParkingSpotButton">
+                                    Share my
+                                    <br>
+                                    parking spot
+                                </div>
+                                <div class="spot" id="showSharedParkingSpotButton">
+                                    Show shared
+                                    <br>
+                                    parking spot
+                                </div>
+                            {% else %}
+                                <div class="spot" id="showMyReservationsParkingSpotButton">
+                                    Show my
+                                    <br>
+                                    reservations
+                                </div>
+                                <div class="spot" id="showFreeParkingSpotButton">
+                                    Show free
+                                    <br>
+                                    parking spot
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
