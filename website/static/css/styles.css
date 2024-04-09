@@ -355,7 +355,6 @@ footer .container .content .block .item .text {
   margin: 40px;
   padding: 20px;
   position: relative;
-  display: flex;
   flex-direction: column;
   border: 1px solid #000;
 }
