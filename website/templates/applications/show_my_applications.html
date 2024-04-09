@@ -1,8 +1,12 @@
+{% extends 'applications/overlay_template.html' %}
+
 {% block label %}
     <div class="link" id="showMyApplicationsUrl" style="display: none;"
          data-url="{% url 'show_my_applications_page' %}"></div>
     <div class="label">
         <h1>My applications</h1>
     </div>
-    <div class="elements" id="myApplications"></div>
+    <div class="elements">
+        <div class="applications" id="myApplications"></div>
+    </div>
 {% endblock label %}
