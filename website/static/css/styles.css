@@ -383,7 +383,7 @@ footer .container .content .block .item .text {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 20px;
+  gap: 40px;
 }
 #overlay .container .content .block .elements form .items {
   display: flex;
@@ -395,6 +395,7 @@ footer .container .content .block .item .text {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  position: relative;
 }
 #overlay .container .content .block .elements form .items .item label {
   font-size: 1rem;
@@ -414,30 +415,6 @@ footer .container .content .block .item .text {
 }
 #overlay .container .content .block .elements form .items .item .drop_box p {
   color: #a3a3a3;
-}
-#overlay .container .content .block .elements form .items .item .select .options {
-  cursor: pointer;
-  width: 100%;
-  max-height: 260px;
-  border-radius: 12px;
-  background: #707793;
-}
-#overlay .container .content .block .elements form .items .item .select .options.opened {
-  position: absolute;
-  overflow-y: scroll;
-}
-#overlay .container .content .block .elements form .items .item .select .options .option {
-  width: 100%;
-  font-size: 1.8rem;
-  padding: 2px;
-  text-indent: 8px;
-  border-radius: 12px;
-}
-#overlay .container .content .block .elements form .items .item .select .options .option:nth-child(1) {
-  background: #5d5f77;
-}
-#overlay .container .content .block .elements form .items .item .select .options .option:hover {
-  background: #5d5f77;
 }
 #overlay .container .content .block .elements form button {
   background: #ba5f3b;

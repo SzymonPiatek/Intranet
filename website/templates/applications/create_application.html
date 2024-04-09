@@ -15,17 +15,6 @@
                 <input type="text" id="name" name="name" required>
             </div>
             <div class="item">
-                <h2>Status</h2>
-                <div id="appStatusUrl" style="display: none" data-url="{% url 'get_all_statuses_page' %}"></div>
-                <div class="select">
-                    <div class="options" id="options">
-                        <div class="hide-option option" id="hide-option">
-                            Select any option..
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
                 <h2>File</h2>
                 <div class="drop_box" id="dropBox">
                     <h2 class="file_name">Select File</h2>
@@ -40,73 +29,3 @@
         </button>
     </form>
 </div>
-
-<script>
-    let options = document.getElementById("options");
-    let optionList = [];
-
-    const appStatusUrl = document.getElementById('appStatusUrl');
-    const url = appStatusUrl.getAttribute('data-url');
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            optionList = data.app_statuses;
-            console.log(optionList);
-        })
-        .catch(error => {
-            console.error('Error', error);
-        });
-
-    let isOpen = false;
-
-    options.addEventListener("click", addToUIOptions);
-
-    function addToUIOptions(e) {
-        if (e.target.classList.contains("hide-option")) {
-            controlOptions(e);
-        }
-        else {
-            const pickedOption = e.target;
-
-            if (options.firstElementChild.classList.contains("hide-option")) {
-                options.removeChild(options.firstElementChild);
-            }
-            options.insertAdjacentElement("afterbegin", pickedOption);
-
-            deleteOptions();
-            controlOptions(e);
-        }
-    }
-
-    function controlOptions(e) {
-        if (isOpen === false) {
-            createOptions();
-            options.classList.add("opened");
-            isOpen = true;
-        }
-        else {
-            options.classList.remove("opened");
-            isOpen = false;
-        }
-    }
-
-    function deleteOptions() {
-        while (options.childElementCount > 1) {
-            options.removeChild(options.lastElementChild);
-        }
-    }
-
-    function createOptions() {
-        optionList.forEach(element => {
-            if (!options.querySelector(`.option[data-text="${element}"]`)) {
-                let option = document.createElement("div");
-                option.className = "option";
-                option.setAttribute("data-text", element);
-                option.textContent = element;
-
-                options.insertAdjacentElement("beforeend", option);
-            }
-        });
-    }
-</script>
-
