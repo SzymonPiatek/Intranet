@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const createApplicationButton = document.getElementById('createApplicationButton');
     const showMyApplications = document.getElementById('showMyApplications');
     const showMyApplicationsButton = document.getElementById('showMyApplicationsButton');
+    const showAllApplications = document.getElementById('showAllApplications');
+    const showAllApplicationsButton = document.getElementById('showAllApplicationsButton');
 
 
     function changeBlockDisplay(block) {
@@ -42,38 +44,18 @@ document.addEventListener('DOMContentLoaded', function() {
     showMyApplicationsButton.addEventListener('click', function(event) {
         const linkDiv = document.getElementById('showMyApplicationsUrl');
         const url = linkDiv.getAttribute('data-url');
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                return response.json();
-            })
-            .then(data => {
-                const applicationsDiv = document.getElementById('myApplications');
-                applicationsDiv.innerHTML = '';
 
-                data.forEach(application => {
-                    const applicationDiv = Object.assign(document.createElement('div'),
-                        {className: "application",
-                            innerHTML:`
-                                      <div class="top">
-                                          <h2 class="title">${application.name}</h2>
-                                          <h2 class="id">ID: ${application.id}</h2>
-                                      </div>
-                                      <div class="info">
-                                          <h4>Created by ${application.user}</h4>
-                                          <h4>Status: ${application.status}</h4> 
-                                      </div>
-                                      `});
-                    applicationsDiv.appendChild(applicationDiv);
-                });
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-
+        fetchDataAndPopulateApplications(url, "myApplications");
         changeBlockDisplay(showMyApplications);
+        addOverlayDisplay(event);
+    });
+
+    showAllApplicationsButton.addEventListener('click', function(event) {
+        const linkDiv = document.getElementById('showAllApplicationsUrl');
+        const url = linkDiv.getAttribute('data-url');
+
+        fetchDataAndPopulateApplications(url, "allApplications");
+        changeBlockDisplay(showAllApplications);
         addOverlayDisplay(event);
     });
 
