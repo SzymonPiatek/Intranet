@@ -31,11 +31,9 @@ class ApplicationStatusHistoryAdmin(admin.ModelAdmin):
         "application",
         "status",
         "edit_date",
-        "user",
     )
 
     list_filter = (
         "application",
         "status",
-        "user",
     )
