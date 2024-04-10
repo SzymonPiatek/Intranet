@@ -22,4 +22,5 @@ $(document).ready(function() {
 
     handleResize('applicationsBlock', 760);
     handleResize('reportsBlock', 760);
+    handleResize('parkingsBlock', 760);
 });

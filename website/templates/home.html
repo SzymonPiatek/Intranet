@@ -21,14 +21,50 @@
                     </div>
                 </div>
 
-                <div class="block parkings">
+                <div class="block better" id="parkingsBlock">
                     <h2>Parking</h2>
                     <div class="items parkings" id="parkingItems">
-                        <div id="parkingData" data-url="{% url 'get_user_parking_data'%}" style="display: none"></div>
+                        <div class="item">
+                            {% if user.is_superuser %}
+                                <div class="spot" id="showParkingSpotsButton">
+                                    Show all
+                                    <br>
+                                    parking spots
+                                </div>
+                                <div class="spot" id="showAllReservationsParkingSpotButton">
+                                    Show all
+                                    <br>
+                                    reservations
+                                </div>
+                            {% endif %}
+                            {% if user_have_parking_spot %}
+                                <div class="spot" id="shareParkingSpotButton">
+                                    Share my
+                                    <br>
+                                    parking spot
+                                </div>
+                                <div class="spot" id="showSharedParkingSpotButton">
+                                    Show shared
+                                    <br>
+                                    parking spot
+                                </div>
+                            {% else %}
+                                <div class="spot" id="showMyReservationsParkingSpotButton">
+                                    Show my
+                                    <br>
+                                    reservations
+                                </div>
+                                <div class="spot" id="showFreeParkingSpotButton">
+                                    Show free
+                                    <br>
+                                    parking spot
+                                </div>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
 
-                <div class="block applications" id="applicationsBlock">
+                <div class="block better" id="applicationsBlock">
                     <h2>Applications</h2>
                     <div class="items">
                         <div class="item">
@@ -51,7 +87,7 @@
                     </div>
                 </div>
 
-                <div class="block reports" id="reportsBlock">
+                <div class="block better" id="reportsBlock">
                     <h2>Reports</h2>
                     <div class="items">
                         <div class="item">

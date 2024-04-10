@@ -2,12 +2,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const overlay = document.getElementById('overlay');
     const blocks = overlay.querySelectorAll('.block');
     const closeOverlayButtons = document.querySelectorAll('#closeOverlay');
+    // Applications
     const createApplication = document.getElementById('createApplication');
     const createApplicationButton = document.getElementById('createApplicationButton');
     const showMyApplications = document.getElementById('showMyApplications');
     const showMyApplicationsButton = document.getElementById('showMyApplicationsButton');
     const showAllApplications = document.getElementById('showAllApplications');
     const showAllApplicationsButton = document.getElementById('showAllApplicationsButton');
+    // Parkings
+    const showParkingSpots = document.getElementById('showParkingSpots');
+    const showParkingSpotsButton = document.getElementById('showParkingSpotsButton');
 
 
     function changeBlockDisplay(block) {
@@ -35,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.stopPropagation();
     }
 
-
+    // Applications
     createApplicationButton.addEventListener('click', function() {
         changeBlockDisplay(createApplication);
         addOverlayDisplay();
@@ -56,6 +60,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         fetchDataAndPopulateApplications(url, "allApplications");
         changeBlockDisplay(showAllApplications);
+        addOverlayDisplay(event);
+    });
+
+    // Parkings
+    showParkingSpotsButton.addEventListener('click', function(event) {
+        const linkDiv = document.getElementById('showParkingSpotsUrl');
+        const url = linkDiv.getAttribute('data-url');
+
+        changeBlockDisplay(showParkingSpots);
         addOverlayDisplay(event);
     });
 
