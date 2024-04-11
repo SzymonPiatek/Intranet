@@ -1,0 +1,12 @@
+{% extends 'elements/overlay_template.html' %}
+
+{% block label %}
+    <div class="link" id="shareMyParkingSpotUrl" style="display: none;"
+        data-url="{% url 'share_my_parking_spot_page' %}"></div>
+    <div class="label">
+        <h1>Share my parking spot</h1>
+    </div>
+    <div class="elements">
+        <div class="parkings" id="shareMyParkingSpot"></div>
+    </div>
+{% endblock label %}

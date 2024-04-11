@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Parkings
     const showAllParkingSpots = document.getElementById('showAllParkingSpots');
     const showAllParkingSpotsButton = document.getElementById('showAllParkingSpotsButton');
+    const shareMyParkingSpotBlock = document.getElementById('shareMyParkingSpotBlock');
+    const shareMyParkingSpotButton = document.getElementById('shareMyParkingSpotButton');
 
 
     function changeBlockDisplay(block) {
@@ -72,6 +74,17 @@ document.addEventListener('DOMContentLoaded', function() {
         changeBlockDisplay(showAllParkingSpots);
         addOverlayDisplay(event);
     });
+
+    shareMyParkingSpotButton.addEventListener('click', function(event) {
+        const linkDiv = document.getElementById('shareMyParkingSpotUrl');
+        const url = linkDiv.getAttribute('data-url');
+
+        fetchDataAndPopulateParkingSpots(url, "shareMyParkingSpot");
+        changeBlockDisplay(shareMyParkingSpotBlock);
+        addOverlayDisplay(event);
+    });
+
+    // Other
 
     closeOverlayButtons.forEach(button => {
         button.addEventListener('click', function() {

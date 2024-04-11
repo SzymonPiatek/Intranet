@@ -49,3 +49,9 @@ def show_all_parking_spots(request):
     parking_spots = ParkingSpot.objects.all()
     data = prepare_json_data(parking_spots)
     return JsonResponse(data, safe=False)
+
+
+def share_my_parking_spot(request):
+    parking_spots = ParkingSpot.objects.all()
+    data = prepare_json_data(parking_spots)
+    return JsonResponse(data, safe=False)
