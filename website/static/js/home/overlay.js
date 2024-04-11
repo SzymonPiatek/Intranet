@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const showAllApplications = document.getElementById('showAllApplications');
     const showAllApplicationsButton = document.getElementById('showAllApplicationsButton');
     // Parkings
-    const showParkingSpots = document.getElementById('showParkingSpots');
-    const showParkingSpotsButton = document.getElementById('showParkingSpotsButton');
+    const showAllParkingSpots = document.getElementById('showAllParkingSpots');
+    const showAllParkingSpotsButton = document.getElementById('showAllParkingSpotsButton');
 
 
     function changeBlockDisplay(block) {
@@ -64,11 +64,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Parkings
-    showParkingSpotsButton.addEventListener('click', function(event) {
-        const linkDiv = document.getElementById('showParkingSpotsUrl');
+    showAllParkingSpotsButton.addEventListener('click', function(event) {
+        const linkDiv = document.getElementById('showAllParkingSpotsUrl');
         const url = linkDiv.getAttribute('data-url');
 
-        changeBlockDisplay(showParkingSpots);
+        fetchDataAndPopulateParkingSpots(url, "allParkingSpots");
+        changeBlockDisplay(showAllParkingSpots);
         addOverlayDisplay(event);
     });
 

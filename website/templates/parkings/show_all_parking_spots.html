@@ -1,0 +1,12 @@
+{% extends 'applications/overlay_template.html' %}
+
+{% block label %}
+    <div class="link" id="showAllParkingSpotsUrl" style="display: none;"
+        data-url="{% url 'show_all_parking_spots_page' %}"></div>
+    <div class="label">
+        <h1>All parking spots</h1>
+    </div>
+    <div class="elements">
+        <div class="parkings" id="allParkingSpots"></div>
+    </div>
+{% endblock label %}

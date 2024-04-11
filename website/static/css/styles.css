@@ -410,29 +410,45 @@ footer .container .content .block .item .text {
 #overlay .container .content .block .elements form button:hover {
   background: #a75535;
 }
-#overlay .container .content .block .elements .applications {
+#overlay .container .content .block .elements .applications,
+#overlay .container .content .block .elements .parkings {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-#overlay .container .content .block .elements .applications .application {
+#overlay .container .content .block .elements .applications .application,
+#overlay .container .content .block .elements .applications .parking,
+#overlay .container .content .block .elements .parkings .application,
+#overlay .container .content .block .elements .parkings .parking {
   background: #ba5f3b;
   padding: 20px;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
 }
-#overlay .container .content .block .elements .applications .application .top {
+#overlay .container .content .block .elements .applications .application .top,
+#overlay .container .content .block .elements .applications .parking .top,
+#overlay .container .content .block .elements .parkings .application .top,
+#overlay .container .content .block .elements .parkings .parking .top {
   display: flex;
   gap: 20px;
 }
-#overlay .container .content .block .elements .applications .application .top .title {
+#overlay .container .content .block .elements .applications .application .top .title,
+#overlay .container .content .block .elements .applications .parking .top .title,
+#overlay .container .content .block .elements .parkings .application .top .title,
+#overlay .container .content .block .elements .parkings .parking .top .title {
   text-transform: uppercase;
 }
-#overlay .container .content .block .elements .applications .application .top .id {
+#overlay .container .content .block .elements .applications .application .top .id,
+#overlay .container .content .block .elements .applications .parking .top .id,
+#overlay .container .content .block .elements .parkings .application .top .id,
+#overlay .container .content .block .elements .parkings .parking .top .id {
   color: #b2b2b2;
 }
-#overlay .container .content .block .elements .applications .application:hover {
+#overlay .container .content .block .elements .applications .application:hover,
+#overlay .container .content .block .elements .applications .parking:hover,
+#overlay .container .content .block .elements .parkings .application:hover,
+#overlay .container .content .block .elements .parkings .parking:hover {
   background: #a75535;
 }
 
