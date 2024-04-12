@@ -7,6 +7,18 @@
         <h1>Share my parking spot</h1>
     </div>
     <div class="elements">
-        <div class="parkings" id="shareMyParkingSpot"></div>
+        <form id="shareParkingForm">
+            {%  csrf_token %}
+            <div class="items">
+                <div class="item">
+                    <h2>My parking spot</h2>
+                    <input type="text" id="parkingSpot" name="parkingSpot" value="{{ user_parking_spot.name }}" required readonly>
+                </div>
+                <div class="item">
+                    <h2>Date</h2>
+
+                </div>
+            </div>
+        </form>
     </div>
 {% endblock label %}
