@@ -7,7 +7,7 @@
         <h1>Share my parking spot</h1>
     </div>
     <div class="elements">
-        <form id="shareParkingForm">
+        <form id="shareParkingSpotForm">
             {%  csrf_token %}
             <div class="items">
                 <div class="item">
@@ -16,8 +16,11 @@
                 </div>
                 <div class="item">
                     <h2>Date</h2>
-
+                    <input type="date" id="shareDate" name="shareDate" required>
                 </div>
+                <button type="submit">
+                    <h1>Submit</h1>
+                </button>
             </div>
         </form>
     </div>
