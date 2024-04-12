@@ -43,9 +43,6 @@
                 grid-auto-flow: dense;
                 .spot {
                   min-height: 120px;
-                  &:nth-child(even) {
-                    grid-column-end: span 2;
-                  }
                 }
               }
             }
@@ -61,7 +58,7 @@
           .item {
             @extend .shadow;
             background: $block-item-background;
-            min-width: 440px;
+            min-width: 500px;
             border-radius: 0 20px 0 20px;
             padding: 20px 20px;
             flex: 1;

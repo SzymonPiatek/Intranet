@@ -120,9 +120,6 @@ footer .container .content .block .item .text {
 .home .container .content .block.better .items .item.grid .spot {
   min-height: 120px;
 }
-.home .container .content .block.better .items .item.grid .spot:nth-child(even) {
-  grid-column-end: span 2;
-}
 .home .container .content .block .items {
   min-width: fit-content;
   min-height: 200px;
@@ -133,7 +130,7 @@ footer .container .content .block .item .text {
 }
 .home .container .content .block .items .item {
   background: #5d5f77;
-  min-width: 440px;
+  min-width: 500px;
   border-radius: 0 20px 0 20px;
   padding: 20px 20px;
   flex: 1;
