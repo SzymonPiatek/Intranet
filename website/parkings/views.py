@@ -1,5 +1,18 @@
 from django.http import JsonResponse
+from django.forms.models import model_to_dict
 from .models import ParkingBooking, ParkingSpot
+
+
+def prepare_json_data(data):
+    my_parkings_data = []
+    for parking in data:
+        parking_data = model_to_dict(parking)
+
+        user_name = parking.owner.username if parking.owner else "Unknown"
+        parking_data['owner'] = user_name
+
+        my_parkings_data.append(parking_data)
+    return my_parkings_data
 
 
 def get_parking_booking_from_date(request):
@@ -32,64 +45,13 @@ def get_parking_booking_from_date(request):
             return JsonResponse({'info': info})
 
 
-def get_user_parking_data(request):
-    user_parking_spot = ParkingSpot.objects.filter(owner=request.user).first()
+def show_all_parking_spots(request):
+    parking_spots = ParkingSpot.objects.all()
+    data = prepare_json_data(parking_spots)
+    return JsonResponse(data, safe=False)
 
-    if user_parking_spot:
-        user_parking_spot_json = {"spot": user_parking_spot.name,
-                                  "date": "Permanently",
-                                  "info": "Share your parking spot"}
 
-        user_shared_spots = ParkingBooking.objects.filter(spot__owner=request.user).order_by('date')[:4]
-        if user_shared_spots.exists():
-            free_parking_spot_json = []
-            for spot in user_shared_spots:
-                if spot.tenant:
-                    info = f"Shared for {spot.tenant}"
-                else:
-                    info = "Shared"
-                free_parking_spot_json.append({"spot": spot.spot.name,
-                                               "date": spot.date,
-                                               "info": info})
-            return JsonResponse({'user_parking_spots': user_parking_spot_json,
-                                 'free_parking_spots': free_parking_spot_json})
-        else:
-            return JsonResponse({'user_parking_spots': user_parking_spot_json,
-                                 'second_info': "You have not shared any parking spot"})
-    else:
-        user_parking_spot = ParkingBooking.objects.filter(tenant=request.user).order_by('date')
-        free_parking_spot = ParkingBooking.objects.filter(tenant=None).order_by('date')
-
-        if user_parking_spot.count() >= 3 and free_parking_spot.count() >= 3:
-            user_parking_spot = user_parking_spot[:3]
-            free_parking_spot = free_parking_spot[:2]
-        elif user_parking_spot.count() < 3:
-            free_parking_spot = free_parking_spot[:(5 - user_parking_spot.count())]
-        elif free_parking_spot.count() < 3:
-            user_parking_spot = user_parking_spot[:(5 - free_parking_spot.count())]
-
-        if user_parking_spot.exists():
-            user_parking_spot_json = []
-            for spot in user_parking_spot:
-                user_parking_spot_json.append({"spot": spot.spot.name,
-                                               "date": spot.date,
-                                               "info": "Reserved"})
-        if free_parking_spot.exists():
-            free_parking_spot_json = []
-            for spot in free_parking_spot:
-                free_parking_spot_json.append({"spot": spot.spot.name,
-                                               "date": spot.date,
-                                               "info": "Available"})
-
-        if user_parking_spot.exists() and free_parking_spot.exists():
-            return JsonResponse({"user_parking_spots": user_parking_spot_json,
-                                 "free_parking_spots": free_parking_spot_json})
-        elif user_parking_spot.exists() and not free_parking_spot.exists():
-            return JsonResponse({"user_parking_spots": user_parking_spot_json,
-                                 "second_info": "There are no available spots to book"})
-        elif not user_parking_spot.exists() and free_parking_spot.exists():
-            return JsonResponse({"first_info": "You do not have any parking spot reservation",
-                                 "free_parking_spots": free_parking_spot_json})
-        elif not user_parking_spot.exists() and not free_parking_spot.exists():
-            return JsonResponse({"first_info": "You do not have any parking spot reservation",
-                                 "second_info": "There are no available spots to book"})
+def share_my_parking_spot(request):
+    parking_spots = ParkingSpot.objects.all()
+    data = prepare_json_data(parking_spots)
+    return JsonResponse(data, safe=False)

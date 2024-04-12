@@ -111,11 +111,13 @@
               }
             }
           }
-          .applications {
+          .applications,
+          .parkings {
             display: flex;
             flex-direction: column;
             gap: 20px;
-            .application {
+            .application,
+            .parking {
               background: $application-background;
               padding: 20px;
               border-radius: 12px;

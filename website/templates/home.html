@@ -26,7 +26,7 @@
                     <div class="items parkings" id="parkingItems">
                         <div class="item">
                             {% if user.is_superuser %}
-                                <div class="spot" id="showParkingSpotsButton">
+                                <div class="spot" id="showAllParkingSpotsButton">
                                     Show all
                                     <br>
                                     parking spots
@@ -37,8 +37,8 @@
                                     reservations
                                 </div>
                             {% endif %}
-                            {% if user_have_parking_spot %}
-                                <div class="spot" id="shareParkingSpotButton">
+                            {% if user_parking_spot %}
+                                <div class="spot" id="shareMyParkingSpotButton">
                                     Share my
                                     <br>
                                     parking spot

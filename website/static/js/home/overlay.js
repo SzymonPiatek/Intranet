@@ -3,15 +3,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const blocks = overlay.querySelectorAll('.block');
     const closeOverlayButtons = document.querySelectorAll('#closeOverlay');
     // Applications
-    const createApplication = document.getElementById('createApplication');
+    const createApplicationBlock = document.getElementById('createApplicationBlock');
     const createApplicationButton = document.getElementById('createApplicationButton');
-    const showMyApplications = document.getElementById('showMyApplications');
+    const showMyApplicationsBlock = document.getElementById('showMyApplicationsBlock');
     const showMyApplicationsButton = document.getElementById('showMyApplicationsButton');
-    const showAllApplications = document.getElementById('showAllApplications');
+    const showAllApplicationsBlock = document.getElementById('showAllApplicationsBlock');
     const showAllApplicationsButton = document.getElementById('showAllApplicationsButton');
     // Parkings
-    const showParkingSpots = document.getElementById('showParkingSpots');
-    const showParkingSpotsButton = document.getElementById('showParkingSpotsButton');
+    const showAllParkingSpotsBlock = document.getElementById('showAllParkingSpotsBlock');
+    const showAllParkingSpotsButton = document.getElementById('showAllParkingSpotsButton');
+    const shareMyParkingSpotBlock = document.getElementById('shareMyParkingSpotBlock');
+    const shareMyParkingSpotButton = document.getElementById('shareMyParkingSpotButton');
 
 
     function changeBlockDisplay(block) {
@@ -41,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Applications
     createApplicationButton.addEventListener('click', function() {
-        changeBlockDisplay(createApplication);
+        changeBlockDisplay(createApplicationBlock);
         addOverlayDisplay();
     });
 
@@ -50,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const url = linkDiv.getAttribute('data-url');
 
         fetchDataAndPopulateApplications(url, "myApplications");
-        changeBlockDisplay(showMyApplications);
+        changeBlockDisplay(showMyApplicationsBlock);
         addOverlayDisplay(event);
     });
 
@@ -59,18 +61,26 @@ document.addEventListener('DOMContentLoaded', function() {
         const url = linkDiv.getAttribute('data-url');
 
         fetchDataAndPopulateApplications(url, "allApplications");
-        changeBlockDisplay(showAllApplications);
+        changeBlockDisplay(showAllApplicationsBlock);
         addOverlayDisplay(event);
     });
 
     // Parkings
-    showParkingSpotsButton.addEventListener('click', function(event) {
-        const linkDiv = document.getElementById('showParkingSpotsUrl');
+    showAllParkingSpotsButton.addEventListener('click', function(event) {
+        const linkDiv = document.getElementById('showAllParkingSpotsUrl');
         const url = linkDiv.getAttribute('data-url');
 
-        changeBlockDisplay(showParkingSpots);
+        fetchDataAndPopulateParkingSpots(url, "allParkingSpots");
+        changeBlockDisplay(showAllParkingSpotsBlock);
         addOverlayDisplay(event);
     });
+
+    shareMyParkingSpotButton.addEventListener('click', function(event) {
+        changeBlockDisplay(shareMyParkingSpotBlock);
+        addOverlayDisplay(event);
+    });
+
+    // Other
 
     closeOverlayButtons.forEach(button => {
         button.addEventListener('click', function() {

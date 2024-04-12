@@ -1,0 +1,27 @@
+{% extends 'elements/overlay_template.html' %}
+
+{% block label %}
+    <div class="link" id="shareMyParkingSpotUrl" style="display: none;"
+        data-url="{% url 'share_my_parking_spot_page' %}"></div>
+    <div class="label">
+        <h1>Share my parking spot</h1>
+    </div>
+    <div class="elements">
+        <form id="shareParkingSpotForm">
+            {%  csrf_token %}
+            <div class="items">
+                <div class="item">
+                    <h2>My parking spot</h2>
+                    <input type="text" id="parkingSpot" name="parkingSpot" value="{{ user_parking_spot.name }}" required readonly>
+                </div>
+                <div class="item">
+                    <h2>Date</h2>
+                    <input type="date" id="shareDate" name="shareDate" required>
+                </div>
+                <button type="submit">
+                    <h1>Submit</h1>
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock label %}
